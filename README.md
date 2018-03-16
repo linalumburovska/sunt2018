@@ -10,4 +10,8 @@
   https://git-scm.com/download/win
 4. MariaDB
 https://downloads.mariadb.org/mariadb/10.2.13/
- 
+5. Java(JDK)
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+6. Maven 
+https://maven.apache.org/download.cgi?Preferred=ftp%3A%2F%2Fmirror.reverse.net%2Fpub%2Fapache%2F
+poglej si https://www.youtube.com/watch?v=OfCTUGpWEdE 
