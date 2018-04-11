@@ -1,6 +1,8 @@
-package com.fri.sunt;
+package com.fri.sunt.controller;
 
 
+import com.fri.sunt.entity.Project;
+import com.fri.sunt.repository.ProjectRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;

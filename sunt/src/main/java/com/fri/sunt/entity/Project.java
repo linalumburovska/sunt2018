@@ -1,4 +1,4 @@
-package com.fri.sunt;
+package com.fri.sunt.entity;
 
 
 import javax.persistence.*;
