@@ -11,7 +11,7 @@ import java.util.Optional;
 
 
 @RepositoryRestResource
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5000"}, methods = {RequestMethod.GET})
+@CrossOrigin(origins = {"http://localhost:3000"}, methods = {RequestMethod.GET})
 public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     Optional<Project> findByOrderIndex(int index);
