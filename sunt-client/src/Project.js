@@ -1,10 +1,9 @@
 import React from 'react'
 import {getImageSrc} from "./utility";
 import {ProjectAPI} from "./client";
+import {ProjectPresentation} from "./ProjectPresentation";
+import {Link, Route} from 'react-router-dom';
 
-// function Project ({match}) {
-//
-// }
 
 export class Project extends React.Component {
 
@@ -43,6 +42,8 @@ export class Project extends React.Component {
 
     render() {
         const {path, description} = this.state;
+        const {match} = this.props;
+
 
         if (path.length === 0) {
             return (
@@ -54,7 +55,11 @@ export class Project extends React.Component {
             return (
                 <div className="ProjectTitle">
                     <h1>{description}</h1>
-                    <img src={getImageSrc(path)} alt={description}/>
+                    <Link to={`${match.url}/description`}>
+                        <img src={getImageSrc(path)} alt={description}/>
+                    </Link>
+
+                    <Route path={`${match.path}/description`} component={ProjectPresentation}/>
                 </div>
             )
         }
