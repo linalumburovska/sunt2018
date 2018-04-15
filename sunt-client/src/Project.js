@@ -10,10 +10,12 @@ export class Project extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleClick = this.handleClick.bind(this);
 
         this.state = {
             path: '',
-            description: ''
+            description: '',
+            opened: false,
         };
     }
 
@@ -40,8 +42,12 @@ export class Project extends React.Component {
 
     }
 
+    handleClick() {
+        this.setState(prevState => ({opened: !prevState.opened}))
+    }
+
     render() {
-        const {path, description} = this.state;
+        const {path, description, opened} = this.state;
         const {match} = this.props;
 
 
@@ -55,10 +61,11 @@ export class Project extends React.Component {
             return (
                 <div className="ProjectTitle">
                     <h1>{description}</h1>
-                    <Link to={`${match.url}/description`}>
-                        <img src={getImageSrc(path)} alt={description}/>
+                    <Link to={`${match.url}${!opened ? '/description' : ''}`} onClick={this.handleClick}>
+                        <img src={getImageSrc(path)} alt={description} width="300px"/>
                     </Link>
 
+                    <hr />
                     <Route path={`${match.path}/description`} component={ProjectPresentation}/>
                 </div>
             )
