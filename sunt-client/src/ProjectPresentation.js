@@ -32,7 +32,7 @@ export class ProjectPresentation extends React.Component {
 
         return (
             <div className="ProjectPresentation">
-                <img src={getImageSrc(project.images[0])} alt="None"/>
+                <img src={getImageSrc(project.images[0])} alt="None" width="300px"/>
                 {project.description} <br/>
                 {project.author}
             </div>

@@ -7,8 +7,11 @@ export class ProjectPagination extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleNext = this.handleNext.bind(this);
+        this.handlePrev = this.handlePrev.bind(this);
         this.state = {
-            projects: []
+            projects: [],
+            currentIndex: 1
         };
     }
 
@@ -17,21 +20,24 @@ export class ProjectPagination extends React.Component {
         ProjectAPI.all().then(data => this.setState({projects: data}));
     }
 
+    handleNext(e) {
+        this.setState(prevState => ({currentIndex: prevState.currentIndex + 1}))
+    }
+
+    handlePrev(e) {
+        this.setState(prevState => ({currentIndex: prevState.currentIndex -1}))
+    }
 
     render() {
-        const {projects} = this.state;
+        const {currentIndex} = this.state;
         const {match} = this.props;
+
 
         return (
             <div>
                 <h1>Projects</h1>
-                <ul>
-                    {projects.map(({ title, index }) => (
-                        <li key={index}>
-                            <Link to={`${match.url}/${index}`}>{title}</Link>
-                        </li>
-                    ))}
-                </ul>
+                <NextButton match={match} index={currentIndex} onClick={this.handleNext}/>
+                <PrevButton match={match} index={currentIndex} onClick={this.handlePrev}/>
 
                 <hr />
 
@@ -39,5 +45,24 @@ export class ProjectPagination extends React.Component {
             </div>
         )
     }
+}
+
+function NextButton(props) {
+    const {match, index, onClick} = props;
+    return (
+        <Link to={`${match.url}/${index + 1}`}>
+            <button onClick={onClick}>Next</button>
+        </Link>
+    )
+}
+
+function PrevButton(props) {
+    const {match, index, onClick} = props;
+
+    return (
+        <Link to={`${match.url}/${index - 1}`}>
+            <button  onClick={onClick}>Previous</button>
+        </Link>
+    )
 }
 
