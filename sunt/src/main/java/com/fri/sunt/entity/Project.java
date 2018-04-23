@@ -27,6 +27,8 @@ public class Project {
 
     private String englishDescription;
 
+    private Theme theme;
+
     @ElementCollection
     private Set<String> images;
 
@@ -62,11 +64,11 @@ public class Project {
         this.images = images;
     }
 
-    public Integer getIndex() {
+    public Integer getOrderIndex() {
         return orderIndex;
     }
 
-    public void setIndex(Integer index) {
+    public void setOrderIndex(Integer index) {
         this.orderIndex = index;
     }
 
@@ -92,5 +94,13 @@ public class Project {
 
     public void setEnglishTitle(String englishTitle) {
         this.englishTitle = englishTitle;
+    }
+
+    public Theme getTheme() {
+        return theme;
+    }
+
+    public void setTheme(Theme theme) {
+        this.theme = theme;
     }
 }
