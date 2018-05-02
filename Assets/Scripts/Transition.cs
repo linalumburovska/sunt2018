@@ -9,7 +9,6 @@ public class Transition : MonoBehaviour
 
     public GameObject sphere;
 
-    private bool transitioning;
     public float speed = 0.01f;
     public float acceleration = 0.05f;
     private float t0;
@@ -19,9 +18,10 @@ public class Transition : MonoBehaviour
     private Vector3 focusedScale;
 
     private GameObject parentSphere;
-    private bool inNextSphere;
+    private bool _translated;
+    private bool _moving;
 
-    private bool rotating;
+    private bool _rotating;
 
     void Start()
     {
@@ -42,7 +42,8 @@ public class Transition : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            transitioning = true;
+            _moving = true;
+            _rotating = true;
             t0 = Time.time;
         }
     }
@@ -54,7 +55,7 @@ public class Transition : MonoBehaviour
 
     void Update()
     {
-        if (transitioning)
+        if (_moving || _rotating)
         {
             gameObject.GetComponent<Renderer>().enabled = false;
 
@@ -64,17 +65,17 @@ public class Transition : MonoBehaviour
             tripod.transform.position += movementDirection * v;
             float radius = parentSphere.GetComponent<Renderer>().bounds.extents.x;
 
-            if (!inNextSphere)
+            if (!_translated)
             {
                 if ((parentSphere.transform.position - tripod.transform.position).magnitude > 0)
                 {
                     tripod.transform.position = sphere.transform.position - (movementDirection * (radius - 2f));
-                    inNextSphere = true;
+                    _translated = true;
                 }
             }
             else
             {
-                rotating = true;
+                _rotating = true;
 
                 if (sphere.transform.Find("Pointer") != null)
                 {
@@ -82,7 +83,7 @@ public class Transition : MonoBehaviour
 
                     if (Vector3.Angle(targetDir, tripod.transform.rotation.eulerAngles) < 1)
                     {
-                        rotating = false;
+                        _rotating = false;
                     }
 
                     float step = 0.5f * Time.deltaTime;
@@ -119,8 +120,8 @@ public class Transition : MonoBehaviour
 
     void reinit()
     {
-        transitioning = false;
-        inNextSphere = false;
-        rotating = false;
+        _moving = false;
+        _translated = false;
+        _rotating = false;
     }
 }
