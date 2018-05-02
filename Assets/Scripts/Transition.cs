@@ -87,7 +87,7 @@ public class Transition : MonoBehaviour
             {
                 if (sphere.transform.Find("Pointer") != null)
                 {
-                    if (Quaternion.Angle(_lastRotation, tripod.transform.rotation) < 0.1)
+                    if (!_moving && Quaternion.Angle(_lastRotation, tripod.transform.rotation) < 0.1)
                     {
                         _rotating = false;
                     }
@@ -97,7 +97,7 @@ public class Transition : MonoBehaviour
                     Vector3 targetDir = sphere.transform.Find("Pointer").position - tripod.transform.position;
 
 
-                    float step = 0.5f * Time.deltaTime;
+                    float step = 0.9f * Time.deltaTime;
                     Vector3 newDir = Vector3.RotateTowards(tripod.transform.forward, targetDir, step, 0.0f);
 
                     // Move our position a step closer to the target.
