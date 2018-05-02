@@ -98,22 +98,29 @@ public class Transition : MonoBehaviour
                     tripod.transform.position = sphere.transform.position;
                     // if not rotated enough, rotate till the end
                     // todo
-                    transitioning = false;
+
+                    gameObject.GetComponent<Renderer>().enabled = true;
+
+                    foreach (Renderer r in sphere.GetComponentsInChildren<Renderer>())
+                    {
+                        r.enabled = true;
+                    }
+
                     if (sphere.transform.Find("Pointer") != null)
                     {
                         tripod.transform.LookAt(sphere.transform.Find("Pointer"));
                     }
+                    
+                    reinit();
                 }
             }
         }
-        else
-        {
-            gameObject.GetComponent<Renderer>().enabled = true;
+    }
 
-            foreach (Renderer r in sphere.GetComponentsInChildren<Renderer>())
-            {
-                r.enabled = true;
-            }
-        }
+    void reinit()
+    {
+        transitioning = false;
+        inNextSphere = false;
+        rotating = false;
     }
 }
