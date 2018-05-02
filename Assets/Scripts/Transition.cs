@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 public class Transition : MonoBehaviour
 {
@@ -17,11 +14,13 @@ public class Transition : MonoBehaviour
     private Vector3 originalScale;
     private Vector3 focusedScale;
 
-    private GameObject parentSphere;
+    private GameObject _parentSphere;
     private bool _translated;
     private bool _moving;
 
     private bool _rotating;
+
+    private Quaternion _lastRotation;
 
     void Start()
     {
@@ -33,7 +32,8 @@ public class Transition : MonoBehaviour
             throw new UnityException("Tripod GameObject not found");
         }
 
-        parentSphere = transform.parent.gameObject;
+        _parentSphere = transform.parent.gameObject;
+        _lastRotation = tripod.transform.rotation;
     }
 
     void OnMouseOver()
@@ -44,6 +44,7 @@ public class Transition : MonoBehaviour
         {
             _moving = true;
             _rotating = true;
+            _translated = false;
             t0 = Time.time;
         }
     }
@@ -55,36 +56,46 @@ public class Transition : MonoBehaviour
 
     void Update()
     {
+        if (!_moving && !_rotating)
+        {
+            return;
+        }
+
         if (_moving || _rotating)
         {
-            gameObject.GetComponent<Renderer>().enabled = false;
-
-            float v = speed + acceleration * (Time.time - t0);
-
-            Vector3 movementDirection = (sphere.transform.position - parentSphere.transform.position).normalized;
-            tripod.transform.position += movementDirection * v;
-            float radius = parentSphere.GetComponent<Renderer>().bounds.extents.x;
+            Vector3 movementDirection = (sphere.transform.position - _parentSphere.transform.position).normalized;
 
             if (!_translated)
             {
-                if ((parentSphere.transform.position - tripod.transform.position).magnitude > 0)
+                float radius = _parentSphere.GetComponent<Renderer>().bounds.extents.x;
+                tripod.transform.position = sphere.transform.position - (movementDirection * (radius - 2f));
+                _translated = true;
+            }
+
+            if (_moving)
+            {
+                float v = speed + acceleration * (Time.time - t0);
+                tripod.transform.position += movementDirection * v;
+                if (Mathf.Abs((sphere.transform.position - tripod.transform.position).magnitude) < 0.1f)
                 {
-                    tripod.transform.position = sphere.transform.position - (movementDirection * (radius - 2f));
-                    _translated = true;
+                    tripod.transform.position = sphere.transform.position;
+                    _moving = false;
                 }
             }
-            else
-            {
-                _rotating = true;
 
+            if (_rotating)
+            {
                 if (sphere.transform.Find("Pointer") != null)
                 {
-                    Vector3 targetDir = sphere.transform.Find("Pointer").position - tripod.transform.position;
-
-                    if (Vector3.Angle(targetDir, tripod.transform.rotation.eulerAngles) < 1)
+                    if (Quaternion.Angle(_lastRotation, tripod.transform.rotation) < 0.1)
                     {
                         _rotating = false;
                     }
+
+                    _lastRotation = tripod.transform.rotation;
+
+                    Vector3 targetDir = sphere.transform.Find("Pointer").position - tripod.transform.position;
+
 
                     float step = 0.5f * Time.deltaTime;
                     Vector3 newDir = Vector3.RotateTowards(tripod.transform.forward, targetDir, step, 0.0f);
@@ -92,28 +103,17 @@ public class Transition : MonoBehaviour
                     // Move our position a step closer to the target.
                     tripod.transform.rotation = Quaternion.LookRotation(newDir);
                 }
-
-
-                if (Mathf.Abs((sphere.transform.position - tripod.transform.position).magnitude) < 0.1f)
+                else
                 {
-                    tripod.transform.position = sphere.transform.position;
-                    // if not rotated enough, rotate till the end
-                    // todo
-
-                    gameObject.GetComponent<Renderer>().enabled = true;
-
-                    foreach (Renderer r in sphere.GetComponentsInChildren<Renderer>())
-                    {
-                        r.enabled = true;
-                    }
-
-                    if (sphere.transform.Find("Pointer") != null)
-                    {
-                        tripod.transform.LookAt(sphere.transform.Find("Pointer"));
-                    }
-                    
-                    reinit();
+                    Debug.Log("Pointer not found");
+                    _rotating = false;
                 }
+            }
+
+
+            if (!_moving && !_rotating)
+            {
+                reinit();
             }
         }
     }
