@@ -77,6 +77,8 @@ public class Transition : MonoBehaviour
                 r.enabled = false;
             }
 
+            StreetViewCamera.disable = true;
+
             Vector3 movementDirection = (sphere.transform.position - _parentSphere.transform.position).normalized;
 
             if (!_translated)
@@ -151,8 +153,9 @@ public class Transition : MonoBehaviour
         Component[] renderers = sphere.GetComponentsInChildren(typeof(Renderer));
         foreach (Renderer r in renderers)
         {
-//                if (r.gameObject))
             r.enabled = true;
         }
+        
+        StreetViewCamera.disable = false;
     }
 }
