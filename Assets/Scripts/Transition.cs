@@ -19,6 +19,7 @@ public class Transition : MonoBehaviour
     private bool _moving;
 
     private bool _rotating;
+    private float _jitterAvoidance = 1.0f;
 
     private Quaternion _lastRotation;
 
@@ -91,13 +92,22 @@ public class Transition : MonoBehaviour
                     {
                         _rotating = false;
                     }
+                    else if (_moving &&  Quaternion.Angle(_lastRotation, tripod.transform.rotation) < 0.1)
+                    {
+                        _jitterAvoidance = 10.0f;
+                    }
+                    else if (Quaternion.Angle(_lastRotation, tripod.transform.rotation) > 0.1)
+                    {
+                        _jitterAvoidance = 1.0f;
+                    }
+
 
                     _lastRotation = tripod.transform.rotation;
 
                     Vector3 targetDir = sphere.transform.Find("Pointer").position - tripod.transform.position;
 
 
-                    float step = 0.9f * Time.deltaTime;
+                    float step = 0.9f * Time.deltaTime / _jitterAvoidance;
                     Vector3 newDir = Vector3.RotateTowards(tripod.transform.forward, targetDir, step, 0.0f);
 
                     // Move our position a step closer to the target.
