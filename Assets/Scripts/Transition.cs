@@ -64,6 +64,19 @@ public class Transition : MonoBehaviour
 
         if (_moving || _rotating)
         {
+            // Disable renderers for Navigation Crosses and disable user input
+            Component[] renderers = sphere.GetComponentsInChildren(typeof(Renderer));
+            foreach (Renderer r in renderers)
+            {
+                // if SphereInsideout
+                if (r.GetType() == typeof(MeshRenderer))
+                {
+                    continue;
+                } 
+                
+                r.enabled = false;
+            }
+
             Vector3 movementDirection = (sphere.transform.position - _parentSphere.transform.position).normalized;
 
             if (!_translated)
@@ -133,5 +146,13 @@ public class Transition : MonoBehaviour
         _moving = false;
         _translated = false;
         _rotating = false;
+        
+        // Enable renderers
+        Component[] renderers = sphere.GetComponentsInChildren(typeof(Renderer));
+        foreach (Renderer r in renderers)
+        {
+//                if (r.gameObject))
+            r.enabled = true;
+        }
     }
 }
