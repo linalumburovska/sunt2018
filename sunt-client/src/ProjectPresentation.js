@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {ProjectAPI} from "./client";
+import {ProjectAPI} from "./api/client";
 import {getImageSrc} from "./utility";
 
 export class ProjectPresentation extends React.Component {

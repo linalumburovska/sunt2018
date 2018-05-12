@@ -1,7 +1,7 @@
 import React from 'react'
 import {Project} from "./Project";
 import {Link, Switch, Route} from 'react-router-dom';
-import {ProjectAPI} from "./client";
+import {ProjectAPI} from "./api/client";
 
 export class ProjectPagination extends React.Component {
 
@@ -16,7 +16,6 @@ export class ProjectPagination extends React.Component {
     }
 
     componentDidMount() {
-        // let index = parseInt(this.props.match.params.id, 10);
         ProjectAPI.all().then(data => this.setState({projects: data}));
     }
 

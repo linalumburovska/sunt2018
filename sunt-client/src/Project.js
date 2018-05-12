@@ -1,6 +1,6 @@
 import React from 'react'
 import {getImageSrc} from "./utility";
-import {ProjectAPI} from "./client";
+import {ProjectAPI} from "./api/client";
 import {ProjectPresentation} from "./ProjectPresentation";
 import {Link, Route} from 'react-router-dom';
 
@@ -22,7 +22,7 @@ export class Project extends React.Component {
     loadFromServer(match) {
         if (match !== undefined) {
             ProjectAPI.get(match.params.index)
-                .then(project => this.setState({path: project.images[0], description: project.description}));
+                .then(project => this.setState({path: project.image[0].path, description: project.description}));
             console.log("Project mounted", this.props);
         }
     }
