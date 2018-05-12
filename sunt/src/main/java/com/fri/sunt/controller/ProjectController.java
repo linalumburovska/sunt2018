@@ -17,7 +17,7 @@ public class ProjectController {
         this.repository = repository;
     }
 
-    @RequestMapping("/api/projects")
+    @RequestMapping("/api/project")
     @CrossOrigin(origins = {"http://localhost:3000"}, methods = {RequestMethod.GET})
     public Collection<Project> project() {
         return repository.findAll();
