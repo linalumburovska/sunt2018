@@ -3,6 +3,7 @@ package com.fri.sunt.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Set;
 
 
@@ -21,7 +22,8 @@ public class Project {
 
     private String englishTitle;
 
-    private String author;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Author> author;
 
     private String description;
 
@@ -29,8 +31,8 @@ public class Project {
 
     private Theme theme;
 
-    @ElementCollection
-    private Set<String> images;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Image> image;
 
     public Long getId() {
         return id;
@@ -40,28 +42,12 @@ public class Project {
         this.id = id;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Set<String> getImages() {
-        return images;
-    }
-
-    public void setImages(Set<String> images) {
-        this.images = images;
     }
 
     public Integer getOrderIndex() {
@@ -102,5 +88,21 @@ public class Project {
 
     public void setTheme(Theme theme) {
         this.theme = theme;
+    }
+
+    public List<Author> getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(List<Author> author) {
+        this.author = author;
+    }
+
+    public Set<Image> getImage() {
+        return image;
+    }
+
+    public void setImage(Set<Image> image) {
+        this.image = image;
     }
 }
