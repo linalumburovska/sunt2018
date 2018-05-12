@@ -11,6 +11,8 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String path;
+
     private String alt;
 
     public Long getId() {
@@ -19,6 +21,14 @@ public class Image {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getAlt() {
