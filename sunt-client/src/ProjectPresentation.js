@@ -49,7 +49,8 @@ export class ProjectPresentation extends React.Component {
             <div className="ProjectPresentation">
                 <img src={getImageSrc(path)} alt="None" width="300px"/>
                 {description} <br/>
-                {title}
+                {title} <br/>
+                {author}
             </div>
         )
     }
