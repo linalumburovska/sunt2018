@@ -1,0 +1,42 @@
+#background-video{
+    flex:1;
+}
+
+#project-info::after{
+    display: block;
+    content: '';
+    width: 2.5%;
+    height: 10%;
+    background: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#project-info{
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+    margin-right: 0.009%;
+    color:white;
+}
+
+#project-360{
+    position: relative;
+    text-align: right;
+    vertical-align: middle;
+    margin-left: 10%;
+    color:white;
+}
+
+
+#project-360::after{
+    display: block;
+    content: '';
+    width: 2.5%;
+    height: 10%;
+    background: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

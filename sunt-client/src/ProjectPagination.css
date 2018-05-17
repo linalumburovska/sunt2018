@@ -1,0 +1,11 @@
+NextButton{
+    position:fixed;
+    top: 0;
+
+}
+
+PrevButton{
+    position:fixed;
+    bottom:0;
+
+}

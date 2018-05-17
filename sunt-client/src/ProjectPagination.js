@@ -2,6 +2,7 @@ import React from 'react'
 import {Project} from "./Project";
 import {Link, Switch, Route} from 'react-router-dom';
 import {ProjectAPI} from "./api/client";
+import "./ProjectPagination.css"
 
 export class ProjectPagination extends React.Component {
 
@@ -35,12 +36,9 @@ export class ProjectPagination extends React.Component {
         return (
             <div>
                 <h1>Projects</h1>
-                <NextButton match={match} index={currentIndex} onClick={this.handleNext}/>
                 <PrevButton match={match} index={currentIndex} onClick={this.handlePrev}/>
-
-                <hr />
-
                 <Route path={`${match.path}/:index`} component={Project} />
+                <NextButton match={match} index={currentIndex} onClick={this.handleNext}/>
             </div>
         )
     }
@@ -48,19 +46,28 @@ export class ProjectPagination extends React.Component {
 
 function NextButton(props) {
     const {match, index, onClick} = props;
+    if(!(index+1 < 28)){return(<div></div>)}
     return (
         <Link to={`${match.url}/${index + 1}`}>
-            <button onClick={onClick}>Next</button>
+            <input onClick={onClick} type="image" alt="dol" src="http://localhost:3000/static_ikone/dolga.png"
+                   width={"5%"} height={"5%"}
+            />
         </Link>
     )
 }
 
 function PrevButton(props) {
     const {match, index, onClick} = props;
+    var inputStyle = {
+        transform: 'rotate(180deg)',
+    };
 
+    if(!(index - 1 > 0)){return(<div></div>)}
     return (
         <Link to={`${match.url}/${index - 1}`}>
-            <button  onClick={onClick}>Previous</button>
+                <input onClick={onClick} type="image" alt="gor" src="http://localhost:3000/static_ikone/dolga.png"
+                       style={inputStyle} width={"5%"} height={"5%"}
+                />
         </Link>
     )
 }

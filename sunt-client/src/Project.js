@@ -3,7 +3,8 @@ import {getImageSrc} from "./utility";
 import {ProjectAPI} from "./api/client";
 import {ProjectPresentation} from "./ProjectPresentation";
 import {Link, Route} from 'react-router-dom';
-
+import './Project.css'
+import Fullscreen from "react-full-screen";
 
 export class Project extends React.Component {
 
@@ -53,19 +54,27 @@ export class Project extends React.Component {
 
         if (path.length === 0) {
             return (
+                <Fullscreen>
                 <div className="ProjectTitle">
-                    Loading...
+                    <video id="background-video" loop autoPlay muted src={"http://localhost:3000/videos/1.mov"} width={"50%"} height={"50%"}/>
+                    <div id="project-info">Info</div>
+                    <div id="project-360">360°</div>
                 </div>
+                </Fullscreen>
             )
         } else {
             return (
-                <div className="ProjectTitle">
+                <div>
+                    <video id="background-video" loop autoPlay>
+                        <source src={getImageSrc(path)} type="video/mp4"/>
+                    </video>
                     <h1>{description}</h1>
                     <Link to={`${match.url}${!opened ? '/description' : ''}`} onClick={this.handleClick}>
-                        <img src={getImageSrc(path)} alt={description} width="300px"/>
+                        <div id="project-info">Info</div>
                     </Link>
-
-                    <hr />
+                    <Link onClick={this.handleClick()}>//za 360
+                        <div id="project-360">360°</div>
+                    </Link>
                     <Route path={`${match.path}/description`} component={ProjectPresentation}/>
                 </div>
             )
