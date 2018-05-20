@@ -1,36 +1,53 @@
 import React, {Component} from 'react';
 import './App.css';
 import {Link, Route, Switch, Redirect} from "react-router-dom";
+import {Project} from "./Project";
 import {ProjectPagination} from "./ProjectPagination";
 
 
 class App extends Component {
-    render() {
+
+    render(){
         return (
             <div className="App">
-                <nav>
-                    <ul>
-                        <li><Link to={'/'}>Home</Link></li>
-                        <li><Link to={'/about'}>About</Link></li>
-                        <li><Link to={'/projects'}>Project</Link></li>
-                    </ul>
-                </nav>
-
-                <Switch>
-                    <Route path='/projects' component={ProjectPagination}/>
-                </Switch>
+                <div className="App-header">
+                    <div id="home">
+                        <HomeButton></HomeButton>
+                    </div>
+                    <div id="language">
+                        <LanguageButton></LanguageButton>
+                    </div>
+                    <div></div>
+                    <div id="about">
+                        <AboutButton></AboutButton>
+                    </div>
+                </div>
+                <div className="App-content">
+                    <Switch>
+                        <Route path='/projects/1' component={ProjectPagination}/>
+                    </Switch>
+                </div>
             </div>
         );
     }
 }
-
-const Home = () => (
-    <p>Welcome Home</p>
+const HomeButton = () => (
+    <Link to={'/'}>
+        <img src="http://localhost:3000/static_ikone/logo.png" alt="home"/>
+    </Link>
 );
 
-const About = () => (
-    <p>Modern Art stuff</p>
+const LanguageButton = () => (
+    <Link to={'/'}>EN</Link>
 );
+
+const AboutButton = () => (
+    <Link to={'/projects'}>About</Link>
+
+);
+
+
+
 
 
 export default App;

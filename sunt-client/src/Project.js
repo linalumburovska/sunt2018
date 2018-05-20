@@ -54,13 +54,11 @@ export class Project extends React.Component {
 
         if (path.length === 0) {
             return (
-                <Fullscreen>
                 <div className="ProjectTitle">
-                    <video id="background-video" loop autoPlay muted src={"http://localhost:3000/videos/1.mov"} width={"50%"} height={"50%"}/>
+                    <div className="Project-video"><video id="videoPlayer" loop autoPlay muted src={"http://localhost:3000/videos/1.mov"} width={"100%"} height={"100%"}/></div>
                     <div id="project-info">Info</div>
                     <div id="project-360">360°</div>
                 </div>
-                </Fullscreen>
             )
         } else {
             return (

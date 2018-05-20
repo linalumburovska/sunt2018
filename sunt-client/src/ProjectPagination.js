@@ -34,11 +34,16 @@ export class ProjectPagination extends React.Component {
 
 
         return (
-            <div>
-                <h1>Projects</h1>
-                <PrevButton match={match} index={currentIndex} onClick={this.handlePrev}/>
-                <Route path={`${match.path}/:index`} component={Project} />
-                <NextButton match={match} index={currentIndex} onClick={this.handleNext}/>
+            <div className="ProjectPagination">
+                <div className="ProjectPagination-buttons">
+                <div id="prev">
+                    <PrevButton match={match} index={currentIndex} onClick={this.handlePrev}/>
+                </div>
+                <div id="next">
+                    <NextButton match={match} index={currentIndex} onClick={this.handleNext}/>
+                </div>
+                </div>
+                <div id="title"><Route path={`${match.path}/:index`} component={Project}/></div>
             </div>
         )
     }
@@ -49,25 +54,20 @@ function NextButton(props) {
     if(!(index+1 < 28)){return(<div></div>)}
     return (
         <Link to={`${match.url}/${index + 1}`}>
-            <input onClick={onClick} type="image" alt="dol" src="http://localhost:3000/static_ikone/dolga.png"
-                   width={"5%"} height={"5%"}
-            />
+            <input onClick={onClick} type="image" alt="dol" src="http://localhost:3000/static_ikone/dolga.png"/>
         </Link>
     )
 }
 
 function PrevButton(props) {
     const {match, index, onClick} = props;
-    var inputStyle = {
-        transform: 'rotate(180deg)',
+    const inputStyle = {
+        transform:'rotate(180deg)',
     };
-
     if(!(index - 1 > 0)){return(<div></div>)}
     return (
         <Link to={`${match.url}/${index - 1}`}>
-                <input onClick={onClick} type="image" alt="gor" src="http://localhost:3000/static_ikone/dolga.png"
-                       style={inputStyle} width={"5%"} height={"5%"}
-                />
+            <input onClick={onClick} type="image" alt="gor" src="http://localhost:3000/static_ikone/dolga.png" style={inputStyle}/>
         </Link>
     )
 }

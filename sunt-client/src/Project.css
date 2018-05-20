@@ -1,19 +1,49 @@
-#background-video{
-    flex:1;
+.ProjectTitle{
+    display:block;
+    position: absolute;
+    top:0;
+    height: inherit;
+    width: inherit;
+}
+.background-video{
+    text-align: center;
+    top:0;
+    left:0;
+    z-index: 0;
+    position: absolute;
 }
 
-#project-info::after{
+#project-360::after{
+    z-index: 50;
     display: block;
     content: '';
     width: 2.5%;
     height: 10%;
     background: white;
-    position: absolute;
     bottom: 0;
     left: 0;
 }
 
-#project-info{
+.Project-video {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    padding:0;
+    margin:0;
+    left: 0px;
+    z-index: -1000;
+    overflow:hidden;
+}
+
+.Project-video #videoPlayer {
+    min-height: 100%;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+
+#project-360{
+    z-index: 50;
     position: relative;
     text-align: left;
     vertical-align: middle;
@@ -21,7 +51,8 @@
     color:white;
 }
 
-#project-360{
+#project-info{
+    z-index: 50;
     position: relative;
     text-align: right;
     vertical-align: middle;
@@ -30,7 +61,8 @@
 }
 
 
-#project-360::after{
+#project-info::after{
+    z-index: 50;
     display: block;
     content: '';
     width: 2.5%;

@@ -1,11 +1,58 @@
-NextButton{
-    position:fixed;
+.ProjectPagination{
+    display:block;
+    position: absolute;
+    top:0;
+    height: inherit;
+    width: inherit;
+    background-color: black;
+}
+.ProjectPagination-buttons{
+    display: grid;
+    width: 10%;
+    height: 98%;
+    position:absolute;
+    z-index: 2;
     top: 0;
-
+    left: 0;
+    bottom: 0;
+    right: 0;
+    grid-template-columns: 100%;
+    grid-row-gap: 90%;
+    grid-template-rows: 5% 5%;
+    margin: auto;
 }
 
-PrevButton{
-    position:fixed;
-    bottom:0;
-
+.ProjectPagination-buttons #prev, #next{
+    width: 100%;
+    height: 100%;
+    display: flex;
 }
+
+.ProjectPagination-buttons #prev{
+    margin-top: 15px;
+}
+
+.ProjectPagination-buttons #next{
+    margin-bottom: 15px;
+}
+
+.ProjectPagination-buttons a{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.ProjectPagination-buttons img{
+    width: 100%;
+    object-fit: contain;
+    display:flex;
+}
+
+
+.ProjectPagination #title{
+    height: 100%;
+    width: 100%;
+}
+
+
+

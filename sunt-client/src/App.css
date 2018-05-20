@@ -1,22 +1,71 @@
-.App {
-  text-align: center;
-  background-color:black;
+.App{
+  margin:0;
+  padding: 0;
+  display:block;
+  overflow:hidden;
+  position: relative;
+  width: inherit;
+  height: inherit;
 }
 
-.App-title {
-  font-size: 1.5em;
+.App-header{
+  z-index: 1;
+  height: 11%;
+  width: 100%;
+  position: absolute;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  right: 0;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 100%;
 }
 
-.App-intro {
-  font-size: large;
+.App-header #language{
+  display: flex;
+  height: 100%;
+  margin:0;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+
+.App-header #home{
+  height: 100%;
 }
 
-div {
-  font-family: 'Roboto Slab', serif;
+.App-header #home img{
+  height: 90%;
 }
+
+.App-header #about{
+  display: flex;
+  height: 100%;
+  width: auto;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.App-header a{
+  text-decoration: none;
+  color:white;
+  padding: 5px;
+}
+
+.App-content{
+  display:block;
+  position: absolute;
+  top:0;
+  height: inherit;
+  width: inherit;
+  background: transparent;
+}
+
+
+
+
+
+
+
 
