@@ -55,9 +55,17 @@ export class Project extends React.Component {
         if (path.length === 0) {
             return (
                 <div className="ProjectTitle">
-                    <div className="Project-video"><video id="videoPlayer" loop autoPlay muted src={"http://localhost:3000/videos/1.mov"} width={"100%"} height={"100%"}/></div>
-                    <div id="project-info">Info</div>
-                    <div id="project-360">360°</div>
+                    <div className="Project-video"><video id="videoPlayer" loop autoPlay muted src={"http://localhost:3000/videos/1.mov"}/></div>
+                    <table id="Buttons">
+                        <tr>
+                            <td id="info"><a href="https://www.google.com">Info</a></td>
+                            <td id="360" align="right"><a href="https://www.google.com">360°</a></td>
+                        </tr>
+                    </table>
+                    <div className="ProjectPresentation">
+                        <div id="title">K-9 Topologija</div>
+                        <div id="author">Maja Smrekar</div>
+                    </div>
                 </div>
             )
         } else {

@@ -43,7 +43,7 @@ export class ProjectPagination extends React.Component {
                     <NextButton match={match} index={currentIndex} onClick={this.handleNext}/>
                 </div>
                 </div>
-                <div id="title"><Route path={`${match.path}/:index`} component={Project}/></div>
+                <Route path={`${match.path}/:index`} component={Project}/>
             </div>
         )
     }
@@ -54,7 +54,7 @@ function NextButton(props) {
     if(!(index+1 < 28)){return(<div></div>)}
     return (
         <Link to={`${match.url}/${index + 1}`}>
-            <input onClick={onClick} type="image" alt="dol" src="http://localhost:3000/static_ikone/dolga.png"/>
+            <input onClick={onClick} type="image" alt="dol" src="http://localhost:3000/static_ikone/dolga.png" width={"auto"} height={"auto"}/>
         </Link>
     )
 }

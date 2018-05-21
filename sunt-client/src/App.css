@@ -6,14 +6,15 @@
   position: relative;
   width: inherit;
   height: inherit;
+  background-color: black;
 }
 
 .App-header{
-  z-index: 1;
+  z-index: 11;
   height: 11%;
   width: 100%;
   position: absolute;
-  background-color: transparent;
+  background:transparent;
   top: 0;
   left: 0;
   right: 0;
@@ -23,6 +24,7 @@
 }
 
 .App-header #language{
+
   display: flex;
   height: 100%;
   margin:0;
@@ -32,7 +34,9 @@
 
 
 .App-header #home{
-  height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 90%;
 }
 
 .App-header #home img{
@@ -59,7 +63,6 @@
   top:0;
   height: inherit;
   width: inherit;
-  background: transparent;
 }
 
 

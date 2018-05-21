@@ -46,7 +46,7 @@ export class ProjectPresentation extends React.Component {
         const author = this.state.authors[0].name;
 
         return (
-            <div className="ProjectPresentation">
+            <div className="ProjectPresentation1">
 
                 <img src={getImageSrc(path)} alt="None" width="300px"/>
                 {description} <br/>

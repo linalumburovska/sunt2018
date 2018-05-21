@@ -5,70 +5,106 @@
     height: inherit;
     width: inherit;
 }
-.background-video{
-    text-align: center;
-    top:0;
-    left:0;
-    z-index: 0;
-    position: absolute;
-}
-
-#project-360::after{
-    z-index: 50;
-    display: block;
-    content: '';
-    width: 2.5%;
-    height: 10%;
-    background: white;
-    bottom: 0;
-    left: 0;
-}
 
 .Project-video {
-    width: auto;
+    width: 100%;
     height: 100%;
     position: absolute;
     padding:0;
     margin:0;
-    left: 0px;
-    z-index: -1000;
+    left: 0;
+    z-index: 9;
     overflow:hidden;
 }
 
-.Project-video #videoPlayer {
-    min-height: 100%;
+@media(orientation: landscape) {
+    .Project-video #videoPlayer {
+        margin-top:auto;
+        margin-bottom: auto;
+        max-width: 100%;
+        position: absolute;
+    }
+}
+
+
+@media (orientation: portrait){
+    .Project-video #videoPlayer {
+        max-height: 100%;
+        position:absolute;
+        bottom:0;
+        left:0;
+        object-fit: cover;
+    }
+}
+
+.ProjectTitle #Buttons{
+    z-index: 11;
+    display: inline-table;
     position:absolute;
-    bottom:0;
-    left:0;
-}
-
-#project-360{
-    z-index: 50;
-    position: relative;
-    text-align: left;
-    vertical-align: middle;
-    margin-right: 0.009%;
-    color:white;
-}
-
-#project-info{
-    z-index: 50;
-    position: relative;
-    text-align: right;
-    vertical-align: middle;
-    margin-left: 10%;
-    color:white;
-}
-
-
-#project-info::after{
-    z-index: 50;
-    display: block;
-    content: '';
-    width: 2.5%;
-    height: 10%;
-    background: white;
-    position: absolute;
+    top: 0;
+    left: 0;
     bottom: 0;
     right: 0;
+    margin: auto;
+    width: 98%;
+    height: 5%;
 }
+
+.ProjectTitle #Buttons td a{
+    vertical-align: middle;
+    color:white;
+}
+
+.ProjectPresentation{
+    z-index: 20;
+    position:absolute;
+    width: 30%;
+    height: 50%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+@media(orientation: landscape) {
+    .ProjectPresentation #title {
+        color: white;
+        display:flex;
+        font-size: 10vw;
+        text-align: center;
+        vertical-align: middle;
+
+    }
+
+    .ProjectPresentation #author {
+        color: white;
+        display:flex;
+        font-size:8vw;
+        text-align: center;
+        vertical-align: middle;
+    }
+}
+
+@media(orientation: portrait){
+    .ProjectPresentation #author{
+        color:white;
+        display:flex;
+        font-size: 10vw;
+    }
+    .ProjectPresentation #title{
+        color:white;
+        display:flex;
+        font-size:8vw;
+    }
+}
+
+
+
+
+
+
+
