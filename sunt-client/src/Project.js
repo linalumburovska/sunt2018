@@ -15,7 +15,8 @@ export class Project extends React.Component {
 
         this.state = {
             path: '',
-            description: '',
+            author:'',
+            title:'',
             opened: false,
         };
     }
@@ -23,7 +24,7 @@ export class Project extends React.Component {
     loadFromServer(match) {
         if (match !== undefined) {
             ProjectAPI.get(match.params.index)
-                .then(project => this.setState({path: project.image[0].path, description: project.description}));
+                .then(project => this.setState({author:project.author, title:project.title}));
             console.log("Project mounted", this.props);
         }
     }
@@ -48,21 +49,21 @@ export class Project extends React.Component {
     }
 
     render() {
-        const {path, description, opened} = this.state;
+        const {path, author, title} = this.state;
         const {match} = this.props;
 
 
-        if (path.length === 0) {
+        if (0) {
             return (
                 <div className="ProjectTitle">
                     <div className="Project-video"><video id="videoPlayer" loop autoPlay muted src={"http://localhost:3000/videos/1.mov"}/></div>
                     <table id="Buttons">
                         <tr>
-                            <td id="info"><a href="https://www.google.com">Info</a></td>
-                            <td id="360" align="right"><a href="https://www.google.com">360°</a></td>
+                            <td id="360" align="left"><a href="https://www.google.com">360°</a></td>
+                            <td id="info" align="right"><a href="https://www.google.com">Info</a></td>
                         </tr>
                     </table>
-                    <div className="ProjectPresentation">
+                    <div id="title-and-author">
                         <div id="title">K-9 Topologija</div>
                         <div id="author">Maja Smrekar</div>
                     </div>
@@ -70,18 +71,19 @@ export class Project extends React.Component {
             )
         } else {
             return (
-                <div>
-                    <video id="background-video" loop autoPlay>
-                        <source src={getImageSrc(path)} type="video/mp4"/>
-                    </video>
-                    <h1>{description}</h1>
-                    <Link to={`${match.url}${!opened ? '/description' : ''}`} onClick={this.handleClick}>
-                        <div id="project-info">Info</div>
-                    </Link>
-                    <Link onClick={this.handleClick()}>//za 360
-                        <div id="project-360">360°</div>
-                    </Link>
-                    <Route path={`${match.path}/description`} component={ProjectPresentation}/>
+                <div className="ProjectTitle">
+                    <div className="Project-video"><video id="videoPlayer" loop autoPlay muted src={"http://localhost:3000/videos/1.mov"}/></div>
+                    <table id="Buttons">
+                        <tr>
+                            <td id="360" align="left"><Link onClick={this.handleClick()}>360°</Link></td>
+                            <td id="info" align="right"><Link onClick={this.handleClick()}>Info</Link></td>
+                        </tr>
+                    </table>
+                    <div id="title-and-author">
+                        <div id="title">{title}</div>
+                        <div id="author">{author}</div>
+                    </div>
+                    <Route path={`${match.path}/info`} component={ProjectPresentation}/>
                 </div>
             )
         }

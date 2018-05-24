@@ -47,12 +47,12 @@ export class ProjectPresentation extends React.Component {
 
         return (
             <div className="ProjectPresentation1">
-
-                <img src={getImageSrc(path)} alt="None" width="300px"/>
-                {description} <br/>
-                {title} <br/>
-                {author}
+                <img src="http://localhost:3000/images/artur_felicijan_andraz_sedmak/_SIPK-8683" alt="Bla bla" width="100%"/>
             </div>
         )
     }
+}
+
+const BackButton = () =>{
+
 }

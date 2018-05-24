@@ -53,25 +53,25 @@
 .ProjectTitle #Buttons td a{
     vertical-align: middle;
     color:white;
+    font-size:2vw;
 }
 
-.ProjectPresentation{
-    z-index: 20;
-    position:absolute;
-    width: 30%;
-    height: 50%;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr;
+.ProjectTitle-TitleAuthor{
+    display:grid;
     grid-template-rows: 1fr 1fr;
+    height: 50%;
+    width: 50%;
+    z-index: 10;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
 }
+
 
 @media(orientation: landscape) {
-    .ProjectPresentation #title {
+    .ProjectTitle #title-and-author #title {
         color: white;
         display:flex;
         font-size: 10vw;
@@ -80,7 +80,7 @@
 
     }
 
-    .ProjectPresentation #author {
+    .ProjectTitle #title-and-author #author {
         color: white;
         display:flex;
         font-size:8vw;
@@ -90,12 +90,12 @@
 }
 
 @media(orientation: portrait){
-    .ProjectPresentation #author{
+    .ProjectTitle #title-and-author #author{
         color:white;
         display:flex;
         font-size: 10vw;
     }
-    .ProjectPresentation #title{
+    .ProjectTitle #title-and-author #title{
         color:white;
         display:flex;
         font-size:8vw;

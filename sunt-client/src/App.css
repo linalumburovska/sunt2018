@@ -23,6 +23,10 @@
   grid-template-rows: 100%;
 }
 
+.App-header div{
+  font-size:2vw;
+}
+
 .App-header #language{
 
   display: flex;
