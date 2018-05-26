@@ -58,6 +58,7 @@
 
 .ProjectTitle-TitleAuthor{
     display:grid;
+    background:transparent;
     grid-template-rows: 1fr 1fr;
     height: 50%;
     width: 50%;

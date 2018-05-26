@@ -38,21 +38,14 @@ export class ProjectPresentation extends React.Component {
 
     render() {
         const {isLoading, title, description} = this.state;
-        if (isLoading) {
-            return <p>Loading ...</p>;
-        }
 
-        const path = this.state.images[0].path;
-        const author = this.state.authors[0].name;
+        //const path = this.state.images[0].path;
+        //const author = this.state.authors[0].name;
 
         return (
-            <div className="ProjectPresentation1">
-                <img src="http://localhost:3000/images/artur_felicijan_andraz_sedmak/_SIPK-8683" alt="Bla bla" width="100%"/>
+            <div className="ProjectPresentation">
+                <img src="http://localhost:3000/images/artur_felicijan_andraz_sedmak/_SIPK-8683.jpg" alt="Bla bla" width="100%"/>
             </div>
         )
     }
-}
-
-const BackButton = () =>{
-
 }

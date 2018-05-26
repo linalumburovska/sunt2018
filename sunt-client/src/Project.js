@@ -2,9 +2,8 @@ import React from 'react'
 import {getImageSrc} from "./utility";
 import {ProjectAPI} from "./api/client";
 import {ProjectPresentation} from "./ProjectPresentation";
-import {Link, Route} from 'react-router-dom';
+import {Link, Route, Switch} from 'react-router-dom';
 import './Project.css'
-import Fullscreen from "react-full-screen";
 
 export class Project extends React.Component {
 
@@ -17,7 +16,6 @@ export class Project extends React.Component {
             path: '',
             author:'',
             title:'',
-            opened: false,
         };
     }
 
@@ -75,15 +73,17 @@ export class Project extends React.Component {
                     <div className="Project-video"><video id="videoPlayer" loop autoPlay muted src={"http://localhost:3000/videos/1.mov"}/></div>
                     <table id="Buttons">
                         <tr>
-                            <td id="360" align="left"><Link onClick={this.handleClick()}>360°</Link></td>
-                            <td id="info" align="right"><Link onClick={this.handleClick()}>Info</Link></td>
+                            <td id="360" align="left"><Link to="/">360°</Link></td>
+                            <td id="info" align="right"><Link to="/projects/3/info">Info</Link></td>
                         </tr>
                     </table>
                     <div id="title-and-author">
                         <div id="title">{title}</div>
                         <div id="author">{author}</div>
                     </div>
-                    <Route path={`${match.path}/info`} component={ProjectPresentation}/>
+                    <Switch>
+                        <Route path="/projects/3/info" component={ProjectPresentation}/>
+                    </Switch>
                 </div>
             )
         }

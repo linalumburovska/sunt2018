@@ -3,6 +3,7 @@ import './App.css';
 import {Link, Route, Switch, Redirect} from "react-router-dom";
 import {Project} from "./Project";
 import {ProjectPagination} from "./ProjectPagination";
+import {ProjectPresentation} from "./ProjectPresentation";
 
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
                 </div>
                 <div className="App-content">
                     <Switch>
+                        <Route path='/projects/3/info' component={ProjectPresentation}/>
                         <Route path='/projects' component={ProjectPagination}/>
                     </Switch>
                 </div>
