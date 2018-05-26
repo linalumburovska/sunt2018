@@ -5,9 +5,10 @@
     height: inherit;
     width: inherit;
     background-color:transparent;
+
 }
 .ProjectPagination-buttons{
-    z-index: 11;
+    z-index: 12;
     display: table;
     position:absolute;
     top: 0;

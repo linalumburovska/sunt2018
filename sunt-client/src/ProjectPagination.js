@@ -51,7 +51,7 @@ export class ProjectPagination extends React.Component {
 
 function NextButton(props) {
     const {match, index, onClick} = props;
-    if(!(index+1 < 28)){return(<div></div>)}
+    if(!(index+1 < 28)){return(<div>bla</div>)}
     return (
         <Link to={`${match.url}/${index + 1}`}>
             <input onClick={onClick} type="image" alt="dol" src="http://localhost:3000/static_ikone/dolga.png" width={"auto"} height={"auto"}/>
@@ -64,7 +64,7 @@ function PrevButton(props) {
     const inputStyle = {
         transform:'rotate(180deg)',
     };
-    if(!(index - 1 > 0)){return(<div></div>)}
+    if(!(index - 1 > 0)){return(<div>bla</div>)}
     return (
         <Link to={`${match.url}/${index - 1}`}>
             <input onClick={onClick} type="image" alt="gor" src="http://localhost:3000/static_ikone/dolga.png" style={inputStyle}/>

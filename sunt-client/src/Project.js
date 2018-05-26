@@ -73,7 +73,7 @@ export class Project extends React.Component {
                     <div className="Project-video"><video id="videoPlayer" loop autoPlay muted src={"http://localhost:3000/videos/1.mov"}/></div>
                     <table id="Buttons">
                         <tr>
-                            <td id="360" align="left"><Link to="/">360°</Link></td>
+                            <td id="360" align="left"><Link to="/360">360°</Link></td>
                             <td id="info" align="right"><Link to="/projects/3/info">Info</Link></td>
                         </tr>
                     </table>
