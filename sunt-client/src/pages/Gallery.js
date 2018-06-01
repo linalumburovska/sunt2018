@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {Router, Route, withRouter} from 'react-router';
 
+
 class Gallery extends Component {
   constructor(props) {
     super(props);
 
     this.generateGallery = this.generateGallery.bind(this);
     this.getAuthor = this.getAuthor.bind(this);
+
   }
 
 
@@ -14,7 +16,7 @@ class Gallery extends Component {
   * TBD: link to a given project
   */
   openProject(id) {
-    console.log("Open project ", id);
+    console.warning("TBD: Open project ", id);
   }
 
 
@@ -33,8 +35,9 @@ class Gallery extends Component {
   */
   generateGallery(data) {
     return data.map((item, key) => {
+      let imageSrc = require('../images/' + item.image[0].path);
       return <figure key={key} className="wp-caption">
-         <img className="" src={''+item.image[0].path+''} />
+         <img className="" src={imageSrc} />
          <figcaption onClick={() => this.openProject(item.id)} className="wp-caption-text" ><div className="authors" >{this.getAuthor(item.author)}</div></figcaption>
       </figure>
     });
