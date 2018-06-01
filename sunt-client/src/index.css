@@ -56,9 +56,9 @@ body, html {
   position: absolute;
   top: 50%;
   right: 0;
-  -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  /*-moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
   -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-  transform:  translateX(-50%) translateY(-50%) rotate(-90deg);
+  transform:  translateX(-50%) translateY(-50%) rotate(-90deg);*/
 }
 
 .verticalR {
@@ -68,7 +68,7 @@ body, html {
   position: absolute;
   top: 50%;
   left: 0;
-  -moz-transform: translateX(-50%) translateY(-50%) rotate(-270deg);
+  /*-moz-transform: translateX(-50%) translateY(-50%) rotate(-270deg);
   -webkit-transform: translateX(-50%) translateY(-50%) rotate(-270deg);
-  transform:  translateX(-50%) translateY(-50%) rotate(-270deg);
+  transform:  translateX(-50%) translateY(-50%) rotate(-270deg);*/
 }
