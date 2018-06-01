@@ -2,8 +2,8 @@ exports.dummy =
   [{
     "id": 1,
     "orderIndex": 1,
-    "title": "Kick Ass",
-    "englishTitle": "Kick Ass",
+    "title": "Kick ",
+    "englishTitle": "Kick ",
     "author": [
       {
         "id": 2,
@@ -33,8 +33,8 @@ exports.dummy =
   {
     "id": 6,
     "orderIndex": 2,
-    "title": "Kick Ass",
-    "englishTitle": "Kick Ass",
+    "title": "Kick ",
+    "englishTitle": "Kick ",
     "author": [
       {
         "id": 7,
@@ -64,8 +64,8 @@ exports.dummy =
   {
     "id": 11,
     "orderIndex": 3,
-    "title": "Kick Ass",
-    "englishTitle": "Kick Ass",
+    "title": "Kick ",
+    "englishTitle": "Kick ",
     "author": [
       {
         "id": 12,
@@ -95,8 +95,8 @@ exports.dummy =
   {
     "id": 16,
     "orderIndex": 4,
-    "title": "Kick Ass",
-    "englishTitle": "Kick Ass",
+    "title": "Kick ",
+    "englishTitle": "Kick ",
     "author": [
       {
         "id": 17,
@@ -126,8 +126,8 @@ exports.dummy =
   {
     "id": 21,
     "orderIndex": 5,
-    "title": "Kick Ass",
-    "englishTitle": "Kick Ass",
+    "title": "Kick ",
+    "englishTitle": "Kick ",
     "author": [
       {
         "id": 22,
@@ -157,8 +157,8 @@ exports.dummy =
   {
     "id": 26,
     "orderIndex": 6,
-    "title": "Kick Ass",
-    "englishTitle": "Kick Ass",
+    "title": "Kick ",
+    "englishTitle": "Kick ",
     "author": [
       {
         "id": 27,
@@ -188,8 +188,8 @@ exports.dummy =
   {
     "id": 31,
     "orderIndex": 7,
-    "title": "Kick Ass",
-    "englishTitle": "Kick Ass",
+    "title": "Kick ",
+    "englishTitle": "Kick ",
     "author": [
       {
         "id": 32,
@@ -219,8 +219,8 @@ exports.dummy =
   {
     "id": 36,
     "orderIndex": 8,
-    "title": "Kick Ass",
-    "englishTitle": "Kick Ass",
+    "title": "Kick ",
+    "englishTitle": "Kick ",
     "author": [
       {
         "id": 37,
@@ -250,8 +250,8 @@ exports.dummy =
   {
     "id": 37,
     "orderIndex": 8,
-    "title": "Kick Ass",
-    "englishTitle": "Kick Ass",
+    "title": "Kick ",
+    "englishTitle": "Kick ",
     "author": [
       {
         "id": 37,
