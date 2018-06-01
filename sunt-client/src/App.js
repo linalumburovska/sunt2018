@@ -4,7 +4,9 @@ import {ProjectPagination} from "./ProjectPagination";
 import Gallery from "./pages/Gallery";
 import Home from "./pages/Home";
 import './App.css';
-
+import first from './images/first.png';
+import second from './images/second.png';
+import { dummy } from './ApiDummyData';
 
 class App extends Component {
   constructor() {
@@ -12,7 +14,7 @@ class App extends Component {
     this.state = {
       imgLeft: '',
       imgRight: '',
-      projects: []
+      projects: dummy
     }
   }
 
@@ -21,7 +23,8 @@ class App extends Component {
   * Get all projects and get images for home page
   */
   componentWillMount() {
-    ProjectAPI.all().then(data => this.setState({ projects: data, imgLeft: data[0].image[0].path, imgRight: data[1].image[0].path }));
+    //ProjectAPI.all().then(data => this.setState({ projects: data, imgLeft: data[0].image[0].path, imgRight: data[1].image[0].path }));
+    this.setState({ imgLeft: first, imgRight: second });
   }
 
 
