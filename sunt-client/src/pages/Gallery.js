@@ -16,7 +16,7 @@ class Gallery extends Component {
   * TBD: link to a given project
   */
   openProject(id) {
-    console.warning("TBD: Open project ", id);
+    console.log("TBD: Open project ", id);
   }
 
 
