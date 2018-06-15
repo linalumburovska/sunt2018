@@ -6,28 +6,20 @@ import {ProjectPagination} from "./ProjectPagination";
 import {ProjectPresentation} from "./ProjectPresentation";
 
 
-class App extends Component {
+export class Header extends React.Component {
 
     render(){
         return (
-            <div className="App">
-                <div className="App-header">
-                    <div id="home">
-                        <HomeButton></HomeButton>
-                    </div>
-                    <div id="language">
-                        <LanguageButton></LanguageButton>
-                    </div>
-                    <div></div>
-                    <div id="about">
-                        <AboutButton></AboutButton>
-                    </div>
+            <div className="App-header">
+                <div id="home">
+                    <HomeButton></HomeButton>
                 </div>
-                <div className="App-content">
-                    <Switch>
-                        <Route path='/projects/3/info'  component={ProjectPresentation}/>
-                        <Route path='/projects' component={ProjectPagination}/>
-                    </Switch>
+                <div id="language">
+                    <LanguageButton></LanguageButton>
+                </div>
+                <div></div>
+                <div id="about">
+                    <AboutButton></AboutButton>
                 </div>
             </div>
         );
@@ -47,9 +39,3 @@ const AboutButton = () => (
     <Link to={'/projects'}>About</Link>
 
 );
-
-
-
-
-
-export default App;

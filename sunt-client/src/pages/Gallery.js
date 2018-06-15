@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Router, Route, withRouter} from 'react-router';
+import {Router, Route, withRouter} from 'react-router-dom';
+import {ProjectPagination} from "../ProjectPagination";
 
 
 class Gallery extends Component {
@@ -16,7 +17,7 @@ class Gallery extends Component {
   * TBD: link to a given project
   */
   openProject(id) {
-    console.log("TBD: Open project ", id);
+      console.log("SLOW")
   }
 
 
@@ -38,7 +39,7 @@ class Gallery extends Component {
       let imageSrc = require('../images/' + item.image[0].path);
       return <figure key={key} className="wp-caption">
          <img className="" src={imageSrc} />
-         <figcaption onClick={() => this.openProject(item.id)} className="wp-caption-text" ><div className="authors" >{this.getAuthor(item.author)}</div></figcaption>
+         <figcaption onClick={this.openProject(item.id)} className="wp-caption-text" ><div className="authors" >{this.getAuthor(item.author)}</div></figcaption>
       </figure>
     });
   }

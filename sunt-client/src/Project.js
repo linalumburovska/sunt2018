@@ -16,6 +16,7 @@ export class Project extends React.Component {
             path: '',
             author:'',
             title:'',
+
         };
     }
 
@@ -51,10 +52,10 @@ export class Project extends React.Component {
         const {match} = this.props;
 
 
-        if (0) {
+        if (path == null) {
             return (
                 <div className="ProjectTitle">
-                    <div className="Project-video"><video id="videoPlayer" loop autoPlay muted src={"http://localhost:3000/videos/1.mov"}/></div>
+                    <div className="Project-video"><video id="videoPlayer" loop autoPlay muted src={"http://localhost:3000/ales_sedmak.mp4"}/></div>
                     <table id="Buttons">
                         <tr>
                             <td id="360" align="left"><a href="https://www.google.com">360°</a></td>

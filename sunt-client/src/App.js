@@ -37,7 +37,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={(props) => (<Home imgLeft={this.state.imgLeft} imgRight={this.state.imgRight} {...props} />)} />
 
-          <Route path='/projects' component={ProjectPagination} />
+          <Route path='/projects/1' component={ProjectPagination} />
           <Route path='/gallery' render={(props) => (<Gallery projects={this.state.projects} {...props} />)} />
           <Redirect from="*" to="/" />
         </Switch>
