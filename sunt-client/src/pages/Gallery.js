@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import {Router, Route, withRouter} from 'react-router-dom';
+import {Switch, Route, Redirect, Link} from 'react-router-dom';
 import {ProjectPagination} from "../ProjectPagination";
+import {Header} from "../Header";
+import "./Gallery.css";
 
 
 class Gallery extends Component {
@@ -17,8 +19,10 @@ class Gallery extends Component {
   * TBD: link to a given project
   */
   openProject(id) {
-      console.log("SLOW")
+      console.log("Open"+id);
   }
+
+
 
 
   /*
@@ -39,16 +43,19 @@ class Gallery extends Component {
       let imageSrc = require('../images/' + item.image[0].path);
       return <figure key={key} className="wp-caption">
          <img className="" src={imageSrc} />
-         <figcaption onClick={this.openProject(item.id)} className="wp-caption-text" ><div className="authors" >{this.getAuthor(item.author)}</div></figcaption>
+          <figcaption onClick={this.openProject(item.id)} className="wp-caption-text" ><div className="authors" >{this.getAuthor(item.author)}</div></figcaption>
       </figure>
     });
   }
 
 
   render() {
+    const {match} = this.props;
+
     return (
-      <main className="main">
-        {this.generateGallery(this.props.projects)}
+      <main className="Gallery">
+          <Header/>
+          <div className="Gallery-Gallery">{this.generateGallery(this.props.projects)}</div>
       </main>
     );
   }

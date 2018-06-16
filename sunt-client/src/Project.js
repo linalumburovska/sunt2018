@@ -1,6 +1,6 @@
 import React from 'react'
 import {getImageSrc} from "./utility";
-import {ProjectAPI} from "./api/client";
+import {AuthorAPI, ProjectAPI} from "./api/client";
 import {ProjectPresentation} from "./ProjectPresentation";
 import {Link, Route, Switch} from 'react-router-dom';
 import './Project.css'
@@ -15,6 +15,7 @@ export class Project extends React.Component {
         this.state = {
             path: '',
             author:'',
+            images:[],
             title:'',
 
         };
@@ -23,8 +24,10 @@ export class Project extends React.Component {
     loadFromServer(match) {
         if (match !== undefined) {
             ProjectAPI.get(match.params.index)
-                .then(project => this.setState({author:project.author, title:project.title}));
-            console.log("Project mounted", this.props);
+                .then(project => this.setState({images:project.image, title:project.title}));
+            AuthorAPI.get(match.params.index)
+                .then(project => this.setState({author: project.name}));
+            console.log("Project mounted", this.state);
         }
     }
 
@@ -35,6 +38,10 @@ export class Project extends React.Component {
         } else {
             console.log("not updating", prevState, this.state);
         }
+        console.log("final state:", this.state);
+        let neki = this.state.images[0];
+        console.log("neki", typeof(neki));
+        console.log("slike ", this.state.images[0]['path']);
     }
 
     componentDidMount() {
@@ -48,34 +55,37 @@ export class Project extends React.Component {
     }
 
     render() {
-        const {path, author, title} = this.state;
+        const {images, author, title} = this.state;
         const {match} = this.props;
 
 
-        if (path == null) {
+        if (images != null) {
             return (
                 <div className="ProjectTitle">
                     <div className="Project-video"><video id="videoPlayer" loop autoPlay muted src={"http://localhost:3000/ales_sedmak.mp4"}/></div>
                     <table id="Buttons">
                         <tr>
-                            <td id="360" align="left"><a href="https://www.google.com">360°</a></td>
-                            <td id="info" align="right"><a href="https://www.google.com">Info</a></td>
+                            <td id="360" align="left"><Link to="/360">360°</Link></td>
+                            <td id="info" align="right"><Link to="/info">Info</Link></td>
                         </tr>
                     </table>
                     <div id="title-and-author">
                         <div id="title">K-9 Topologija</div>
                         <div id="author">Maja Smrekar</div>
                     </div>
+                    <Switch>
+                        <Route path="/info" component={ProjectPresentation}/>
+                    </Switch>
                 </div>
             )
         } else {
             return (
                 <div className="ProjectTitle">
-                    <div className="Project-video"><video id="videoPlayer" loop autoPlay muted src={"http://localhost:3000/videos/1.mov"}/></div>
+                    <div className="Project-video"><img id="videoPlayer" src={images[2].path} alt={images[2].alt}/></div>
                     <table id="Buttons">
                         <tr>
                             <td id="360" align="left"><Link to="/360">360°</Link></td>
-                            <td id="info" align="right"><Link to="/projects/3/info">Info</Link></td>
+                            <td id="info" align="right"><Link to="/info">Info</Link></td>
                         </tr>
                     </table>
                     <div id="title-and-author">
@@ -83,7 +93,7 @@ export class Project extends React.Component {
                         <div id="author">{author}</div>
                     </div>
                     <Switch>
-                        <Route path="/projects/3/info" component={ProjectPresentation}/>
+                        <Route path="/info" component={ProjectPresentation}/>
                     </Switch>
                 </div>
             )

@@ -1,8 +1,9 @@
 import React from 'react'
 
-import {ProjectAPI} from "./api/client";
+import {ProjectAPI, AuthorAPI} from "./api/client";
 import {getImageSrc} from "./utility";
-
+import {Link} from "react-router-dom";
+import "./ProjectPresentation.css";
 export class ProjectPresentation extends React.Component {
 
     constructor(props) {
@@ -11,7 +12,7 @@ export class ProjectPresentation extends React.Component {
         this.state = {
             isLoading: true,
             images: [],
-            authors: [],
+            authors: "",
             description: "",
             title: ""
 
@@ -21,18 +22,24 @@ export class ProjectPresentation extends React.Component {
     componentDidMount() {
         let index = parseInt(this.props.match.params.index, 10);
 
-        ProjectAPI.get(index)
+        ProjectAPI.get(5)
             .then(item => {
-                console.log(item);
                 this.setState({
                     isLoading: false,
                     images: item.image,
-                    authors: item.author,
                     title: item.title,
                     description: item.description
                 })
             });
-        console.log(this.props);
+
+        AuthorAPI.get(index)
+            .then(item => {
+            console.log(item);
+            this.setState({
+                authors: item.name
+            })
+        });
+        console.log("Current State: ", this.state);
         console.log("has match", this.props.match !== undefined);
     }
 
@@ -44,7 +51,18 @@ export class ProjectPresentation extends React.Component {
 
         return (
             <div className="ProjectPresentation">
-                <img src="http://localhost:3000/images/artur_felicijan_andraz_sedmak/_SIPK-8683.jpg" alt="Bla bla" width="100%"/>
+                <div className="Present-background"><img id="back" src={this.state.images} alt="Štiri pravokotne visoke vitrine. V vsaki je majhen…uje statistiko o slovenskih literarnih avtoricah."/></div>
+                <div id="content">
+                    <div id="description">hgggggggggggggggggggggg</div>
+                    <div id="author">hggggggggggggggggggggg</div>
+                </div>
+                <table id="Buttons">
+                    <tr>
+                        <td id="Back" align="left"><Link to="/projects">Back</Link></td>
+                        <td id="Media" align="right"><Link to="/info">Media</Link></td>
+                    </tr>
+                </table>
+
             </div>
         )
     }

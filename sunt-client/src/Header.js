@@ -10,7 +10,7 @@ export class Header extends React.Component {
 
     render(){
         return (
-            <div className="App-header">
+            <div className="Header">
                 <div id="home">
                     <HomeButton></HomeButton>
                 </div>
@@ -32,10 +32,10 @@ const HomeButton = () => (
 );
 
 const LanguageButton = () => (
-    <Link to={'/'}>EN</Link>
+    <Link to={'/projects'}>EN</Link>
 );
 
 const AboutButton = () => (
-    <Link to={'/projects'}>About</Link>
+    <Link to={'/about'}>About</Link>
 
 );

@@ -9,6 +9,7 @@ import './App.css';
 import first from './images/first.png';
 import second from './images/second.png';
 import { dummy } from './ApiDummyData';
+import {About} from "./About";
 
 
 class App extends Component {
@@ -36,9 +37,10 @@ class App extends Component {
       <div className="app">
         <Switch>
           <Route exact path='/' render={(props) => (<Home imgLeft={this.state.imgLeft} imgRight={this.state.imgRight} {...props} />)} />
-
-          <Route path='/projects/1' component={ProjectPagination} />
+          <Route path='/projects' component={ProjectPagination} />
           <Route path='/gallery' render={(props) => (<Gallery projects={this.state.projects} {...props} />)} />
+          <Route path='/info' component={ProjectPresentation}/>
+          <Route path='/about' component={About}/>
           <Redirect from="*" to="/" />
         </Switch>
       </div>

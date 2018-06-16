@@ -30,8 +30,10 @@ export class ProjectPagination extends React.Component {
     }
 
     render() {
-        const {currentIndex} = this.state;
+        const {currentIndex, data} = this.state;
         const {match} = this.props;
+
+        console.log(data);
 
 
         return (
