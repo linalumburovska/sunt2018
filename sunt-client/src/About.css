@@ -1,0 +1,87 @@
+.about-page{
+    background-color: black;
+}
+
+.about-testback{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+.about-description-left{
+    overflow:auto;
+    background-color: black;
+    height: 100%;
+    width: 44%;
+    float: left;
+    font-size: 15px;
+    color: white;
+    margin-left: 5%;
+}
+
+h2{
+    padding-top: 5%;
+    padding-left: 5%;
+}
+
+.about-text{
+    position: relative;
+    top: 0;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.about-logo{
+    position: absolute;
+    right: 1%;
+    bottom: 0;
+    height: 10%;
+    width: 49%;
+    z-index: 20;
+}
+
+
+.about-image{
+    height: 100%;
+    width: 50%;
+    float: right;
+}
+
+img.about-arrow{
+    position: absolute;
+    top: 50%;
+    width: 3%;
+}
+img.about-arrow-left{
+    float: left;
+    left: 1%;
+    transform: rotate(180deg);
+}
+
+img.about-arrow-right{
+    float: right;
+    right: 1%;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
