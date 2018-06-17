@@ -1,5 +1,4 @@
 const API_PATH = 'http://localhost:8080/api/';
-const IMAGE_PATH ='http://localhost:3000/images/';
 
 function fetchResource(path) {
     return fetch(API_PATH + path).then(response => response.json());
@@ -15,7 +14,7 @@ class ProjectAPI {
             console.error("index cannot be undefined");
         }
 
-        return fetchResource("project/" + index);
+        return fetchResource("projects/"+index);
     }
 
     static all() {
@@ -41,4 +40,4 @@ class AuthorAPI {
     }
 }
 
-export {fetchResource, ProjectAPI, AuthorAPI, IMAGE_PATH};
+export {fetchResource, ProjectAPI, AuthorAPI};

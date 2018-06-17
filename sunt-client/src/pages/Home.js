@@ -8,6 +8,8 @@ class Home extends Component {
       this.state = {
         backgroundImage: 'none'
       }
+
+      console.log("Home", this.props);
     }
 
 

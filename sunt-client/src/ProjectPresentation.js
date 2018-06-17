@@ -22,7 +22,7 @@ export class ProjectPresentation extends React.Component {
     componentDidMount() {
         let index = parseInt(this.props.match.params.index, 10);
 
-        ProjectAPI.get(5)
+        ProjectAPI.get(index)
             .then(item => {
                 this.setState({
                     isLoading: false,
@@ -49,21 +49,42 @@ export class ProjectPresentation extends React.Component {
         //const path = this.state.images[0].path;
         //const author = this.state.authors[0].name;
 
+        const inputStyle = {
+            transform:'rotate(180deg)',
+        };
+
         return (
             <div className="ProjectPresentation">
-                <div className="Present-background"><img id="back" src={this.state.images} alt="Štiri pravokotne visoke vitrine. V vsaki je majhen…uje statistiko o slovenskih literarnih avtoricah."/></div>
+                <div className="Present-background"><img id="back" src={"/1_maja_smrekar/_SIPK-8941.jpg"} alt="Štiri pravokotne visoke vitrine. V vsaki je majhen…uje statistiko o slovenskih literarnih avtoricah."/></div>
                 <div id="content">
-                    <div id="description">hgggggggggggggggggggggg</div>
-                    <div id="author">hggggggggggggggggggggg</div>
+                    <div id="description">
+                        <h1 className="title">K - 9 Topologija</h1>
+                        <h2 className="author">Maja Smrekar</h2>
+                        <h3 className="type">Digitalni print in video 2015-2017</h3>
+                        <div className="text">
+                            <p>Njen koncept materialnosti na ravni spreminjanja biostruktur v laboratorijih ali v živem svetu, nam daje orodje za dostopanje do lastne evolucije in nas skozi povezave umetnost-znanost-nezavedno uči kako jo razumeti.</p>
+                            <p>Gre za večletni projekt, za katerega je avtoricadobila nagrado iz prešernovega sklada. Projekt je zelo dobro premišljen in kaže na možni razvoj ženske skozi evolucijo preko psa v svobodno bitje. Ženska ima
+                                svobodo se odločiti, s komi in s čim bo nadaljevala vrsto človeka. Gre za tipično delo hibridne umetnosti, ki nakazuje sodelovanje z znanostjo.</p>
+                            <p>Maja SMREKAR (1978, Brežice)
+                                Diplomirala na Akademiji za likovno umetnost in oblikovanje v Ljubljani pri prof. Jožetu Baršiju, smer kiparstvo, in pri somentorju prof. dr. Jožefu Muhoviču ter somentorici prof. Meti Hočevar  (2006), kjer je na  Oddelku za video in nove medije zaključila magistrski študij pri prof. Sreču Draganu (2016).</p>
+                        </div>
+                    </div>
                 </div>
-                <table id="Buttons">
-                    <tr>
-                        <td id="Back" align="left"><Link to="/projects">Back</Link></td>
-                        <td id="Media" align="right"><Link to="/info">Media</Link></td>
-                    </tr>
-                </table>
-
+                <div className="ProjectPresentation-buttons">
+                    <div id="Back" align="left"><BackButton></BackButton></div>
+                    <div id="Media" align="right"><MediaButton></MediaButton></div>
+                </div>
             </div>
         )
     }
 }
+
+const MediaButton = () => (
+    <Link to="/"><img src={"/static_ikone/kamera.png"} alt="medija"/></Link>
+);
+
+const BackButton = () => (
+    <Link to="/">
+        <img src={"/static_ikone/next.png"} alt={"nazaj"} style={{transform:'rotate(180deg)'}}/>
+    </Link>
+);

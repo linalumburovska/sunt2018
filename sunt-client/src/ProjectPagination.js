@@ -4,6 +4,7 @@ import {Link, Switch, Route} from 'react-router-dom';
 import {ProjectAPI} from "./api/client";
 import "./ProjectPagination.css"
 import {Header} from "./Header";
+import {ProjectPresentation} from "./ProjectPresentation";
 
 export class ProjectPagination extends React.Component {
 
@@ -15,6 +16,11 @@ export class ProjectPagination extends React.Component {
             projects: [],
             currentIndex: 1
         };
+
+        if(this.props.location.state != null){
+            let temp=this.props.location.identiteta;
+            this.setState(temp => ({currentIndex: temp}))
+        }
     }
 
     componentDidMount() {
@@ -38,14 +44,25 @@ export class ProjectPagination extends React.Component {
 
         return (
             <div className="ProjectPagination">
-                <Header/>
+                <div className="ProjectPagination-Header">
+                    <div id="home">
+                        <HomeButton></HomeButton>
+                    </div>
+                    <div id="language">
+                        <LanguageButton></LanguageButton>
+                    </div>
+                    <div></div>
+                    <div id="about">
+                        <AboutButton></AboutButton>
+                    </div>
+                </div>
                 <div className="ProjectPagination-buttons">
-                <div id="prev">
+                    <div id="prev">
                     <PrevButton match={match} index={currentIndex} onClick={this.handlePrev}/>
-                </div>
-                <div id="next">
+                    </div>
+                    <div id="next">
                     <NextButton match={match} index={currentIndex} onClick={this.handleNext}/>
-                </div>
+                    </div>
                 </div>
                 <Route path={`${match.path}/:index`} component={Project}/>
             </div>
@@ -75,4 +92,19 @@ function PrevButton(props) {
         </Link>
     )
 }
+
+const HomeButton = () => (
+    <Link to={'/'}>
+        <img src="http://localhost:3000/static_ikone/logo.png" alt="home"/>
+    </Link>
+);
+
+const LanguageButton = () => (
+    <Link to={'/projects'}>EN</Link>
+);
+
+const AboutButton = () => (
+    <Link to={'/about'}>About</Link>
+
+);
 

@@ -1,3 +1,4 @@
+.Project
 .ProjectPresentation{
     display:block;
     position: absolute;
@@ -25,9 +26,11 @@
     position: absolute;
 }
 
-.ProjectPresentation #Buttons{
-    z-index: 12;
-    display: inline-table;
+.ProjectPresentation-buttons{
+    z-index: 55;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100%;
     position:absolute;
     top: 0;
     left: 0;
@@ -35,50 +38,65 @@
     right: 0;
     margin: auto;
     width: 98%;
-    height: 5%;
+    height: 8%;
 }
 
-.ProjectPresentation #Buttons td a{
-    vertical-align: middle;
-    color:white;
-    font-size:2vw;
+.ProjectPresentation-buttons #Back, #Media{
+    height: 100%;
 }
+
+.ProjectPresentation-buttons #Back img{
+    text-align: left;
+    height: 60%;
+    margin-top:auto;
+    margin-bottom:auto;
+    object-fit: contain;
+}
+
+.ProjectPresentation-buttons #Media img{
+    object-fit: contain;
+    height: 100%;
+    justify-self: end;
+}
+
+
+
 
 .ProjectPresentation #content{
     display:grid;
-    background-color: rgba(0, 0, 0, 0.25);
-    grid-template-rows: 1fr 1fr;
-    height: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    grid-template-rows: 1fr;
+    height: 60%;
     width: 100%;
+
     z-index: 10;
     position:absolute;
-    top:25%;
-    bottom:25%;
+    top:20%;
+    bottom:20%;
     left:0;
     right:0;
 }
 
 
 @media(orientation: landscape) {
-    .ProjectPresentation #content #description {
+    .ProjectPresentation #description {
         margin-left: 15%;
-        color: white;
-        display:flex;
-        font-size: 6vw;
-        text-align: center;
+        margin-right: 15%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        height:94%;
+        color:white;
+        font-size: 1vw;
+        text-align: left;
         vertical-align: middle;
-        width:auto;
+        width:70%;
+        -moz-column-count: 2;
+        -moz-column-gap: 50px;
+        -webkit-column-count:2;
+        -webkit-column-gap:10px;
+        column-count: 2;
+        column-gap: 50px;
 
-    }
-
-    .ProjectPresentation #content #author {
-        margin-left: 15%;
-        width: auto;
-        color: white;
-        display:flex;
-        font-size:3vw;
-        text-align: center;
-        vertical-align: middle;
     }
 }
 

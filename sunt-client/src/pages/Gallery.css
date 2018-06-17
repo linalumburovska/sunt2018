@@ -1,9 +1,9 @@
-.Header{
+.Gallery-Header{
     z-index: 11;
     height: 11%;
     width: 100%;
     position: absolute;
-    background:#212121;
+    background: #212121;
     top: 0;
     left: 0;
     right: 0;
@@ -12,11 +12,11 @@
     grid-template-rows: 100%;
 }
 
-.Header div{
+.Gallery-Header div{
     font-size:2vw;
 }
 
-.Header #language{
+.Gallery-Header #language{
 
     display: flex;
     height: 100%;
@@ -26,17 +26,17 @@
 }
 
 
-.Header #home{
+.Gallery-Header #home{
     margin-top: auto;
     margin-bottom: auto;
     height: 90%;
 }
 
-.Header #home img{
+.Gallery-Header #home img{
     height: 90%;
 }
 
-.Header #about{
+.Gallery-Header #about{
     display: flex;
     height: 100%;
     width: auto;
@@ -44,7 +44,7 @@
     justify-content: flex-end;
 }
 
-.Header a{
+.Gallery-Header a{
     text-decoration: none;
     color:white;
     padding: 5px;

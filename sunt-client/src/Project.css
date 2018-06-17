@@ -22,7 +22,8 @@
     .Project-video #videoPlayer {
         margin-top:auto;
         margin-bottom: auto;
-        max-width: 100%;
+        width: 100%;
+        max-height: 100%;
         position: absolute;
     }
 }
@@ -39,7 +40,7 @@
 }
 
 .ProjectTitle #Buttons{
-    z-index: 12;
+    z-index: 20;
     display: inline-table;
     position:absolute;
     top: 0;
@@ -57,35 +58,33 @@
     font-size:2vw;
 }
 
-.ProjectTitle-TitleAuthor{
-    display:grid;
+.ProjectTitle #title-and-author{
     background:transparent;
-    grid-template-rows: 1fr 1fr;
     height: 50%;
     width: 50%;
-    z-index: 10;
+    z-index: 15;
     position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
+    margin-top: 25%;
+    margin-left:25%;
 }
 
 
 @media(orientation: landscape) {
     .ProjectTitle #title-and-author #title {
+        z-index:15;
+        white-space: nowrap;
         color: white;
-        display:flex;
-        font-size: 10vw;
+        font-size: 10vh;
         text-align: center;
         vertical-align: middle;
 
     }
 
     .ProjectTitle #title-and-author #author {
+        z-index: 15;
+        white-space: nowrap;
         color: white;
-        display:flex;
-        font-size:8vw;
+        font-size:5vh;
         text-align: center;
         vertical-align: middle;
     }
