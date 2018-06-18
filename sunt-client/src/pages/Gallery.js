@@ -3,7 +3,7 @@ import {Switch, Route, Redirect, Link} from 'react-router-dom';
 import {ProjectPagination} from "../ProjectPagination";
 import {Header} from "../Header";
 import "./Gallery.css";
-
+import {IndexConsumer} from "../IndexContext";
 
 class Gallery extends Component {
   constructor(props) {
@@ -11,19 +11,12 @@ class Gallery extends Component {
 
     this.generateGallery = this.generateGallery.bind(this);
     this.getAuthor = this.getAuthor.bind(this);
-    this.openProject = this.openProject.bind(this);
-
-    console.log("App", this.props);
-
   }
 
 
   /*
   * TBD: link to a given project
   */
-  openProject(id){
-      this.props.index=id;
-  }
     /*
   * Get all authors for a given project
   */
@@ -40,21 +33,29 @@ class Gallery extends Component {
   generateGallery(data) {
     return data.map((item, key) => {
       let imageSrc = require('../images/' + item.image[0].path);
-      return (<figure key={key} className="wp-caption">
-         <Link to={{
-             pathname: `/projects/${item.id}`,
-             state: {identiteta: item.id}
-         }}
-         ><img className="" src={imageSrc} />
-          <figcaption onClick={this.openProject(item.id)} className="wp-caption-text" ><div className="authors" >{this.getAuthor(item.author)}</div></figcaption>
-        </Link>
-      </figure>
+      return (
+      <IndexConsumer>
+        {({change, index}) => {
+            console.log("Kje smo", change, index);
+            return (
+                <figure key={key} className="wp-caption">
+                    <Link to={`/projects/${item.id}`}>
+                        <img className="" src={imageSrc}/>
+                        <figcaption onClick={e => change({value: item.id})} className="wp-caption-text">
+                            <div className="authors">{this.getAuthor(item.author)}</div>
+                        </figcaption>
+                    </Link>
+                </figure>
+            );
+        }}
+      </IndexConsumer>
       )
     });
   }
 
 
   render() {
+    console.log("SFSFSDFSDfsdf", this.props);
     return (
       <main className="Gallery">
           <div className="Gallery-Header">
@@ -66,7 +67,7 @@ class Gallery extends Component {
               </div>
               <div></div>
               <div id="about">
-                  <AboutButton></AboutButton>
+                  <AboutButton location={this.props.location.pathname}></AboutButton>
               </div>
           </div>
           <div className="Gallery-Gallery">{this.generateGallery(this.props.projects)}</div>
@@ -85,9 +86,14 @@ const LanguageButton = () => (
     <Link to={'/projects'}>EN</Link>
 );
 
-const AboutButton = () => (
-    <Link to={'/about'}>About</Link>
-
-);
+function AboutButton(props) {
+    const {location} = props;
+    console.log("DA VIDFISMFISMCISMODCMSID", props);
+    return(
+    <Link to={{
+        pathname: "/about",
+        state: {back: location}
+    }}>About</Link>)
+};
 
 export default Gallery;

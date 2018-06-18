@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import './Header.css';
 import {Link, Route, Switch, Redirect} from "react-router-dom";
 import {Project} from "./Project";
 import {ProjectPagination} from "./ProjectPagination";

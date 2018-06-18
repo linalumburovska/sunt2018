@@ -1,3 +1,11 @@
+.Content{
+    display:block;
+    position:absolute;
+    top:0;
+    height: inherit;
+    width: inherit;
+    background-color:transparent;
+}
 .ProjectPagination{
     display:block;
     position: absolute;

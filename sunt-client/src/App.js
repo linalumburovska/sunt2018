@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, createContext} from 'react';
 import {Link, Route, Switch, Redirect, Router} from "react-router-dom";
 import {Project} from "./Project";
 import {ProjectPagination} from "./ProjectPagination";
@@ -10,9 +10,8 @@ import first from './images/first.png';
 import second from './images/second.png';
 import { dummy } from './ApiDummyData';
 import {About} from "./About";
+import {IndexProvider} from "./IndexContext";
 
-
-const IndexContext = React.createContext('1');
 
 class App extends Component {
   constructor() {
@@ -20,7 +19,6 @@ class App extends Component {
     this.state = {
       imgLeft: '',
       imgRight: '',
-      index: 1,
       projects: dummy
     }
   }
@@ -40,13 +38,12 @@ class App extends Component {
       <div className="app">
         <Switch>
           <Route exact path='/' render={(props) => (<Home index={this.state.index} imgLeft={this.state.imgLeft} imgRight={this.state.imgRight} {...props} />)} />
-          <Route path='/gallery' render={(props) => (<Gallery index={this.state.index} projects={this.state.projects} {...props} />)} />
-          <Route path='/projects' component={ProjectPagination}/>
+          <Route path='/gallery' render={(props) => (<IndexProvider value={this.state}><Gallery projects={this.state.projects} {...props} /></IndexProvider>)}/>
+          <Route path={"/projects"} render={(props) => (<IndexProvider value={this.state}><ProjectPagination {...props} /></IndexProvider>)}/>
+          <Route path='/about' render={(props) => (<IndexProvider value={this.state}><About {...props} /></IndexProvider>)}/>
           <Route path={"/info"} component={ProjectPresentation}/>
-          <Route path='/about' component={About}/>
           <Redirect from="*" to="/" />
         </Switch>
-
       </div>
     );
   }

@@ -39,7 +39,6 @@ export class Project extends React.Component {
         } else {
             console.log("not updating", prevState, this.state);
         }
-        console.log("final state:", this.state);
     }
 
     componentDidMount() {
@@ -56,8 +55,6 @@ export class Project extends React.Component {
         const {images, author, title} = this.state;
         const {match} = this.props;
 
-        console.log("MATCH", match);
-
 
         if (images != null && images[0] != null) {
             return (
@@ -66,7 +63,7 @@ export class Project extends React.Component {
                     <table id="Buttons">
                         <tr>
                             <td id="360" align="left"><Link to="/360">360°</Link></td>
-                            <td id="info" align="right"><Link to={`${match.url}/info`}>Info</Link></td>
+                            <td id="info" align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></td>
                         </tr>
                     </table>
                     <table id="title-and-author">
