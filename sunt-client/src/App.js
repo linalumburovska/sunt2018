@@ -9,8 +9,8 @@ import './App.css';
 import first from './images/first.png';
 import second from './images/second.png';
 import { dummy } from './ApiDummyData';
-import {About} from "./About";
 import {IndexProvider} from "./IndexContext";
+import {About2} from "./About2";
 
 
 class App extends Component {
@@ -40,7 +40,7 @@ class App extends Component {
           <Route exact path='/' render={(props) => (<Home index={this.state.index} imgLeft={this.state.imgLeft} imgRight={this.state.imgRight} {...props} />)} />
           <Route path='/gallery' render={(props) => (<IndexProvider value={this.state}><Gallery projects={this.state.projects} {...props} /></IndexProvider>)}/>
           <Route path={"/projects"} render={(props) => (<IndexProvider value={this.state}><ProjectPagination {...props} /></IndexProvider>)}/>
-          <Route path='/about' render={(props) => (<IndexProvider value={this.state}><About {...props} /></IndexProvider>)}/>
+          <Route path='/about' render={(props) => (<IndexProvider value={this.state}><About2 {...props} /></IndexProvider>)}/>
           <Route path={"/info"} component={ProjectPresentation}/>
           <Redirect from="*" to="/" />
         </Switch>

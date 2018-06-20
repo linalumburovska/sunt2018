@@ -94,9 +94,6 @@ export class Project extends React.Component {
                             <div id="author">{author}</div>
                         </tr>
                     </table>
-                    <Switch>
-                        <Route path="/info" component={ProjectPresentation}/>
-                    </Switch>
                 </div>
             )
         }

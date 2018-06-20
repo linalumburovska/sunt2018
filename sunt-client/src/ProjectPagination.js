@@ -3,10 +3,8 @@ import {Project} from "./Project";
 import {Link, Switch, Route} from 'react-router-dom';
 import {ProjectAPI} from "./api/client";
 import "./ProjectPagination.css"
-import {Header} from "./Header";
 import {ProjectPresentation} from "./ProjectPresentation";
 import {IndexConsumer} from "./IndexContext";
-import {About} from "./About";
 
 export class ProjectPagination extends React.Component {
 
