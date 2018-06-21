@@ -1,0 +1,66 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+}
+
+.left,
+.right {
+    float: left;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.right {
+    background-color: rgba(255,255,255,1);
+}
+
+.right:hover {
+    background-color: rgba(255,255,255,0);
+    color: black;
+}
+
+.left {
+    background-color: rgba(0,0,0,1);
+    color:white;
+    text-align: right;
+}
+.left:hover {
+    background-color: rgba(0,0,0,0);
+    color: white;
+}
+
+.hover-button .hover-button--on,
+.hover-button:hover .hover-button--off {
+    display: none;
+}
+
+.hover-button:hover .hover-button--on {
+    display: inline;
+}
+
+.verticalL {
+    font-family: 'Arial';
+    font-size: 96px;
+    font-size: 96px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    /*-moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    transform:  translateX(-50%) translateY(-50%) rotate(-90deg);*/
+}
+
+.verticalR {
+    font-family: 'Arial';
+    font-size: 96px;
+    font-size: 96px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    /*-moz-transform: translateX(-50%) translateY(-50%) rotate(-270deg);
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-270deg);
+    transform:  translateX(-50%) translateY(-50%) rotate(-270deg);*/
+}

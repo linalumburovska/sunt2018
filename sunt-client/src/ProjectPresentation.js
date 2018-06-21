@@ -26,9 +26,11 @@ export class ProjectPresentation extends React.Component {
 
     componentDidMount() {
         let index = parseInt(this.props.match.params.index, 10);
+        console.log("INDEX", index);
 
         ProjectAPI.get(index)
             .then(item => {
+                console.log("KAJ DOBIMO", item);
                 this.setState({
                     isLoading: false,
                     images: item.image,
@@ -49,7 +51,7 @@ export class ProjectPresentation extends React.Component {
     }
 
     render() {
-        const {isLoading, title, description} = this.state;
+        const {isLoading, title, description, authors} = this.state;
 
         //const path = this.state.images[0].path;
         //const author = this.state.authors[0].name;
@@ -61,7 +63,7 @@ export class ProjectPresentation extends React.Component {
         return (
             <IndexConsumer>
                 {({index}) => {
-                console.log("IndexPresentation:", index);
+                    console.log("Present",this.state);
                 return(
                 <div className="ProjectPresentation">
                     <div className="Present-background"><img id="back" src={"/1_maja_smrekar/_SIPK-8941.jpg"}
@@ -69,18 +71,20 @@ export class ProjectPresentation extends React.Component {
                     </div>
                     <div id="content">
                         <div id="description">
-                            <h1 className="title">K - 9 Topologija</h1>
-                            <h2 className="author">Maja Smrekar</h2>
+                            <h1 className="title">{title}</h1>
+                            <h2 className="author">{authors}</h2>
                             <h3 className="type">Digitalni print in video 2015-2017</h3>
                             <div className="text">
-                                <p>Njen koncept materialnosti na ravni spreminjanja biostruktur v laboratorijih ali v
-                                    živem svetu, nam daje orodje za dostopanje do lastne evolucije in nas skozi povezave
-                                    umetnost-znanost-nezavedno uči kako jo razumeti.</p>
+                                <p>{description}</p>
+                                <br></br>
                                 <p>Gre za večletni projekt, za katerega je avtoricadobila nagrado iz prešernovega
                                     sklada. Projekt je zelo dobro premišljen in kaže na možni razvoj ženske skozi
                                     evolucijo preko psa v svobodno bitje. Ženska ima
                                     svobodo se odločiti, s komi in s čim bo nadaljevala vrsto človeka. Gre za tipično
-                                    delo hibridne umetnosti, ki nakazuje sodelovanje z znanostjo.</p>
+                                    delo hibridne umetnosti, ki nakazuje sodelovanje z znanostjo.
+
+                                </p>
+                                <br></br>
                                 <p>Maja SMREKAR (1978, Brežice)
                                     Diplomirala na Akademiji za likovno umetnost in oblikovanje v Ljubljani pri prof.
                                     Jožetu Baršiju, smer kiparstvo, in pri somentorju prof. dr. Jožefu Muhoviču ter
@@ -102,7 +106,6 @@ export class ProjectPresentation extends React.Component {
 }
 function BackButton(props) {
     const {index, onClick} = props;
-    console.log("BAK BUTISF", props);
     return (
         <Link to={`/projects/${index.value}`} onClick={onClick}>
             <img src={"/static_ikone/next.png"} alt={"nazaj"} style={{transform: 'rotate(180deg)'}}/>

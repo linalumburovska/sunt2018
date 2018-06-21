@@ -59,7 +59,13 @@
 }
 
 
+.author{
+    padding-left: 0% !important;
+}
 
+p{
+    -webkit-margin-after: l;
+}
 
 .ProjectPresentation #content{
     display:grid;
