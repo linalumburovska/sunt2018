@@ -32,7 +32,8 @@ class Gallery extends Component {
   */
   generateGallery(data) {
     return data.map((item, key) => {
-      let imageSrc = require('../images/' + item.image[0].path);
+      if(item != null && item.image != null && item.image["0"] != null && item.image["0"].path != null){
+      let imageSrc = item.image[0].path;
       return (
       <IndexConsumer>
         {({change, index}) => {
@@ -50,8 +51,9 @@ class Gallery extends Component {
         }}
       </IndexConsumer>
       )
-    });
-  }
+    }
+  })
+}
 
 
   render() {

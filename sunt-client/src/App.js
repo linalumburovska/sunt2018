@@ -11,6 +11,7 @@ import second from './images/second.png';
 import { dummy } from './ApiDummyData';
 import {IndexProvider} from "./IndexContext";
 import {About2} from "./About2";
+import {ProjectAPI} from "./api/client";
 
 
 class App extends Component {
@@ -19,7 +20,7 @@ class App extends Component {
     this.state = {
       imgLeft: '',
       imgRight: '',
-      projects: dummy
+      projects: []
     }
   }
 
@@ -28,12 +29,13 @@ class App extends Component {
   * Get all projects and get images for home page
   */
   componentWillMount() {
-    //ProjectAPI.all().then(data => this.setState({ projects: data, imgLeft: data[0].image[0].path, imgRight: data[1].image[0].path }));
+    ProjectAPI.all().then(data => {console.log(data);this.setState({ projects: data})});
     this.setState({ imgLeft: first, imgRight: second });
   }
 
 
   render() {
+    console.log("App", this.state.projects);
     return (
       <div className="app">
         <Switch>
