@@ -30,6 +30,16 @@ public class Project {
 
     private Theme theme;
 
+    private String makeYear;
+
+    private String comment;
+
+    private String englishComment;
+
+    private String type;
+
+    private String englishType;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Image> image;
 
@@ -103,5 +113,45 @@ public class Project {
 
     public void setImage(List<Image> image) {
         this.image = image;
+    }
+
+    public String getMakeYear() {
+        return makeYear;
+    }
+
+    public void setMakeYear(String makeYear) {
+        this.makeYear = makeYear;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment= comment;
+    }
+
+    public String getEnglishComment() {
+        return englishComment;
+    }
+
+    public void setEnglishComment(String englishComment) {
+        this.englishComment= englishComment;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type= type;
+    }
+
+    public String getEnglishType() {
+        return englishType;
+    }
+
+    public void setEnglishType(String englishType) {
+        this.englishType= englishType;
     }
 }

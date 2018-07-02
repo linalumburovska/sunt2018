@@ -14,6 +14,10 @@ public class Author {
 
     private String name;
 
+    private String biography;
+
+    private String englishBiography;
+
     public Long getId() {
         return id;
     }
@@ -28,5 +32,21 @@ public class Author {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
+    public String getEnglishBiography() {
+        return englishBiography;
+    }
+
+    public void setEnglishBiography(String englishBiography) {
+        this.englishBiography = englishBiography;
     }
 }
