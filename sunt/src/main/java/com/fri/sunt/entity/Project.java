@@ -4,7 +4,6 @@ package com.fri.sunt.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
@@ -32,7 +31,7 @@ public class Project {
     private Theme theme;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<Image> image;
+    private List<Image> image;
 
     public Long getId() {
         return id;
@@ -98,11 +97,11 @@ public class Project {
         this.author = author;
     }
 
-    public Set<Image> getImage() {
+    public List<Image> getImage() {
         return image;
     }
 
-    public void setImage(Set<Image> image) {
+    public void setImage(List<Image> image) {
         this.image = image;
     }
 }
