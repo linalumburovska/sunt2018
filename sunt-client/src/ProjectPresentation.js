@@ -71,21 +71,21 @@ export class ProjectPresentation extends React.Component {
                     </div>
                     <div id="content">
                         <div id="description">
-                            <h1 className="title">{title}</h1>
-                            <h2 className="author">{authors}</h2>
-                            <h3 className="type">Digitalni print in video 2015-2017</h3>
-                            <div className="text">
-                                <p>{description}</p>
+                            <h1 className="ProjectPresentation-title">{title}</h1>
+                            <h2 className="ProjectPresentation-author">{authors}</h2>
+                            <h3 className="ProjectPresentation-type">Digitalni print in video</h3>
+							<h4 className="ProjectPresentation-year">2015-2017</h4>
+                            <div className="ProjectPresentation-whole-text">
+                                <p className="ProjectPresentation-text">{description}</p>
                                 <br></br>
-                                <p>Gre za večletni projekt, za katerega je avtoricadobila nagrado iz prešernovega
+                                <p className="ProjectPresentation-text">Gre za večletni projekt, za katerega je avtorica dobila nagrado iz prešernovega
                                     sklada. Projekt je zelo dobro premišljen in kaže na možni razvoj ženske skozi
                                     evolucijo preko psa v svobodno bitje. Ženska ima
                                     svobodo se odločiti, s komi in s čim bo nadaljevala vrsto človeka. Gre za tipično
                                     delo hibridne umetnosti, ki nakazuje sodelovanje z znanostjo.
-
                                 </p>
                                 <br></br>
-                                <p>Maja SMREKAR (1978, Brežice)
+                                <p className="ProjectPresentation-text">Maja SMREKAR (1978, Brežice)
                                     Diplomirala na Akademiji za likovno umetnost in oblikovanje v Ljubljani pri prof.
                                     Jožetu Baršiju, smer kiparstvo, in pri somentorju prof. dr. Jožefu Muhoviču ter
                                     somentorici prof. Meti Hočevar (2006), kjer je na Oddelku za video in nove medije
