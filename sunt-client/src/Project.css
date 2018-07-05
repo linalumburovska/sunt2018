@@ -59,35 +59,37 @@
     font-size:2vw;
 }
 
+
 .ProjectTitle #title-and-author{
     background:transparent;
-    height: 50%;
-    width: 70%;
+    height: 49%;
+    width: 50%;
+    color: white;
     z-index: 15;
-    position:absolute;
-    margin-top: 20%;
-    margin-left:15%;
+    position:relative;
+    top: 25%;
+    left: 25%;
 }
 
 
 @media(orientation: landscape) {
     .ProjectTitle #title-and-author #title {
         z-index:15;
-        word-wrap:break-spaces;
-        color: white;
-        font-size: 4em;
-        font-weight: 700;
+        position: relative;
+        white-space: normal;
+        font-size: 10vh;
         text-align: center;
-        width: 100%;
-        text-transform: uppercase;
+        vertical-align: middle;
+        top: 0;
     }
 
     .ProjectTitle #title-and-author #author {
-        width:100%;
         z-index: 15;
-        color: white;
-        font-size: 3em;
+        white-space: nowrap;
+        font-size:5vh;
         text-align: center;
+        vertical-align: middle;
+        bottom: 0;
     }
 }
 
@@ -104,10 +106,3 @@
         text-transform: uppercase;
     }
 }
-
-
-
-
-
-
-
