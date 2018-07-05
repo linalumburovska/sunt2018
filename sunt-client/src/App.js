@@ -12,6 +12,7 @@ import { dummy } from './ApiDummyData';
 import {IndexProvider} from "./IndexContext";
 import {About2} from "./About2";
 import {ProjectAPI} from "./api/client";
+import {Media} from "./Media";
 
 
 class App extends Component {
@@ -29,7 +30,7 @@ class App extends Component {
   * Get all projects and get images for home page
   */
   componentWillMount() {
-    ProjectAPI.all().then(data => {console.log(data);this.setState({ projects: data})});
+    ProjectAPI.all().then(data => {this.setState({ projects: data})});
     this.setState({ imgLeft: first, imgRight: second });
   }
 
@@ -43,6 +44,7 @@ class App extends Component {
           <Route path={"/projects"} render={(props) => (<IndexProvider value={this.state}><ProjectPagination {...props} /></IndexProvider>)}/>
           <Route path='/about' render={(props) => (<IndexProvider value={this.state}><About2 {...props} /></IndexProvider>)}/>
           <Route path={"/info"} component={ProjectPresentation}/>
+          <Route path={"/media"} components={Media}/>
           <Redirect from="*" to="/" />
         </Switch>
       </div>

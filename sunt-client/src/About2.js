@@ -10,18 +10,21 @@ export class About2 extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            back: this.props.location.state.back,
             visible: true,
             hide: () => {this.setState({visible:!this.state.visible})}
         };
+        console.log("ABOUT", this.props);
     }
     render(){
-        if(this.state.visible){
+        if(this.state.visible && this.props.location.state !== undefined){
+            if(this.props.location.pathname.includes('/about/2')){
+                this.setState({visible: false});
+            }
         return (
             <div className="About">
                 <div className="About-background-background">
                     <div className="About-background">
-                        <NazajButton back={this.state.back}></NazajButton>
+                        <NazajButton back={this.props.location.state.back}></NazajButton>
                         <div className="about-scroll">
                             <p class="about-naslov">SEZNAM UMETNIKOV</p>
                             <div className="About-besedilo About-besedilo-levo">
@@ -60,7 +63,10 @@ export class About2 extends React.Component {
                             </div>
 
                         </div>
-                        <Link to="/about" onClick={this.state.hide}>
+                        <Link to={{
+                            pathname: "/about/2",
+                            state: {back: this.props.location.state.back}
+                        }} onClick={this.state.hide}>
                             <img class="about-arrow about-arrow-right" src="http://localhost:3000/static_ikone/next.png" alt="next"/>
                         </Link>
                     </div>
@@ -71,7 +77,10 @@ export class About2 extends React.Component {
                 <div className="About">
                     <div>
                         <img src="/17_crtomir_frelih/_SIPK-9032.jpg" alt="test-pic" className="about-testback"/>
-                        <Link to="/about" onClick={this.state.hide}>
+                        <Link to={{
+                            pathname: "/about/1",
+                            state: {back: this.props.location.state.back}
+                        }} onClick={this.state.hide}>
                             <img className="about-arrow about-arrow-left" src="http://localhost:3000/static_ikone/next.png" alt="nazaj"/>
                         </Link>
                         <div className="about-description-left">
@@ -89,15 +98,30 @@ export class About2 extends React.Component {
 
 function NazajButton(props) {
     const {back} = props;
-    if(back === "/projects"){
+    let id;
+    if(back.includes("projects")){
         return(
         <IndexConsumer>
-            {({index}) => (
-                <Link to={`/projects/${index.value}`}>
-                    <img className="about-arrow about-arrow-left" src="http://localhost:3000/static_ikone/next.png"
-                         alt="next"/>
-                </Link>
-            )}
+            {({index}) => {
+                console.log("INDEX", index);
+                console.log("BACK", back);
+                if(index.value !== undefined){
+                    return (
+                        <Link to={`/projects/${index.value}`}>
+                            <img className="about-arrow about-arrow-left" src="http://localhost:3000/static_ikone/next.png"
+                                 alt="next"/>
+                        </Link>
+                    )
+                }else{
+                    return (
+                        <Link to={back}>
+                            <img className="about-arrow about-arrow-left" src="http://localhost:3000/static_ikone/next.png"
+                                 alt="next"/>
+                        </Link>
+                    )
+                }
+
+            }}
         </IndexConsumer>
         )
     }else{

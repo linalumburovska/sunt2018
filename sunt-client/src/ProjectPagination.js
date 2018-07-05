@@ -12,11 +12,10 @@ export class ProjectPagination extends React.Component {
         super(props);
         this.state = {
             projects: [],
-            reserveIndex: 1,
+            reserveIndex: Math.max.apply(null, this.props.location.pathname.match(/\d+/g)) ,
             visible: true,
             hide: () => {this.setState({visible:!this.state.visible})}
         };
-
     }
 
     componentDidMount() {
@@ -26,13 +25,19 @@ export class ProjectPagination extends React.Component {
     render() {
         const {visible, hide, reserveIndex} = this.state;
         const {match} = this.props;
-
+        let id=1;
         if(visible) {
             return (
                 <IndexConsumer>
                     {({change, index}) => {
-                        console.log("ABOUT VRAČANJE",index);
-                        console.log(this.props);
+                        if(index.value !== undefined){
+                            id=index.value;
+                        }else{
+                            id=reserveIndex;
+                        }
+                        if(this.props.location.pathname.includes('/info')){
+                            this.setState({visible: false});
+                        }
                         return(
                         <div className="Content">
                             <div className="ProjectPagination">
@@ -45,18 +50,18 @@ export class ProjectPagination extends React.Component {
                                     </div>
                                     <div></div>
                                     <div id="about">
-                                        <AboutButton location={match.path}></AboutButton>
+                                        <AboutButton location={this.props.location.pathname}></AboutButton>
                                     </div>
                                 </div>
                                 <div className="ProjectPagination-buttons">
                                     <div id="prev">
-                                        <PrevButton match={match} index={index.value} onClick={e => change({value: index.value-1})}/>
+                                        <PrevButton match={match} index={id} onClick={e => change({value: id-1})}/>
                                     </div>
                                     <div id="next">
-                                        <NextButton match={match} index={index.value} onClick={e => change({value: index.value+1})}/>
+                                        <NextButton match={match} index={id} onClick={e => change({value: id+1})}/>
                                     </div>
                                 </div>
-                                <Route path={`${match.path}/:index`} render={(props) => (<Project hide={hide} {...props} />)}/>
+                                <Route path={`${match.path}/:id`} render={(props) => (<Project hide={hide} {...props} />)}/>
                             </div>
                         </div>
                         );
@@ -67,9 +72,14 @@ export class ProjectPagination extends React.Component {
             return(
                 <IndexConsumer>
                     {({index}) => {
+                        if(index.value !== undefined){
+                            id=index.value;
+                        }else{
+                            id=reserveIndex;
+                        }
                         return(
                             <div className="Content">
-                                <Route path={`${match.path}/:index/info`} render={(props) => (<ProjectPresentation hide={hide} {...props}/>)}/>
+                                <Route path={`${match.path}/:id/info`} render={(props) => (<ProjectPresentation hide={hide} {...props}/>)}/>
                             </div>
                         );
                     }}
@@ -114,10 +124,9 @@ const LanguageButton = () => (
 
 function AboutButton(props) {
     const {location} = props;
-    console.log("DA VIDFISMFISMCISMODCMSID", props);
     return(
         <Link to={{
-            pathname: "/about",
+            pathname: "/about/1",
             state: {back: location}
         }}>About</Link>)
 };

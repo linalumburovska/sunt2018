@@ -23,10 +23,11 @@ export class Project extends React.Component {
 
     loadFromServer(match) {
         if (match !== undefined) {
-            ProjectAPI.get(match.params.index)
+            console.log("MATCH PROJECT", match);
+            ProjectAPI.get(match.params.id)
                 .then(project => this.setState({images:project.image, title:project.title}));
 
-            AuthorAPI.get(match.params.index)
+            AuthorAPI.get(match.params.id)
                 .then(project => this.setState({author: project.name}));
             console.log("Project mounted", this.state);
         }
@@ -34,7 +35,7 @@ export class Project extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         const {match} = this.props;
-        if (prevProps.match.params.index !== this.props.match.params.index){
+        if (prevProps.match.params.id !== this.props.match.params.id){
             this.loadFromServer(match);
         } else {
             console.log("not updating", prevState, this.state);

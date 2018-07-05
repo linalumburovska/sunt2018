@@ -37,7 +37,6 @@ class Gallery extends Component {
       return (
       <IndexConsumer>
         {({change, index}) => {
-            console.log("Kje smo", change, index);
             return (
                 <figure key={key} className="wp-caption">
                     <Link to={`/projects/${item.id}`}>
@@ -57,7 +56,6 @@ class Gallery extends Component {
 
 
   render() {
-    console.log("SFSFSDFSDfsdf", this.props);
     return (
       <main className="Gallery">
           <div className="Gallery-Header">
@@ -90,10 +88,9 @@ const LanguageButton = () => (
 
 function AboutButton(props) {
     const {location} = props;
-    console.log("DA VIDFISMFISMCISMODCMSID", props);
     return(
     <Link to={{
-        pathname: "/about",
+        pathname: "/about/1",
         state: {back: location}
     }}>About</Link>)
 };
