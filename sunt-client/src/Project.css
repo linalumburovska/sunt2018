@@ -20,14 +20,11 @@
 
 @media(orientation: landscape) {
     .Project-video #videoPlayer {
-        background-size: contain;
-        object-fit: cover;
-        overflow: hidden;
-        min-height: 100%;
+        object-fit: contain;
         width: 100%;
-        -webkit-filter: blur(3px); /* Safari 6.0 - 9.0 */
-        filter: blur(3px);
-        filter: brightness(80%);
+        overflow: hidden;
+        -webkit-filter: blur(1px) brightness(80%); /* Safari 6.0 - 9.0 */
+        filter: blur(1px) brightness(80%);
         margin:auto;
     }
 }

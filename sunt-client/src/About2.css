@@ -31,13 +31,15 @@
 .about-scroll{
     overflow:auto;
     position: absolute;
-    height: 100%;
+    top:10%;
+    height: 90%;
     width: 80%;
     left: 10%;
+
 }
 
 p{
-    font-family: Raleway;
+    font-family: Roboto Slab;
     margin: 0px;
     color: white;
 }
