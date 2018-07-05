@@ -116,7 +116,7 @@ function PrevButton(props) {
 }
 
 const HomeButton = () => (
-    <Link to={'/'}>
+    <Link to={'/gallery'}>
         <img src="http://localhost:3000/static_ikone/logo.png" alt="home"/>
     </Link>
 );

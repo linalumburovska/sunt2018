@@ -15,6 +15,7 @@ export class Project extends React.Component {
             author:'',
             images:[],
             title:'',
+            error: false
 
         };
     }
@@ -33,6 +34,10 @@ export class Project extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         const {match} = this.props;
+        if(this.props.match.params.id > 27 || match.params.id < 1){
+            this.setState({error:true});
+            return
+        }
         if (prevProps.match.params.id !== this.props.match.params.id){
             this.loadFromServer(match);
         } else {
@@ -54,11 +59,10 @@ export class Project extends React.Component {
         const {images, author, title} = this.state;
         const {match} = this.props;
 
-
         if (images != null && images[0] != null) {
             return (
                 <div className="ProjectTitle">
-                    <div className="Project-video"><img id="videoPlayer" src={images[0].path} alt={images[0].alt}/></div>
+                    <div className="Project-video"><img id="videoPlayer" src={images[1].path} alt={images[1].alt}/></div>
                     <table id="Buttons">
                         <tr>
                             <td id="360" align="left"><Link to="/360">360°</Link></td>
@@ -66,11 +70,9 @@ export class Project extends React.Component {
                         </tr>
                     </table>
                     <table id="title-and-author">
-                        <tr>
-                            <div id="title">{title}</div>
-                        </tr>
-                        <tr>
-                            <div id="author">{author}</div>
+                        <tr style={{height:'50%'}}>
+                            <th style={{height:'50%'}} id="title">{title}</th>
+                            <td style={{height:'50%'}} id="author">{author}</td>
                         </tr>
                     </table>
                 </div>
@@ -87,10 +89,10 @@ export class Project extends React.Component {
                     </table>
                     <table id="title-and-author">
                         <tr>
-                            <div id="title">{title}</div>
+                            <div id="title"><h1>{title}</h1></div>
                         </tr>
                         <tr>
-                            <div id="author">{author}</div>
+                            <div id="author"><h2>{author}</h2></div>
                         </tr>
                     </table>
                 </div>

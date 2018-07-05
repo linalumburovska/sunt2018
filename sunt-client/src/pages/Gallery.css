@@ -8,7 +8,7 @@
     left: 0;
     right: 0;
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 7% 1fr 1fr 1fr;
     grid-template-rows: 100%;
 }
 
@@ -87,7 +87,7 @@ body {
 .wp-caption-text {
     text-align: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     opacity: 0;
     position: absolute;
@@ -108,9 +108,9 @@ body {
 
 .authors {
     text-transform: uppercase;
-    margin-bottom: auto;
-    margin-top: auto;
+    margin-bottom:0;
 }
+
 
 .wp-caption:hover .wp-caption-text {
     opacity: 1;

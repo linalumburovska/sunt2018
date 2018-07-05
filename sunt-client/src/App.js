@@ -25,6 +25,7 @@ class App extends Component {
   componentWillMount() {
     ProjectAPI.all().then(data => {this.setState({ projects: data})});
     this.setState({ imgLeft: first, imgRight: second });
+    console.log("VSEEEEE APPPP", this.state.projects);
   }
 
 

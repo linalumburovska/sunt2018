@@ -30,25 +30,27 @@ export class ProjectPresentation extends React.Component {
     componentDidMount() {
         let index = parseInt(this.props.match.params.id, 10);
         console.log("INDEX", index);
+        if(1 < index < 28) {
 
-        ProjectAPI.get(index)
-            .then(item => {
-                this.setState({
-                    isLoading: false,
-                    images: item.image,
-                    title: item.title,
-                    description: item.description,
-                })
-            });
+            ProjectAPI.get(index)
+                .then(item => {
+                    this.setState({
+                        isLoading: false,
+                        images: item.image,
+                        title: item.title,
+                        description: item.description,
+                    })
+                });
 
-        AuthorAPI.get(index)
-            .then(item => {
-                this.setState({
-                    authors: item.name
-                })
-            });
-        console.log("Current State: ", this.state);
-        console.log("has match", this.props.match !== undefined);
+            AuthorAPI.get(index)
+                .then(item => {
+                    this.setState({
+                        authors: item.name
+                    })
+                });
+            console.log("Current State: ", this.state);
+            console.log("has match", this.props.match !== undefined);
+        }
     }
 
     generateSlider(){
@@ -75,8 +77,8 @@ export class ProjectPresentation extends React.Component {
                         }
                         return (
                             <div className="ProjectPresentation">
-                                <div className="Present-background"><img id="back" src={images[0].path}
-                                                                         alt={images[0].alt}/></div>
+                                <div className="Present-background"><img id="back" src={images[1].path}
+                                                                         alt={images[1].alt}/></div>
                                 <div id="content">
                                     <div id="description">
                                         <h1 className="ProjectPresentation-title">{title}</h1>

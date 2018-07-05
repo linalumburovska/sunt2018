@@ -25,10 +25,13 @@ class Gallery extends Component {
   }
 
 
+
+
   /*
   * Generate gallery grid
   */
   generateGallery(data) {
+    console.log("GALLERy", data);
     return data.map((item, key) => {
       if(item != null && item.image != null && item.image["0"] != null && item.image["0"].path != null){
       let imageSrc = item.image[0].path;
@@ -38,9 +41,9 @@ class Gallery extends Component {
             return (
                 <figure key={key} className="wp-caption">
                     <Link to={`/projects/${item.id}`}>
-                        <img className="" src={imageSrc}/>
+                        <img className="figure-img" src={imageSrc}/>
                         <figcaption onClick={e => change({value: item.id})} className="wp-caption-text">
-                            <div className="authors">{this.getAuthor(item.author)}</div>
+                            <div className="authors">{this.getAuthor(item.author)}<h1>{item.title}</h1></div>
                         </figcaption>
                     </Link>
                 </figure>
@@ -68,7 +71,12 @@ class Gallery extends Component {
                   <AboutButton location={this.props.location.pathname}></AboutButton>
               </div>
           </div>
-          <div className="Gallery-Gallery">{this.generateGallery(this.props.projects)}</div>
+          <div className="Gallery-Gallery">
+              <figure className="wp-caption">
+              <iframe className="figure-img" src="https://www.youtube.com/embed/sVt6mtDNufg?rel=0&amp;showinfo=0"
+                      frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+              </figure>
+              {this.generateGallery(this.props.projects)}</div>
       </main>
     );
   }
