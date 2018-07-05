@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import {Switch, Route, Redirect, Link} from 'react-router-dom';
-import {ProjectPagination} from "../ProjectPagination";
-import {Header} from "../Header";
+import {Link} from 'react-router-dom';
 import "./Gallery.css";
 import {IndexConsumer} from "../IndexContext";
 

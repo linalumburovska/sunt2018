@@ -1,6 +1,6 @@
 import React from 'react'
 import {Project} from "./Project";
-import {Link, Switch, Route} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 import {ProjectAPI} from "./api/client";
 import "./ProjectPagination.css"
 import {ProjectPresentation} from "./ProjectPresentation";
@@ -76,6 +76,9 @@ export class ProjectPagination extends React.Component {
                             id=index.value;
                         }else{
                             id=reserveIndex;
+                        }
+                        if(!this.props.location.pathname.includes('/info')){
+                            this.setState({visible:true});
                         }
                         return(
                             <div className="Content">

@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './About2.css';
-import {Link, Route, Switch, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {IndexConsumer} from "./IndexContext";
 import './About.css';
 
@@ -10,7 +10,7 @@ export class About2 extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            visible: true,
+            visible: this.props.location.pathname.includes('/about/1'),
             hide: () => {this.setState({visible:!this.state.visible})}
         };
         console.log("ABOUT", this.props);
@@ -98,7 +98,6 @@ export class About2 extends React.Component {
 
 function NazajButton(props) {
     const {back} = props;
-    let id;
     if(back.includes("projects")){
         return(
         <IndexConsumer>

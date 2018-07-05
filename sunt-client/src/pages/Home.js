@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './Home.css';
-import {Router, Route, withRouter} from 'react-router-dom';
 
 
 class Home extends Component {

@@ -154,3 +154,13 @@ p{
 	color: white;
 }
 
+.ProjectPresentation-media{
+    width:auto;
+    color:black !important;
+}
+
+.ProjectPresentation-Slika{
+    margin-left:auto;
+    margin-right:auto;
+}
+

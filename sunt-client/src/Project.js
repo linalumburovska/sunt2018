@@ -1,8 +1,6 @@
 import React from 'react'
-import {getImageSrc} from "./utility";
 import {AuthorAPI, ProjectAPI} from "./api/client";
-import {ProjectPresentation} from "./ProjectPresentation";
-import {Link, Route, Switch} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './Project.css'
 
 export class Project extends React.Component {
