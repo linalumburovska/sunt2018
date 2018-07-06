@@ -1,6 +1,6 @@
 import React from 'react'
 import {AuthorAPI, ProjectAPI} from "./api/client";
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import './Project.css'
 
 export class Project extends React.Component {
@@ -16,12 +16,11 @@ export class Project extends React.Component {
             images:[],
             title:'',
             error: false
-
         };
     }
 
     loadFromServer(match) {
-        if (match !== undefined) {
+        if (match !== undefined && 0 < match.params.id && match.params.id < 27) {
             console.log("MATCH PROJECT", match);
             ProjectAPI.get(match.params.id)
                 .then(project => this.setState({images:project.image, title:project.title}));
@@ -29,15 +28,13 @@ export class Project extends React.Component {
             AuthorAPI.get(match.params.id)
                 .then(project => this.setState({author: project.name}));
             console.log("Project mounted", this.state);
+        }else{
+            this.setState({error:true});
         }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         const {match} = this.props;
-        if(this.props.match.params.id > 27 || match.params.id < 1){
-            this.setState({error:true});
-            return
-        }
         if (prevProps.match.params.id !== this.props.match.params.id){
             this.loadFromServer(match);
         } else {
@@ -59,10 +56,14 @@ export class Project extends React.Component {
         const {images, author, title} = this.state;
         const {match} = this.props;
 
-        if (images != null && images[0] != null) {
+        if(this.state.error){
+            return(<Redirect to={"/"}/>)
+        }
+
+        if (images != null && images[1] != null && images[1].videoPath !== "") {
             return (
                 <div className="ProjectTitle">
-                    <div className="Project-video"><img id="videoPlayer" src={images[1].path} alt={images[1].alt}/></div>
+                    <div className="Project-video"><video autoPlay loop muted id="videoPlayer" src={images[1].videoPath}/></div>
                     <table id="Buttons">
                         <tr>
                             <td id="360" align="left"><Link to="/360">360°</Link></td>
@@ -77,7 +78,24 @@ export class Project extends React.Component {
                     </table>
                 </div>
             )
-        } else {
+        }else if(images != null && images[1] != null){
+            return(
+            <div className="ProjectTitle">
+                <div className="Project-video"><img id="videoPlayer" src={images[1].path} alt={images[1].alt}/></div>
+                <table id="Buttons">
+                    <tr>
+                        <td id="360" align="left"><Link to="/360">360°</Link></td>
+                        <td id="info" align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></td>
+                    </tr>
+                </table>
+                <table id="title-and-author">
+                    <tr style={{height:'50%'}}>
+                        <th style={{height:'50%'}} id="title">{title}</th>
+                        <td style={{height:'50%'}} id="author">{author}</td>
+                    </tr>
+                </table>
+            </div>)
+        }else {
             return (
                 <div className="ProjectTitle">
                     <div className="Project-video"></div>

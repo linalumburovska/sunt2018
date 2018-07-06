@@ -30,7 +30,7 @@ export class ProjectPresentation extends React.Component {
     componentDidMount() {
         let index = parseInt(this.props.match.params.id, 10);
         console.log("INDEX", index);
-        if(1 < index < 28) {
+        if(0 < index && index < 27) {
 
             ProjectAPI.get(index)
                 .then(item => {
