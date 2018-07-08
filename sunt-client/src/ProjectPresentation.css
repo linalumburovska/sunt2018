@@ -156,11 +156,35 @@ p{
 
 .ProjectPresentation-media{
     width:auto;
-    color:black !important;
+    background:#121212 !important;
 }
+
+
 
 .ProjectPresentation-Slika{
     margin-left:auto;
     margin-right:auto;
+}
+
+.carousel.carousel-slider{
+    width: 66% !important;
+    margin-left: 17% !important;
+    margin-right:17% !important;
+}
+
+.thumbs-wrapper.axis-vertical{
+    text-align:center !important;
+}
+
+.carousel{
+    width: 80% !important;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+    height: auto !important
+}
+
+.carousel .thumbs-wrapper {
+    margin: 0px !important;
+    overflow: hidden;
 }
 

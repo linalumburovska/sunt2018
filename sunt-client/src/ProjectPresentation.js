@@ -6,6 +6,8 @@ import {IndexConsumer} from "./IndexContext";
 import "../node_modules/slick-carousel/slick/slick.css";
 import "../node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
+import { Carousel } from 'react-responsive-carousel';
+import "../node_modules/react-responsive-carousel/lib/styles/carousel.css"
 
 export class ProjectPresentation extends React.Component {
 
@@ -87,7 +89,7 @@ export class ProjectPresentation extends React.Component {
         const {images} = this.state;
         return images.map(item =>
             <div>
-                <img className="ProjectPresentation-Slika" width={"auto"} height={"100%"} src={item.path}/>
+                <img className="ProjectPresentation-Slika" width={"auto"} height={"auto"} src={item.path}/>
             </div>
         )
     }
@@ -129,7 +131,9 @@ export class ProjectPresentation extends React.Component {
                                     <div id="Back" align="left"><BackButton index={id} eng={this.props.match.path}
                                                                             onClick={this.props.hide}></BackButton>
                                     </div>
-                                    <div id="Media" align="right"><MediaButton index={id} onClick={this.state.hide}></MediaButton></div>
+                                    <div id="Media" align="right"><MediaButton index={id} onClick={this.state.hide}
+                                                                               eng={this.props.match.path}></MediaButton>
+                                    </div>
                                 </div>
                             </div>
                         );
@@ -137,11 +141,6 @@ export class ProjectPresentation extends React.Component {
                 </IndexConsumer>
             )
         }else if(images !== undefined && images[0] !== undefined){
-            const settings = {
-                dots:true,
-                speed:500,
-                accessibility:true
-            };
             return(
                 <IndexConsumer>
                     {({index}) => {
@@ -152,7 +151,14 @@ export class ProjectPresentation extends React.Component {
                         }
                         return(
                         <div className="ProjectPresentation-media">
-                            <Slider className="ProjectPresentation-slider" {...settings}><InfoBack eng={this.props.match.path} index={id} onClick={this.state.hide}/>{this.generateSlider()}</Slider>
+                            <div className="ProjectPresentation-buttons">
+                            <div id="Back" align="left"><InfoBack index={id} eng={this.props.match.path}
+                                                                    onClick={this.props.hide}></InfoBack>
+                            </div>
+                            </div>
+                            <Carousel showArrows={true} >
+                                {this.generateSlider()}
+                            </Carousel>
                         </div>)
                 }}
                 </IndexConsumer>
@@ -167,7 +173,9 @@ function InfoBack(props){
     let dst="";
     if(eng.includes("/en")){dst="/en"}
     return(
-        <Link to={`${dst}/projects/${index}/info`} onClick={onClick}><h1>BACK</h1></Link>
+        <Link to={`${dst}/projects/${index}/info`} onClick={onClick}>
+            <img src={"/static_ikone/next.png"} alt={"nazaj"} style={{transform: 'rotate(180deg)'}}/>
+        </Link>
     )
 
 }
@@ -183,7 +191,9 @@ function BackButton(props) {
 }
 
 function MediaButton(props) {
-    const {index, onClick} = props;
+    const {index, onClick, eng} = props;
+    let dst="";
+    if(eng.includes("/en")){dst="/en";}
     return(
-        <Link to={`/projects/${index}/info/media`} onClick={onClick}><img src={"/static_ikone/kamera.png"} alt="medija"/></Link>);
+        <Link to={`${dst}/projects/${index}/info/media`} onClick={onClick}><img src={"/static_ikone/kamera.png"} alt="medija"/></Link>);
 };
