@@ -8,8 +8,14 @@
     left: 0;
     right: 0;
     display:grid;
-    grid-template-columns: 7% 1fr 1fr 1fr;
+    grid-template-columns: 14.5vh 1fr 1fr 1fr;
     grid-template-rows: 100%;
+}
+
+@media(orientation: portrait){
+    .Gallery-Header{
+        grid-template-columns: 14.5vw 1fr 1fr 1fr;
+    }
 }
 
 .Gallery-Header div{
