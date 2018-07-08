@@ -1,5 +1,5 @@
 import React from "react";
-import Unity, { UnityContent } from "react-unity-webgl";
+import Unity, {UnityContent} from "react-unity-webgl";
 
 
 const mapping = {
@@ -29,17 +29,35 @@ export class UnityComponent extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            index: -1,
+            loaded: false
+        };
+
         this.unityContent = new UnityContent(
             "/deployment-build/Build/deployment-build.json",
             "/deployment-build/Build/UnityLoader.js"
         );
+    }
 
+    componentDidMount() {
+        let index = parseInt(this.props.match.params.index, 10);
+        this.setState({index: index});
+
+        console.log(this.state);
         this.unityContent.on("loaded", () => {
             console.log("Loaded");
             this.setState({loaded: true});
             let content = this.unityContent;
-            setTimeout(function() {
-                content.send("Tripod", "TransitionToSphere", "posters");
+            console.log(this.state);
+
+            let project = mapping[parseInt(this.props.match.params.index, 10)];
+            if (project === undefined) {
+                project = mapping[1];
+            }
+
+            setTimeout(function () {
+                content.send("Tripod", "TransitionToSphere", project);
             }, 5000)
         });
 
@@ -61,27 +79,15 @@ export class UnityComponent extends React.Component {
         });
 
         this.unityContent.on("LoadProject", () => {
-           console.log("Loading Project with index ", this.state.index);
-           this.props.history.push("/projects/" + this.state.index);
+            console.log("Loading Project with index ", this.state.index);
+            this.props.history.push("/projects/" + this.state.index);
         });
-
-        this.state = {
-            index: -1,
-            loaded: false
-        }
-    }
-
-    componentDidMount() {
-        let index = parseInt(this.props.match.params.index, 10);
-        this.setState({index: index})
-
-
     }
 
     render() {
         return (
             <div id="project-view">
-                <Unity unityContent={this.unityContent} />
+                <Unity unityContent={this.unityContent}/>
             </div>
         );
     }
