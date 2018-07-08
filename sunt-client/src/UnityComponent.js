@@ -23,7 +23,14 @@ const mapping = {
     18: "headset-1",
     19: "instrument-1",
     20: "bot-1",
+    21: "projected-dots",
+    22: "entrance-1",
+    23: "entrance-2",
+    24: "entrance-3",
+    25: "small-center-1"
 };
+
+const projects = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
 
 export class UnityComponent extends React.Component {
     constructor(props) {
@@ -46,7 +53,6 @@ export class UnityComponent extends React.Component {
 
         console.log(this.state);
         this.unityContent.on("loaded", () => {
-            console.log("Loaded");
             this.setState({loaded: true});
             let content = this.unityContent;
             console.log(this.state);
@@ -79,8 +85,9 @@ export class UnityComponent extends React.Component {
         });
 
         this.unityContent.on("LoadProject", () => {
-            console.log("Loading Project with index ", this.state.index);
-            this.props.history.push("/projects/" + this.state.index);
+            if (projects.includes(this.state.index)) {
+                this.props.history.push("/projects/" + this.state.index);
+            }
         });
     }
 
