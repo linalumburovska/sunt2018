@@ -61,6 +61,7 @@ export class UnityComponent extends React.Component {
 
         this.unityContent.on("LoadProject", () => {
            console.log("Loading Project with index ", this.state.index);
+           this.props.history.push("/projects/" + this.state.index);
         });
 
         this.state = {
