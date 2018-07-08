@@ -10,6 +10,7 @@ import second from './images/second.png';
 import {IndexProvider} from "./IndexContext";
 import {About2} from "./About2";
 import {ProjectAPI} from "./api/client";
+import {UnityComponent} from "./UnityComponent";
 
 
 class App extends Component {
@@ -40,6 +41,8 @@ class App extends Component {
           <Route path='/en/gallery' render={(props) => (<IndexProvider value={this.state}><Gallery projects={this.state.projects} {...props} /></IndexProvider>)}/>
           <Route path={"/en/projects"} render={(props) => (<IndexProvider value={this.state}><ProjectPagination {...props} /></IndexProvider>)}/>
           <Route path='/en/about' render={(props) => (<IndexProvider value={this.state}><About2 {...props} /></IndexProvider>)}/>
+          <Route path="/unity/:index" component={UnityComponent}/>
+
           <Redirect from="*" to="/" />
         </Switch>
       </div>
