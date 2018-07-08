@@ -53,7 +53,8 @@ export class UnityComponent extends React.Component {
             }
 
             if (projectIndex !== -1) {
-                this.setState({index: projectIndex})
+                this.setState({index: projectIndex});
+                this.props.history.push("/unity/" + projectIndex);
             } else {
                 console.warn("No project found named: ", name);
             }
