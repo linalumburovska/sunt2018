@@ -22,9 +22,13 @@ export class Project extends React.Component {
     loadFromServer(match) {
         if (match !== undefined && 0 < match.params.id && match.params.id < 27) {
             console.log("MATCH PROJECT", match);
-            ProjectAPI.get(match.params.id)
-                .then(project => this.setState({images:project.image, title:project.title}));
-
+            if(match.path.includes("/en")) {
+                ProjectAPI.get(match.params.id)
+                    .then(project => this.setState({images: project.image, title: project.englishTitle}));
+            }else{
+                ProjectAPI.get(match.params.id)
+                    .then(project => this.setState({images: project.image, title: project.title}));
+            }
             AuthorAPI.get(match.params.id)
                 .then(project => this.setState({author: project.name}));
             console.log("Project mounted", this.state);
@@ -35,7 +39,7 @@ export class Project extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         const {match} = this.props;
-        if (prevProps.match.params.id !== this.props.match.params.id){
+        if (prevProps.match.params.id !== this.props.match.params.id || prevProps.match.path !== this.props.match.path){
             this.loadFromServer(match);
         } else {
             console.log("not updating", prevState, this.state);

@@ -14,12 +14,22 @@ export class ProjectPagination extends React.Component {
             projects: [],
             reserveIndex: Math.max.apply(null, this.props.location.pathname.match(/\d+/g)) ,
             visible: true,
-            hide: () => {this.setState({visible:!this.state.visible})}
+            hide: () => {this.setState({visible:!this.state.visible})},
+            eng: false
         };
+
+        this.changeLanguage=this.changeLanguage.bind(this)
     }
 
     componentDidMount() {
         ProjectAPI.all().then(data => this.setState({projects: data}));
+    }
+
+    changeLanguage(){
+        this.setState(prevState => ({
+            eng: !prevState.eng
+        }));
+        console.log("CHANGE ENG",this.state)
     }
 
     render() {
@@ -46,11 +56,11 @@ export class ProjectPagination extends React.Component {
                                         <HomeButton></HomeButton>
                                     </div>
                                     <div id="language">
-                                        <LanguageButton></LanguageButton>
+                                        <LanguageButton loc={this.props.match.path} index={id} onClick={(e) => this.changeLanguage()}></LanguageButton>
                                     </div>
                                     <div></div>
                                     <div id="about">
-                                        <AboutButton location={this.props.location.pathname}></AboutButton>
+                                        <AboutButton loc={this.props.match.path} location={this.props.location.pathname}></AboutButton>
                                     </div>
                                 </div>
                                 <div className="ProjectPagination-buttons">
@@ -121,16 +131,29 @@ const HomeButton = () => (
     </Link>
 );
 
-const LanguageButton = () => (
-    <Link to={'/projects'}>EN</Link>
-);
+function LanguageButton(props) {
+    const {loc, index, onClick} = props;
+    if(loc.includes("/en")){
+        return(<Link to={`/projects/${index}`} onClick={onClick}>SI</Link>);
+    }else{
+        return(<Link to={`/en/projects/${index}`} onClick={onClick}>EN</Link>);
+    }
+};
 
 function AboutButton(props) {
-    const {location} = props;
-    return(
-        <Link to={{
-            pathname: "/about/1",
-            state: {back: location}
-        }}>About</Link>)
+    const {location, loc} = props;
+    if(loc.includes("/en")){
+        return(
+            <Link to={{
+                pathname: "/en/about/1",
+                state: {back: location}
+            }}>About</Link>)
+    }else {
+        return (
+            <Link to={{
+                pathname: "/about/1",
+                state: {back: location}
+            }}>About</Link>)
+    }
 };
 

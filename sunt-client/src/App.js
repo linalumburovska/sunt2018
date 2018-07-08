@@ -25,7 +25,6 @@ class App extends Component {
   componentWillMount() {
     ProjectAPI.all().then(data => {this.setState({ projects: data})});
     this.setState({ imgLeft: first, imgRight: second });
-    console.log("VSEEEEE APPPP", this.state.projects);
   }
 
 
@@ -38,6 +37,9 @@ class App extends Component {
           <Route path={"/projects"} render={(props) => (<IndexProvider value={this.state}><ProjectPagination {...props} /></IndexProvider>)}/>
           <Route path='/about' render={(props) => (<IndexProvider value={this.state}><About2 {...props} /></IndexProvider>)}/>
           <Route path={"/info"} component={ProjectPresentation}/>
+          <Route path='/en/gallery' render={(props) => (<IndexProvider value={this.state}><Gallery projects={this.state.projects} {...props} /></IndexProvider>)}/>
+          <Route path={"/en/projects"} render={(props) => (<IndexProvider value={this.state}><ProjectPagination {...props} /></IndexProvider>)}/>
+          <Route path='/en/about' render={(props) => (<IndexProvider value={this.state}><About2 {...props} /></IndexProvider>)}/>
           <Redirect from="*" to="/" />
         </Switch>
       </div>
