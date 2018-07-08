@@ -13,7 +13,7 @@ export class About2 extends React.Component {
             visible: this.props.location.pathname.includes('/about/1'),
             hide: () => {this.setState({visible:!this.state.visible})}
         };
-        console.log("ABOUT", this.props);
+        console.log("ABOUT", this.props)
     }
     render(){
         if(this.state.visible && this.props.location.state !== undefined){
@@ -63,12 +63,7 @@ export class About2 extends React.Component {
                             </div>
 
                         </div>
-                        <Link to={{
-                            pathname: "/about/2",
-                            state: {back: this.props.location.state.back}
-                        }} onClick={this.state.hide}>
-                            <img class="about-arrow about-arrow-right" src="http://localhost:3000/static_ikone/next.png" alt="next"/>
-                        </Link>
+                        <SwitchButton dst={"/about/2"}back={this.props.location.state.back} onClick={this.state.hide}></SwitchButton>
                     </div>
                 </div>
             </div>
@@ -77,12 +72,7 @@ export class About2 extends React.Component {
                 <div className="About">
                     <div>
                         <img src="/17_crtomir_frelih/_SIPK-9032.jpg" alt="test-pic" className="about-testback"/>
-                        <Link to={{
-                            pathname: "/about/1",
-                            state: {back: this.props.location.state.back}
-                        }} onClick={this.state.hide}>
-                            <img className="about-arrow about-arrow-left" src="http://localhost:3000/static_ikone/next.png" alt="nazaj"/>
-                        </Link>
+                        <SwitchButton dst={"/about/1"}back={this.props.location.state.back} onClick={this.state.hide}></SwitchButton>
                         <div className="about-description-left">
                             <h2>Podoba v mediju medij v kontekstu</h2>
                             <p className="about-text">Salon ZDSLU 2017, osrednja selekcionirana letna razstava, ki jo organizira Zveza društev slovenskih likovnih umetnikov (ZDSLU), je v tokratni ediciji posvečena medijski umetnosti in nosi naslov Podoba v mediju, medij v kontekstu. Snovalec koncepta, skupaj z Janezom Strehovcem selektor in predsednik žirije Srečo Dragan je v besedilu za katalog med drugim zapisal: »Fokus tokratnega Salona je na prehodih slike, grafike, kipa in  fotografije v protokole medijske umetnosti. S poudarkom na uporabi konceptov novomedijske umetnosti v medprostorih, ki jih ti sprožajo z usodnimi preboji v posameznih fazah umetniškega raziskovanja. Ti ključni momenti se realizirajo v natisnjenih izjavah, postavitvah artefaktov v nov, drugačen kontekst, v beleženju sledi komuniciranja – dekodiranega branja in ozaveščanja, da obstaja skupno polje doživetja, tako za avtorja kot za gledalca/obiskovalca.« Razstavno postavitev je zasnoval na podlagi petih platform, ki kartirajo izbor projektov. Selektorja sta na razstavo uvrstila 27 projektov, komisija v sestavi Nicole Hewitt, Srečo Dragan in Janez Strehovec pa je podelila Glavno nagrado žirije Narviki Bovcon in Alešu Vaupotiču za delo 3D vizualizacija literarnih avtoric. Člani umetniških svetov regionalni društev likovnih umetnikov so podelili dve Priznanji Salona ZDSLU 2017 in sicer Gorazdu Krncu za delo Worth not knowing where Knowing is / Europe 2017 in Marku Glavaču za delo (pra)DIH – (digi) NEOKRNJENOST. Od edinega medijski umetnosti posvečenega Majskega salona ZDSLU pred letošnjim je minilo točno 20 let. Na Salonu 2017 je bila razstava z naslovom Modra roka iz leta. <br/><br/>Salon ZDSLU 2017, osrednja selekcionirana letna razstava, ki jo organizira Zveza društev slovenskih likovnih umetnikov (ZDSLU), je v tokratni ediciji posvečena medijski umetnosti in nosi naslov Podoba v mediju, medij v kontekstu. Snovalec koncepta, skupaj z Janezom Strehovcem selektor in predsednik žirije Srečo Dragan je v besedilu za katalog med drugim zapisal: »Fokus tokratnega Salona je na prehodih slike, grafike, kipa in  fotografije v protokole medijske umetnosti. S poudarkom na uporabi konceptov novomedijske umetnosti v medprostorih, ki jih ti sprožajo z usodnimi preboji v posameznih fazah umetniškega raziskovanja. Ti ključni momenti se realizirajo v natisnjenih izjavah, postavitvah artefaktov v nov, drugačen kontekst, v beleženju sledi komuniciranja – dekodiranega branja in ozaveščanja, da obstaja skupno polje doživetja, tako za avtorja kot za gledalca/obiskovalca.« Razstavno postavitev je zasnoval na podlagi petih platform, ki kartirajo izbor projektov. Selektorja sta na razstavo uvrstila 27 projektov, komisija v sestavi Nicole Hewitt, Srečo Dragan in Janez Strehovec pa je podelila Glavno nagrado žirije Narviki Bovcon in Alešu Vaupotiču za delo 3D vizualizacija literarnih avtoric. Člani umetniških svetov regionalni društev likovnih umetnikov so podelili dve Priznanji Salona ZDSLU 2017 in sicer Gorazdu Krncu za delo Worth not knowing where Knowing is / Europe 2017 in Marku Glavaču za delo (pra)DIH – (digi) NEOKRNJENOST. Od edinega medijski umetnosti posvečenega Majskega salona ZDSLU pred letošnjim je minilo točno 20 let. Na Salonu 2017 je bila razstava z naslovom Modra roka iz leta <br/><br/>Salon ZDSLU 2017, osrednja selekcionirana letna razstava, ki jo organizira Zveza društev slovenskih likovnih umetnikov (ZDSLU), je v tokratni ediciji posvečena medijski umetnosti in nosi naslov Podoba v mediju, medij v kontekstu. Snovalec koncepta, skupaj z Janezom Strehovcem selektor in predsednik žirije Srečo Dragan je v besedilu za katalog med drugim zapisal: »Fokus tokratnega Salona je na prehodih slike, grafike, kipa in  fotografije v protokole medijske umetnosti. S poudarkom na uporabi konceptov novomedijske umetnosti v medprostorih, ki jih ti sprožajo z usodnimi preboji v posameznih fazah umetniškega raziskovanja. Ti ključni momenti se realizirajo v natisnjenih izjavah, postavitvah artefaktov v nov, drugačen kontekst, v beleženju sledi komuniciranja – dekodiranega branja in ozaveščanja, da obstaja skupno polje doživetja, tako za avtorja kot za gledalca/obiskovalca.« Razstavno postavitev je zasnoval na podlagi petih platform, ki kartirajo izbor projektov. Selektorja sta na razstavo uvrstila 27 projektov, komisija v sestavi Nicole Hewitt, Srečo Dragan in Janez Strehovec pa je podelila Glavno nagrado žirije Narviki Bovcon in Alešu Vaupotiču za delo 3D vizualizacija literarnih avtoric. Člani umetniških svetov regionalni društev likovnih umetnikov so podelili dve Priznanji Salona ZDSLU 2017 in sicer Gorazdu Krncu za delo Worth not knowing where Knowing is / Europe 2017 in Marku Glavaču za delo (pra)DIH – (digi) NEOKRNJENOST. Od edinega medijski umetnosti posvečenega Majskega salona ZDSLU pred letošnjim je minilo točno 20 let. Na Salonu 2017 je bila razstava z naslovom Modra roka iz leta<br/><br/>Salon ZDSLU 2017, osrednja selekcionirana letna razstava, ki jo organizira Zveza društev slovenskih likovnih umetnikov (ZDSLU), je v tokratni ediciji posvečena medijski umetnosti in nosi naslov Podoba v mediju, medij v kontekstu. Snovalec koncepta, skupaj z Janezom Strehovcem selektor in predsednik žirije Srečo Dragan je v besedilu za katalog med drugim zapisal: »Fokus tokratnega Salona je na prehodih slike, grafike, kipa in  fotografije v protokole medijske umetnosti. S poudarkom na uporabi konceptov novomedijske umetnosti v medprostorih, ki jih ti sprožajo z usodnimi preboji v posameznih fazah umetniškega raziskovanja. Ti ključni momenti se realizirajo v natisnjenih izjavah, postavitvah artefaktov v nov, drugačen kontekst, v beleženju sledi komuniciranja – dekodiranega branja in ozaveščanja, da obstaja skupno polje doživetja, tako za avtorja kot za gledalca/obiskovalca.« Razstavno postavitev je zasnoval na podlagi petih platform, ki kartirajo izbor projektov. Selektorja sta na razstavo uvrstila 27 projektov, komisija v sestavi Nicole Hewitt, Srečo Dragan in Janez Strehovec pa je podelila Glavno nagrado žirije Narviki Bovcon in Alešu Vaupotiču za delo 3D vizualizacija literarnih avtoric. Člani umetniških svetov regionalni društev likovnih umetnikov so podelili dve Priznanji Salona ZDSLU 2017 in sicer Gorazdu Krncu za delo Worth not knowing where Knowing is / Europe 2017 in Marku Glavaču za delo (pra)DIH – (digi) NEOKRNJENOST. Od edinega medijski umetnosti posvečenega Majskega salona ZDSLU pred letošnjim je minilo točno 20 let. Na Salonu 2017 je bila razstava z naslovom Modra roka iz leta</p>
@@ -95,15 +85,38 @@ export class About2 extends React.Component {
 
     }
 }
+function SwitchButton(props){
+    const {onClick, back, dst} = props;
+    let add="";
+    if(back.includes("/en")){add="/en";}
+    if(dst === "/about/2") {
+        return (
+            <Link to={{
+                pathname: `${add}${dst}`,
+                state: {back: back}
+            }} onClick={onClick}>
+                <img class="about-arrow about-arrow-right" src="http://localhost:3000/static_ikone/next.png"
+                     alt="next"/>
+            </Link>
+        )
+    }else{
+        return (
+            <Link to={{
+                pathname: `${add}${dst}`,
+                state: {back: back}
+            }} onClick={onClick}>
+                <img className="about-arrow about-arrow-left" src="http://localhost:3000/static_ikone/next.png" alt="nazaj"/>
+            </Link>
+        )
+    }
 
+}
 function NazajButton(props) {
     const {back} = props;
     if(back.includes("projects")){
         return(
         <IndexConsumer>
             {({index}) => {
-                console.log("INDEX", index);
-                console.log("BACK", back);
                 if(index.value !== undefined){
                     return (
                         <Link to={`/projects/${index.value}`}>
