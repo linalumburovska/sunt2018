@@ -5,7 +5,24 @@ import Unity, { UnityContent } from "react-unity-webgl";
 const mapping = {
     1: "posters",
     2: "tv-1",
-    3: "tv-2"
+    3: "tv-2",
+    4: "suspended-cards",
+    5: "perimiter-2",
+    6: "stars",
+    7: "projections",
+    8: "wall-1",
+    9: "floor-tv",
+    10: "desk-1",
+    11: "3d-print-2",
+    12: "heart-2",
+    13: "interspecies-1",
+    14: "heart-1",
+    15: "trees-1",
+    16: "ipad-1",
+    17: "medij-1",
+    18: "headset-1",
+    19: "instrument-1",
+    20: "bot-1",
 };
 
 export class UnityComponent extends React.Component {
@@ -26,8 +43,25 @@ export class UnityComponent extends React.Component {
             }, 5000)
         });
 
+        this.unityContent.on("SwitchProject", name => {
+            let projectIndex = -1;
+            for (let i = 1; i <= Object.values(mapping).length; i++) {
+                if (mapping[i] === name) {
+                    projectIndex = i;
+                    break;
+                }
+            }
 
+            if (projectIndex !== -1) {
+                this.setState({index: projectIndex})
+            } else {
+                console.warn("No project found named: ", name);
+            }
+        });
 
+        this.unityContent.on("LoadProject", () => {
+           console.log("Loading Project with index ", this.state.index);
+        });
 
         this.state = {
             index: -1,
@@ -44,7 +78,9 @@ export class UnityComponent extends React.Component {
 
     render() {
         return (
-            <Unity unityContent={this.unityContent} />
+            <div id="project-view">
+                <Unity unityContent={this.unityContent} />
+            </div>
         );
     }
 }
