@@ -39,7 +39,7 @@ class Gallery extends Component {
   * Generate gallery grid
   */
   generateGallery(data) {
-    console.log("GALLERy", this.props);
+    console.log("GALLERy", data);
     return data.map((item, key) => {
       if(item != null && item.image != null && item.image["0"] != null && item.image["0"].path != null){
       let imageSrc = item.image[0].path;
@@ -85,8 +85,8 @@ class Gallery extends Component {
           </div>
           <div className="Gallery-Gallery">
               <figure className="wp-caption">
-              <iframe className="figure-img" src="https://www.youtube.com/embed/sVt6mtDNufg?rel=0&amp;showinfo=0"
-                      frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+                  <iframe className="figure-img" src="https://www.youtube.com/embed/sVt6mtDNufg?rel=0&amp;showinfo=0"
+                          frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
               </figure>
               {this.generateGallery(this.props.projects)}</div>
       </main>

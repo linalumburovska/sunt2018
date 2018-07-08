@@ -63,8 +63,9 @@ export class Project extends React.Component {
         if(this.state.error){
             return(<Redirect to={"/"}/>)
         }
-
+        console.log("STATE", this.state);
         if (images != null && images[1] != null && images[1].videoPath !== "") {
+            console.log()
             return (
                 <div className="ProjectTitle">
                     <div className="Project-video"><video autoPlay loop muted id="videoPlayer" src={images[1].videoPath}/></div>
