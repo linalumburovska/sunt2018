@@ -62,19 +62,19 @@
 .ProjectTitle #unity a{color:white !important;}
 
 
-.ProjectTitle #title-and-author{
-    background:transparent;
+.Title-and-author{
+    background: transparent;
     height: 50%;
     width: 70%;
     z-index: 15;
     position:absolute;
-    margin-top: 20%;
+    margin-top: 15%;
     margin-left:15%;
 }
 
 
 @media(orientation: landscape) {
-    .ProjectTitle #title-and-author #title {
+    .Title {
         z-index:15;
         word-wrap:break-spaces;
         color: white;
@@ -84,32 +84,36 @@
         width: 100%;
         -webkit-text-stroke: 0.5px black;
         text-transform: uppercase;
+		display: inline-block;
     }
 
-    .ProjectTitle #title-and-author #author {
+    .Author {
         width:100%;
         z-index: 15;
         color: white;
         font-size: 6vh;
         -webkit-text-stroke: 0.5px black;
         text-align: center;
+		position: relative;
+		margin-top: 5%;
     }
 }
 
 @media(orientation: portrait){
-    .ProjectTitle #title-and-author{
+    .Title-and-author{
 		top: 15%;
 		text-align: center;
 	}
-    .ProjectTitle #title-and-author #author{
+    .Author{
         width:100%;
         z-index: 15;
         color: white;
         font-size: 3vw;
         -webkit-text-stroke: 0.5px black;
         text-align: center;
+		margin-top: 5%;
     }
-    .ProjectTitle #title-and-author #title{
+    .Title{
         z-index:15;
         word-wrap:break-spaces;
         color: white;
@@ -119,6 +123,7 @@
         width: 100%;
         -webkit-text-stroke: 0.5px black;
         text-transform: uppercase;
+		display: inline-block;
     }
 }
 

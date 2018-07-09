@@ -73,10 +73,10 @@ export class Project extends React.Component {
                         <div id="unity" style={{color:'white'}} align="left"><Link to="/360">360°</Link></div>
                         <div id="info" style={{color:'white'}} align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></div>
                     </div>
-                    <div id="title-and-author">
+                    <div className="Title-and-author">
                         <div style={{height:'50%'}}>
-                            <h1 style={{height:'50%'}} id="title">{title}</h1>
-                            <div style={{height:'50%'}} id="author">{author}</div>
+                            <h1 style={{height:'50%'}} className="Title">{title}</h1>
+                            <div style={{height:'50%'}} className="Author">{author}</div>
                         </div>
                     </div>
                 </div>
@@ -89,10 +89,10 @@ export class Project extends React.Component {
                     <div id="unity" style={{color:'white'}} align="left"><Link to="/360">360°</Link></div>
                     <div id="info" style={{color:'white'}} align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></div>
                 </div>
-                <div id="title-and-author">
+                <div className="Title-and-author">
                     <div style={{height:'50%'}}>
-                        <h1 style={{height:'50%'}} id="title">{title}</h1>
-                        <div style={{height:'50%'}} id="author">{author}</div>
+                        <h1 style={{height:'50%'}} className="Title">{title}</h1>
+                        <div style={{height:'50%'}} className="Author">{author}</div>
                     </div>
                 </div>
             </div>)
@@ -104,10 +104,10 @@ export class Project extends React.Component {
                         <div id="unity" style={{color:'white'}} align="left"><Link to="/360">360°</Link></div>
                         <div id="info" style={{color:'white'}} align="right"><Link to="/info">Info</Link></div>
                     </div>
-                    <div id="title-and-author">
+                    <div className="Title-and-author">
                         <div style={{height:'50%'}}>
-                            <h1 style={{height:'50%'}} id="title">{title}</h1>
-                            <div style={{height:'50%'}} id="author">{author}</div>
+                            <h1 style={{height:'50%'}} className="Title">{title}</h1>
+                            <div style={{height:'50%'}} className="Author">{author}</div>
                         </div>
                     </div>
                 </div>
