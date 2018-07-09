@@ -1,6 +1,6 @@
 import React from 'react'
 import {Project} from "./Project";
-import {Link, Switch, Route} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 import {ProjectAPI} from "./api/client";
 import "./ProjectPagination.css"
 import {ProjectPresentation} from "./ProjectPresentation";
@@ -12,27 +12,42 @@ export class ProjectPagination extends React.Component {
         super(props);
         this.state = {
             projects: [],
-            reserveIndex: 1,
+            reserveIndex: Math.max.apply(null, this.props.location.pathname.match(/\d+/g)) ,
             visible: true,
-            hide: () => {this.setState({visible:!this.state.visible})}
+            hide: () => {this.setState({visible:!this.state.visible})},
+            eng: false
         };
 
+        this.changeLanguage=this.changeLanguage.bind(this)
     }
 
     componentDidMount() {
         ProjectAPI.all().then(data => this.setState({projects: data}));
     }
 
+    changeLanguage(){
+        this.setState(prevState => ({
+            eng: !prevState.eng
+        }));
+        console.log("CHANGE ENG",this.state)
+    }
+
     render() {
         const {visible, hide, reserveIndex} = this.state;
         const {match} = this.props;
-
+        let id=1;
         if(visible) {
             return (
                 <IndexConsumer>
                     {({change, index}) => {
-                        console.log("ABOUT VRAČANJE",index);
-                        console.log(this.props);
+                        if(index.value !== undefined){
+                            id=index.value;
+                        }else{
+                            id=reserveIndex;
+                        }
+                        if(this.props.location.pathname.includes('/info')){
+                            this.setState({visible: false});
+                        }
                         return(
                         <div className="Content">
                             <div className="ProjectPagination">
@@ -41,22 +56,22 @@ export class ProjectPagination extends React.Component {
                                         <HomeButton></HomeButton>
                                     </div>
                                     <div id="language">
-                                        <LanguageButton></LanguageButton>
+                                        <LanguageButton loc={this.props.match.path} index={id} onClick={(e) => this.changeLanguage()}></LanguageButton>
                                     </div>
                                     <div></div>
                                     <div id="about">
-                                        <AboutButton location={match.path}></AboutButton>
+                                        <AboutButton loc={this.props.match.path} location={this.props.location.pathname}></AboutButton>
                                     </div>
                                 </div>
                                 <div className="ProjectPagination-buttons">
                                     <div id="prev">
-                                        <PrevButton match={match} index={index.value} onClick={e => change({value: index.value-1})}/>
+                                        <PrevButton match={match} index={id} onClick={e => change({value: id-1})}/>
                                     </div>
                                     <div id="next">
-                                        <NextButton match={match} index={index.value} onClick={e => change({value: index.value+1})}/>
+                                        <NextButton match={match} index={id} onClick={e => change({value: id+1})}/>
                                     </div>
                                 </div>
-                                <Route path={`${match.path}/:index`} render={(props) => (<Project hide={hide} {...props} />)}/>
+                                <Route path={`${match.path}/:id`} render={(props) => (<Project hide={hide} {...props} />)}/>
                             </div>
                         </div>
                         );
@@ -67,9 +82,17 @@ export class ProjectPagination extends React.Component {
             return(
                 <IndexConsumer>
                     {({index}) => {
+                        if(index.value !== undefined){
+                            id=index.value;
+                        }else{
+                            id=reserveIndex;
+                        }
+                        if(!this.props.location.pathname.includes('/info')){
+                            this.setState({visible:true});
+                        }
                         return(
                             <div className="Content">
-                                <Route path={`${match.path}/:index/info`} render={(props) => (<ProjectPresentation hide={hide} {...props}/>)}/>
+                                <Route path={`${match.path}/:id/info`} render={(props) => (<ProjectPresentation hide={hide} {...props}/>)}/>
                             </div>
                         );
                     }}
@@ -81,7 +104,7 @@ export class ProjectPagination extends React.Component {
 
 function NextButton(props) {
     const {match, index, onClick} = props;
-    if(!(index+1 < 28)){return(<div></div>)}
+    if(!(index+1 < 27)){return(<div></div>)}
     return (
         <Link to={`${match.url}/${index + 1}`}>
             <input onClick={onClick} type="image" alt="dol" src="http://localhost:3000/static_ikone/dolga.png" width={"auto"} height={"auto"}/>
@@ -103,22 +126,34 @@ function PrevButton(props) {
 }
 
 const HomeButton = () => (
-    <Link to={'/'}>
+    <Link to={'/gallery'}>
         <img src="http://localhost:3000/static_ikone/logo.png" alt="home"/>
     </Link>
 );
 
-const LanguageButton = () => (
-    <Link to={'/projects'}>EN</Link>
-);
+function LanguageButton(props) {
+    const {loc, index, onClick} = props;
+    if(loc.includes("/en")){
+        return(<Link to={`/projects/${index}`} onClick={onClick}>SI</Link>);
+    }else{
+        return(<Link to={`/en/projects/${index}`} onClick={onClick}>EN</Link>);
+    }
+};
 
 function AboutButton(props) {
-    const {location} = props;
-    console.log("DA VIDFISMFISMCISMODCMSID", props);
-    return(
-        <Link to={{
-            pathname: "/about",
-            state: {back: location}
-        }}>About</Link>)
+    const {location, loc} = props;
+    if(loc.includes("/en")){
+        return(
+            <Link to={{
+                pathname: "/en/about/1",
+                state: {back: location}
+            }}>About</Link>)
+    }else {
+        return (
+            <Link to={{
+                pathname: "/about/1",
+                state: {back: location}
+            }}>About</Link>)
+    }
 };
 

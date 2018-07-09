@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './Home.css';
-import {Router, Route, withRouter} from 'react-router-dom';
 
 
 class Home extends Component {
@@ -8,9 +7,8 @@ class Home extends Component {
       super(props);
       this.state = {
         backgroundImage: 'none'
-      }
+      };
 
-      console.log("Home", this.props);
     }
 
 

@@ -1,10 +1,13 @@
 import React from 'react'
-
 import {ProjectAPI, AuthorAPI} from "./api/client";
-import {getImageSrc} from "./utility";
-import {Link} from "react-router-dom";
+import {Link, Route} from "react-router-dom";
 import "./ProjectPresentation.css";
 import {IndexConsumer} from "./IndexContext";
+import "../node_modules/slick-carousel/slick/slick.css";
+import "../node_modules/slick-carousel/slick/slick-theme.css";
+import Slider from 'react-slick';
+import { Carousel } from 'react-responsive-carousel';
+import "../node_modules/react-responsive-carousel/lib/styles/carousel.css"
 
 export class ProjectPresentation extends React.Component {
 
@@ -13,107 +16,184 @@ export class ProjectPresentation extends React.Component {
 
         this.state = {
             isLoading: true,
+            biography: "",
+            type: "",
+            year: "",
+            comment: "",
             images: [],
             authors: "",
             description: "",
-            title: ""
+            title: "",
+            visible: !this.props.location.pathname.includes('/media'),
+            hide: () => {{this.setState({visible: !this.state.visible})}}
 
         };
 
-        console.log("Predstavi se", this.props);
+        this.generateSlider = this.generateSlider.bind(this);
 
     }
 
     componentDidMount() {
-        let index = parseInt(this.props.match.params.index, 10);
+        let index = parseInt(this.props.match.params.id, 10);
         console.log("INDEX", index);
+        if(0 < index && index < 27) {
+            if(!this.props.match.path.includes("/en")) {
+                ProjectAPI.get(index)
+                    .then(item => {
+                        this.setState({
+                            isLoading: false,
+                            images: item.image,
+                            title: item.title,
+                            description: item.description,
+                            type: item.type,
+                            year: item.makeYear,
+                            comment: item.comment,
+                        })
+                    });
 
-        ProjectAPI.get(index)
-            .then(item => {
-                console.log("KAJ DOBIMO", item);
-                this.setState({
-                    isLoading: false,
-                    images: item.image,
-                    title: item.title,
-                    description: item.description
-                })
-            });
+                AuthorAPI.get(index)
+                    .then(item => {
+                        this.setState({
+                            authors: item.name,
+                            biography: item.biography
+                        })
+                    });
+            }else{
+                ProjectAPI.get(index)
+                    .then(item => {
+                        this.setState({
+                            isLoading: false,
+                            images: item.image,
+                            title: item.englishTitle,
+                            description: item.englishDescription,
+                            type: item.englishType,
+                            year: item.makeYear,
+                            comment: item.englishComment,
+                        })
+                    });
 
-        AuthorAPI.get(index)
-            .then(item => {
-            console.log(item);
-            this.setState({
-                authors: item.name
-            })
-        });
-        console.log("Current State: ", this.state);
-        console.log("has match", this.props.match !== undefined);
+                AuthorAPI.get(index)
+                    .then(item => {
+                        this.setState({
+                            authors: item.name,
+                            biography: item.englishBiography
+                        })
+                    });
+            }
+            console.log("Current State: ", this.state);
+            console.log("has match", this.props.match !== undefined);
+        }
+    }
+
+    generateSlider(){
+        const {images} = this.state;
+        return images.map(item =>
+            <div>
+                <img className="ProjectPresentation-Slika" width={"auto"} height={"auto"} src={item.path}/>
+            </div>
+        )
     }
 
     render() {
-        const {isLoading, title, description, authors} = this.state;
+        const {visible, title, description, authors, images, type, year, comment, biography} = this.state;
+        let id;
 
-        //const path = this.state.images[0].path;
-        //const author = this.state.authors[0].name;
-
-        const inputStyle = {
-            transform:'rotate(180deg)',
-        };
-
-        return (
-            <IndexConsumer>
-                {({index}) => {
-                    console.log("Present",this.state);
-                return(
-                <div className="ProjectPresentation">
-                    <div className="Present-background"><img id="back" src={"/1_maja_smrekar/_SIPK-8941.jpg"}
-                                                             alt="Štiri pravokotne visoke vitrine. V vsaki je majhen…uje statistiko o slovenskih literarnih avtoricah."/>
-                    </div>
-                    <div id="content">
-                        <div id="description">
-                            <h1 className="ProjectPresentation-title">{title}</h1>
-                            <h2 className="ProjectPresentation-author">{authors}</h2>
-                            <h3 className="ProjectPresentation-type">Digitalni print in video</h3>
-							<h4 className="ProjectPresentation-year">2015-2017</h4>
-                            <div className="ProjectPresentation-whole-text">
-                                <p className="ProjectPresentation-text">{description}</p>
-                                <br></br>
-                                <p className="ProjectPresentation-text">Gre za večletni projekt, za katerega je avtorica dobila nagrado iz prešernovega
-                                    sklada. Projekt je zelo dobro premišljen in kaže na možni razvoj ženske skozi
-                                    evolucijo preko psa v svobodno bitje. Ženska ima
-                                    svobodo se odločiti, s komi in s čim bo nadaljevala vrsto človeka. Gre za tipično
-                                    delo hibridne umetnosti, ki nakazuje sodelovanje z znanostjo.
-                                </p>
-                                <br></br>
-                                <p className="ProjectPresentation-text">Maja SMREKAR (1978, Brežice)
-                                    Diplomirala na Akademiji za likovno umetnost in oblikovanje v Ljubljani pri prof.
-                                    Jožetu Baršiju, smer kiparstvo, in pri somentorju prof. dr. Jožefu Muhoviču ter
-                                    somentorici prof. Meti Hočevar (2006), kjer je na Oddelku za video in nove medije
-                                    zaključila magistrski študij pri prof. Sreču Draganu (2016).</p>
+        if (images !== undefined && images[0] !== undefined && visible) {
+            return (
+                <IndexConsumer>
+                    {({index}) => {
+                        if (index.value !== undefined) {
+                            id = index.value;
+                        } else {
+                            id = parseInt(this.props.match.params.id, 10);
+                        }
+                        console.log("sdfsdf", this.props.match);
+                        return (
+                            <div className="ProjectPresentation">
+                                <div className="Present-background"><img id="back" src={images[1].path}
+                                                                         alt={images[1].alt}/></div>
+                                <div id="content">
+                                    <div id="description">
+                                        <h1 className="ProjectPresentation-title">{title}</h1>
+                                        <h2 className="ProjectPresentation-author">{authors}</h2>
+                                        <h3 className="ProjectPresentation-type">{type}</h3>
+                                        <h4 className="ProjectPresentation-year">{year}</h4>
+                                        <div className="ProjectPresentation-whole-text">
+                                            <p className="ProjectPresentation-text">{description}</p>
+                                            <br></br>
+                                            <p className="ProjectPresentation-text">{comment}</p>
+                                            <br></br>
+                                            <p className="ProjectPresentation-text">{biography}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="ProjectPresentation-buttons">
+                                    <div id="Back" align="left"><BackButton index={id} eng={this.props.match.path}
+                                                                            onClick={this.props.hide}></BackButton>
+                                    </div>
+                                    <div id="Media" align="right"><MediaButton index={id} onClick={this.state.hide}
+                                                                               eng={this.props.match.path}></MediaButton>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="ProjectPresentation-buttons">
-                        <div id="Back" align="left"><BackButton index={index} onClick={this.props.hide}></BackButton></div>
-                        <div id="Media" align="right"><MediaButton></MediaButton></div>
-                    </div>
-                </div>
-                );
-            }}
-            </IndexConsumer>
-        )
+                        );
+                    }}
+                </IndexConsumer>
+            )
+        }else if(images !== undefined && images[0] !== undefined){
+            return(
+                <IndexConsumer>
+                    {({index}) => {
+                        if (index.value !== undefined) {
+                            id = index.value;
+                        } else {
+                            id = parseInt(this.props.match.params.id, 10);
+                        }
+                        return(
+                        <div className="ProjectPresentation-media">
+                            <div className="ProjectPresentation-buttons">
+                            <div id="Back" align="left"><InfoBack index={id} eng={this.props.match.path}
+                                                                    onClick={this.props.hide}></InfoBack>
+                            </div>
+                            </div>
+                            <Carousel showArrows={true} >
+                                {this.generateSlider()}
+                            </Carousel>
+                        </div>)
+                }}
+                </IndexConsumer>
+            )
+        }
+        else{return(<div></div>)}
     }
 }
+
+function InfoBack(props){
+    const {index, onClick, eng} = props;
+    let dst="";
+    if(eng.includes("/en")){dst="/en"}
+    return(
+        <Link to={`${dst}/projects/${index}/info`} onClick={onClick}>
+            <img src={"/static_ikone/next.png"} alt={"nazaj"} style={{transform: 'rotate(180deg)'}}/>
+        </Link>
+    )
+
+}
 function BackButton(props) {
-    const {index, onClick} = props;
+    const {index, onClick, eng} = props;
+    let dst="";
+    if(eng.includes("/en")){dst="/en";}
     return (
-        <Link to={`/projects/${index.value}`} onClick={onClick}>
+        <Link to={`${dst}/projects/${index}`} onClick={onClick}>
             <img src={"/static_ikone/next.png"} alt={"nazaj"} style={{transform: 'rotate(180deg)'}}/>
         </Link>
     )
 }
 
-const MediaButton = () => {
+function MediaButton(props) {
+    const {index, onClick, eng} = props;
+    let dst="";
+    if(eng.includes("/en")){dst="/en";}
     return(
-    <Link to="/media"><img src={"/static_ikone/kamera.png"} alt="medija"/></Link>);
+        <Link to={`${dst}/projects/${index}/info/media`} onClick={onClick}><img src={"/static_ikone/kamera.png"} alt="medija"/></Link>);
 };

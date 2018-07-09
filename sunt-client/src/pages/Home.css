@@ -48,6 +48,7 @@
     position: absolute;
     top: 50%;
     right: 0;
+    height: 30%;
     /*-moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
     -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
     transform:  translateX(-50%) translateY(-50%) rotate(-90deg);*/
@@ -60,6 +61,7 @@
     position: absolute;
     top: 50%;
     left: 0;
+    height: 30%;
     /*-moz-transform: translateX(-50%) translateY(-50%) rotate(-270deg);
     -webkit-transform: translateX(-50%) translateY(-50%) rotate(-270deg);
     transform:  translateX(-50%) translateY(-50%) rotate(-270deg);*/
