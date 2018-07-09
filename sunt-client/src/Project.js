@@ -64,7 +64,7 @@ export class Project extends React.Component {
             return(<Redirect to={"/"}/>)
         }
         console.log("STATE", this.state);
-        if (images != null && images[1] != null && images[1].videoPath !== "") {
+        if (images !== undefined && images[1] !== undefined && images[1].videoPath) {
             return (
                 <div className="ProjectTitle">
                     <div className="Project-video"><video autoPlay loop muted id="videoPlayer" src={images[1].videoPath}/></div>
@@ -82,7 +82,7 @@ export class Project extends React.Component {
                     </table>
                 </div>
             )
-        }else if(images != null && images[1] != null){
+        }else if(images !== undefined && images[1] !== undefined){
             return(
             <div className="ProjectTitle">
                 <div className="Project-video"><img id="videoPlayer" src={images[1].path} alt={images[1].alt}/></div>

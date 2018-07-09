@@ -81,7 +81,7 @@ body {
     padding: 0;
     margin: 0;
     grid-column: span 2;
-    height: 400px;
+    height: 100%;
 }
 .wp-caption img {
     display: block;

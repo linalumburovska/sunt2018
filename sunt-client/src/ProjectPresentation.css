@@ -84,7 +84,7 @@ p{
         margin-right: 12.5%;
         margin-top: 3%;
         margin-bottom: 3%;
-        height:94%;
+        height:70%;
         color:white;
         font-size: 1vw;
         text-align: left;
@@ -99,7 +99,7 @@ p{
         margin-right: 12.5%;
         margin-top: 3%;
         margin-bottom: 3%;
-        height:94%;
+        height:70%;
         color:white;
         font-size: 1vw;
         text-align: left;
@@ -147,7 +147,7 @@ p{
     -webkit-column-gap:50px;
     column-count: 2;
     column-gap: 50px;
-	height: 65%;
+	height: 55%;
 	padding: 0px;
 	margin: 0px;
 }

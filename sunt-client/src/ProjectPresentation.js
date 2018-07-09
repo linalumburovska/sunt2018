@@ -40,6 +40,7 @@ export class ProjectPresentation extends React.Component {
             if(!this.props.match.path.includes("/en")) {
                 ProjectAPI.get(index)
                     .then(item => {
+                        console.log("Pokazi", item);
                         this.setState({
                             isLoading: false,
                             images: item.image,
@@ -98,9 +99,10 @@ export class ProjectPresentation extends React.Component {
         const {visible, title, description, authors, images, type, year, comment, biography} = this.state;
         let id;
         let project_scroll = "ProjectPresentation-whole-text";
-        if (biography.length > 650){
+        if (biography !== undefined && biography.length > 650){
             project_scroll = "ProjectPresentation-whole-text ProjectPresentation-scroll";
         }
+        console.log("Opisi", this.state);
 
         if (images !== undefined && images[0] !== undefined && visible) {
             return (
