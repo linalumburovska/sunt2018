@@ -14,7 +14,7 @@ class Home extends Component {
 
     onClick(side) {
       if (side === 'right') this.props.history.push('/gallery');
-      else this.props.history.push('/');
+      else this.props.history.push('/unity/1');
     }
 
 

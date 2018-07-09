@@ -42,6 +42,7 @@ class App extends Component {
           <Route path={"/en/projects"} render={(props) => (<IndexProvider value={this.state}><ProjectPagination {...props} /></IndexProvider>)}/>
           <Route path='/en/about' render={(props) => (<IndexProvider value={this.state}><About2 {...props} /></IndexProvider>)}/>
           <Route path="/unity/:index" component={UnityComponent}/>
+          <Redirect path="/unity" to="/unity/1" />
 
           <Redirect from="*" to="/" />
         </Switch>
