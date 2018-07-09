@@ -51,20 +51,16 @@ export class UnityComponent extends React.Component {
         let index = parseInt(this.props.match.params.index, 10);
         this.setState({index: index});
 
-        console.log(this.state);
-        this.unityContent.on("loaded", () => {
+        this.unityContent.on("AppLoaded", () => {
             this.setState({loaded: true});
             let content = this.unityContent;
-            console.log(this.state);
 
             let project = mapping[parseInt(this.props.match.params.index, 10)];
             if (project === undefined) {
                 project = mapping[1];
             }
 
-            setTimeout(function () {
-                content.send("Tripod", "TransitionToSphere", project);
-            }, 5000)
+            content.send("Tripod", "TransitionToSphere", project);
         });
 
         this.unityContent.on("SwitchProject", name => {
