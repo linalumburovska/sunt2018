@@ -17,7 +17,8 @@
 }
 .ProjectPagination-buttons{
     z-index: 25;
-    display: table;
+    display: grid;
+    grid-template-rows: 1fr;
     position:absolute;
     top: 0;
     left: 0;
@@ -31,7 +32,6 @@
 .ProjectPagination-buttons #prev, #next{
     width: auto;
     height: 100%;
-    display: table-row;
 }
 
 

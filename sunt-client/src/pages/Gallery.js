@@ -40,7 +40,8 @@ class Gallery extends Component {
   */
   generateGallery(data) {
     console.log("GALLERy", data);
-    return data.map((item, key) => {
+    return data.map((item) => {
+
       if(item != null && item.image != null && item.image["0"] != null && item.image["0"].path != null){
       let imageSrc = item.image[0].path;
       let src="";
@@ -51,7 +52,7 @@ class Gallery extends Component {
       <IndexConsumer>
         {({change, index}) => {
             return (
-                <figure key={key} className="wp-caption">
+                <figure className="wp-caption">
                     <Link to={`${src}/projects/${item.id}`}>
                         <img className="figure-img" src={imageSrc}/>
                         <figcaption onClick={e => change({value: item.id})} className="wp-caption-text">
@@ -96,7 +97,7 @@ class Gallery extends Component {
 
 const HomeButton = () => (
     <Link to={'/'}>
-        <img src="http://localhost:3000/static_ikone/logo.png" alt="home"/>
+        <img src="/static_ikone/logo.png" alt="home"/>
     </Link>
 );
 

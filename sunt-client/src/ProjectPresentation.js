@@ -1,11 +1,10 @@
 import React from 'react'
 import {ProjectAPI, AuthorAPI} from "./api/client";
-import {Link, Route} from "react-router-dom";
+import {Link} from "react-router-dom";
 import "./ProjectPresentation.css";
 import {IndexConsumer} from "./IndexContext";
 import "../node_modules/slick-carousel/slick/slick.css";
 import "../node_modules/slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick';
 import { Carousel } from 'react-responsive-carousel';
 import "../node_modules/react-responsive-carousel/lib/styles/carousel.css"
 
@@ -88,7 +87,7 @@ export class ProjectPresentation extends React.Component {
 
     generateSlider(){
         const {images} = this.state;
-        return images.map(item =>
+        return (images).map(item =>
             <div>
                 <img className="ProjectPresentation-Slika" width={"auto"} height={"auto"} src={item.path}/>
             </div>

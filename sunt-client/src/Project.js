@@ -59,6 +59,7 @@ export class Project extends React.Component {
     render() {
         const {images, author, title} = this.state;
         const {match} = this.props;
+        console.log(this.props.match);
 
         if(this.state.error){
             return(<Redirect to={"/"}/>)
@@ -68,55 +69,47 @@ export class Project extends React.Component {
             return (
                 <div className="ProjectTitle">
                     <div className="Project-video"><video autoPlay loop muted id="videoPlayer" src={images[1].videoPath}/></div>
-                    <table id="Buttons">
-                        <tr>
-                            <td id="360" align="left"><Link to={`/unity/${match.params.id}`}>360°</Link></td>
-                            <td id="info" align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></td>
-                        </tr>
-                    </table>
-                    <table id="title-and-author">
-                        <tr style={{height:'50%'}}>
-                            <th style={{height:'50%'}} id="title">{title}</th>
-                            <td style={{height:'50%'}} id="author">{author}</td>
-                        </tr>
-                    </table>
+                    <div id="Buttons">
+                        <div id="unity" style={{color:'white'}} align="left"><Link to="/360">360°</Link></div>
+                        <div id="info" style={{color:'white'}} align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></div>
+                    </div>
+                    <div id="title-and-author">
+                        <div style={{height:'50%'}}>
+                            <h1 style={{height:'50%'}} id="title">{title}</h1>
+                            <div style={{height:'50%'}} id="author">{author}</div>
+                        </div>
+                    </div>
                 </div>
             )
         }else if(images !== undefined && images[1] !== undefined){
             return(
             <div className="ProjectTitle">
                 <div className="Project-video"><img id="videoPlayer" src={images[1].path} alt={images[1].alt}/></div>
-                <table id="Buttons">
-                    <tr>
-                        <td id="360" align="left"><Link to="/360">360°</Link></td>
-                        <td id="info" align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></td>
-                    </tr>
-                </table>
-                <table id="title-and-author">
-                    <tr style={{height:'50%'}}>
-                        <th style={{height:'50%'}} id="title">{title}</th>
-                        <td style={{height:'50%'}} id="author">{author}</td>
-                    </tr>
-                </table>
+                <div id="Buttons">
+                    <div id="unity" style={{color:'white'}} align="left"><Link to="/360">360°</Link></div>
+                    <div id="info" style={{color:'white'}} align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></div>
+                </div>
+                <div id="title-and-author">
+                    <div style={{height:'50%'}}>
+                        <h1 style={{height:'50%'}} id="title">{title}</h1>
+                        <div style={{height:'50%'}} id="author">{author}</div>
+                    </div>
+                </div>
             </div>)
         }else {
             return (
                 <div className="ProjectTitle">
                     <div className="Project-video"></div>
-                    <table id="Buttons">
-                        <tr>
-                            <td id="360" align="left"><Link to="/360">360°</Link></td>
-                            <td id="info" align="right"><Link to="/info">Info</Link></td>
-                        </tr>
-                    </table>
-                    <table id="title-and-author">
-                        <tr>
-                            <div id="title"><h1>{title}</h1></div>
-                        </tr>
-                        <tr>
-                            <div id="author"><h2>{author}</h2></div>
-                        </tr>
-                    </table>
+                    <div id="Buttons">
+                        <div id="unity" style={{color:'white'}} align="left"><Link to="/360">360°</Link></div>
+                        <div id="info" style={{color:'white'}} align="right"><Link to="/info">Info</Link></div>
+                    </div>
+                    <div id="title-and-author">
+                        <div style={{height:'50%'}}>
+                            <h1 style={{height:'50%'}} id="title">{title}</h1>
+                            <div style={{height:'50%'}} id="author">{author}</div>
+                        </div>
+                    </div>
                 </div>
             )
         }

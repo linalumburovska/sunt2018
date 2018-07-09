@@ -107,7 +107,7 @@ function NextButton(props) {
     if(!(index+1 < 27)){return(<div></div>)}
     return (
         <Link to={`${match.url}/${index + 1}`}>
-            <input onClick={onClick} type="image" alt="dol" src="http://localhost:3000/static_ikone/dolga.png" width={"auto"} height={"auto"}/>
+            <input onClick={onClick} type="image" alt="dol" src="/static_ikone/dolga.png" width={"auto"} height={"auto"}/>
         </Link>
     )
 }
@@ -120,14 +120,14 @@ function PrevButton(props) {
     if(!(index - 1 > 0)){return(<div></div>)}
     return (
         <Link to={`${match.url}/${index - 1}`}>
-            <input onClick={onClick} type="image" alt="gor" src="http://localhost:3000/static_ikone/dolga.png" style={inputStyle}/>
+            <input onClick={onClick} type="image" alt="gor" src="/static_ikone/dolga.png" style={inputStyle}/>
         </Link>
     )
 }
 
 const HomeButton = () => (
     <Link to={'/gallery'}>
-        <img src="http://localhost:3000/static_ikone/logo.png" alt="home"/>
+        <img src="/static_ikone/logo.png" alt="home"/>
     </Link>
 );
 

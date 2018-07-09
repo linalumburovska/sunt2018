@@ -42,7 +42,9 @@
 
 .ProjectTitle #Buttons{
     z-index: 20;
-    display: inline-table;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
     position:absolute;
     top: 0;
     left: 0;
@@ -51,19 +53,19 @@
     margin: auto;
     width: 98%;
     height: 5%;
+    color:white;
+    font-family:'Roboto Slab';
+    font-size: 4vh;
 }
 
-.ProjectTitle #Buttons td a{
-    vertical-align: middle;
-    color:white;
-    font-size:2vw;
-}
+.ProjectTitle #info a{color:white !important;}
+.ProjectTitle #unity a{color:white !important;}
+
 
 .ProjectTitle #title-and-author{
     background:transparent;
     height: 50%;
     width: 70%;
-    font-size: 5vh;
     z-index: 15;
     position:absolute;
     margin-top: 20%;
@@ -76,7 +78,7 @@
         z-index:15;
         word-wrap:break-spaces;
         color: white;
-        font-size: 7vh;
+        font-size: 8vh;
         font-weight: 700;
         text-align: center;
         width: 100%;
@@ -88,7 +90,7 @@
         width:100%;
         z-index: 15;
         color: white;
-        font-size: 5vh;
+        font-size: 6vh;
         -webkit-text-stroke: 0.5px black;
         text-align: center;
     }
@@ -100,13 +102,21 @@
 		text-align: center;
 	}
     .ProjectTitle #title-and-author #author{
-        color:white;
+        width:100%;
+        z-index: 15;
+        color: white;
+        font-size: 3vw;
         -webkit-text-stroke: 0.5px black;
-        font-size: 10vw;
+        text-align: center;
     }
     .ProjectTitle #title-and-author #title{
-        color:white;
-        font-size:8vw;
+        z-index:15;
+        word-wrap:break-spaces;
+        color: white;
+        font-size: 5vw;
+        font-weight: 700;
+        text-align: center;
+        width: 100%;
         -webkit-text-stroke: 0.5px black;
         text-transform: uppercase;
     }
