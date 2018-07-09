@@ -97,6 +97,10 @@ export class ProjectPresentation extends React.Component {
     render() {
         const {visible, title, description, authors, images, type, year, comment, biography} = this.state;
         let id;
+        let project_scroll = "ProjectPresentation-whole-text";
+        if (biography.length > 650){
+            project_scroll = "ProjectPresentation-whole-text ProjectPresentation-scroll";
+        }
 
         if (images !== undefined && images[0] !== undefined && visible) {
             return (
@@ -118,7 +122,7 @@ export class ProjectPresentation extends React.Component {
                                         <h2 className="ProjectPresentation-author">{authors}</h2>
                                         <h3 className="ProjectPresentation-type">{type}</h3>
                                         <h4 className="ProjectPresentation-year">{year}</h4>
-                                        <div className="ProjectPresentation-whole-text">
+                                        <div className={project_scroll}>
                                             <p className="ProjectPresentation-text">{description}</p>
                                             <br></br>
                                             <p className="ProjectPresentation-text">{comment}</p>
