@@ -15,6 +15,10 @@ public class Image {
 
     private String alt;
 
+    private String englishAlt;
+
+    private String videoPath;
+
     public Long getId() {
         return id;
     }
@@ -37,5 +41,21 @@ public class Image {
 
     public void setAlt(String alt) {
         this.alt = alt;
+    }
+
+    public String getVideoPath() {
+        return videoPath;
+    }
+
+    public void setVideoPath(String videoPath) {
+        this.videoPath = videoPath;
+    }
+
+    public String getEnglishAlt() {
+        return englishAlt;
+    }
+
+    public void setEnglishAlt(String englishAlt) {
+        this.englishAlt = englishAlt;
     }
 }
