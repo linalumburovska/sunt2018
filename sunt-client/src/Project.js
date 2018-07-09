@@ -70,7 +70,7 @@ export class Project extends React.Component {
                     <div className="Project-video"><video autoPlay loop muted id="videoPlayer" src={images[1].videoPath}/></div>
                     <table id="Buttons">
                         <tr>
-                            <td id="360" align="left"><Link to={"/unity/" + this.props.match.params.index}>360°</Link></td>
+                            <td id="360" align="left"><Link to={`/unity/${match.params.id}`}>360°</Link></td>
                             <td id="info" align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></td>
                         </tr>
                     </table>

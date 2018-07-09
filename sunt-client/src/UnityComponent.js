@@ -94,7 +94,7 @@ export class UnityComponent extends React.Component {
     render() {
         return (
             <div id="project-view">
-                <Unity unityContent={this.unityContent}/>
+                <Unity unityContent={this.unityContent} height="100%" width="100%"/>
             </div>
         );
     }
