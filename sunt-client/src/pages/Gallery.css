@@ -117,6 +117,14 @@ body {
     margin-bottom:0;
 }
 
+h1.title-size {
+    font-size: 5vh;
+}
+
+h2.author-size {
+    font-size: 3vh;
+}
+
 
 .wp-caption:hover .wp-caption-text {
     opacity: 1;

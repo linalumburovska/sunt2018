@@ -24,7 +24,7 @@ class Gallery extends Component {
   */
   getAuthor(data) {
     return data.map((author, key) => {
-      return <h2 key={key}>{author.name}</h2>
+      return <h2 className="author-size" key={key}>{author.name}</h2>
     })
   }
 
@@ -55,7 +55,7 @@ class Gallery extends Component {
                     <Link to={`${src}/projects/${item.id}`}>
                         <img className="figure-img" src={imageSrc}/>
                         <figcaption onClick={e => change({value: item.id})} className="wp-caption-text">
-                            <div className="authors">{this.getAuthor(item.author)}<h1>{title}</h1></div>
+                            <div className="authors">{this.getAuthor(item.author)}<h1 className="title-size">{title}</h1></div>
                         </figcaption>
                     </Link>
                 </figure>

@@ -63,6 +63,7 @@
     background:transparent;
     height: 50%;
     width: 70%;
+    font-size: 5vh;
     z-index: 15;
     position:absolute;
     margin-top: 20%;
@@ -75,7 +76,7 @@
         z-index:15;
         word-wrap:break-spaces;
         color: white;
-        font-size: 4em;
+        font-size: 7vh;
         font-weight: 700;
         text-align: center;
         width: 100%;
@@ -87,7 +88,7 @@
         width:100%;
         z-index: 15;
         color: white;
-        font-size: 3em;
+        font-size: 5vh;
         -webkit-text-stroke: 0.5px black;
         text-align: center;
     }
