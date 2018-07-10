@@ -31,6 +31,10 @@
 
 
 @media (orientation: portrait){
+    .ProjectTitle {
+	width: 100vh;
+    }
+	
     .Project-video #videoPlayer {
         max-height: 100%;
         position:absolute;
