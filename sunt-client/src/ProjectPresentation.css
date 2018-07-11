@@ -25,6 +25,14 @@
     position: absolute;
 }
 
+@media(orientation: portrait){
+	.Present-background #back{
+		position: absolute;
+		width: 100vh;
+		height: 100vw;
+	}
+}
+
 .ProjectPresentation-buttons{
     z-index: 55;
     display: grid;
