@@ -178,7 +178,11 @@ p{
     background:#121212 !important;
 }
 
-
+@media(orientation: portrait){
+	.ProjectPresentation-media{
+		width: 100vh;
+	}
+}
 
 .ProjectPresentation-Slika{
     margin-left:auto;
