@@ -86,3 +86,9 @@ img.about-arrow-right{
 ::-webkit-scrollbar-thumb:hover {
     background: #a1a1a1;
 }
+
+@media (orientation: portrait){
+	.about-testback{
+		width: 100vh;
+	}
+}
