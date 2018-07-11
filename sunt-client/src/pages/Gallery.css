@@ -129,3 +129,48 @@ h2.author-size {
 .wp-caption:hover .wp-caption-text {
     opacity: 1;
 }
+
+
+
+/* ----------------------- PORTRAIT ORIENTATION ----------------------- */
+
+@media (orientation: portrait){
+	.Gallery{
+		height: 100%;
+		width: 100vh;
+	}
+	
+	.Gallery-Header{
+		position: absolute;
+		z-index: 0;
+		height: 14vw;
+		width: 100vh;
+        grid-template-columns: 14.5vw 1fr 1fr 1fr;
+		
+    }
+	
+	.Gallery-Header div{
+		font-size:5vw;
+	}
+	
+	.Gallery-Gallery {
+        display: grid;
+        padding-top:14vw;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		overflow: scroll;
+    }
+	
+	/* BESEDILO CEZ SLIKE */
+	h1.title-size {
+		font-size: 2.3vh;
+	}
+
+	h2.author-size {
+		font-size: 1.8vh;
+	}
+	
+	.wp-caption-text {
+		opacity: 1;
+		background-color: transparent;
+	}
+}
