@@ -85,6 +85,13 @@ p{
 	padding-top: 0px;
 }
 
+@media (orientation: portrait){
+	.ProjectPresentation #content{
+		height: 84%;
+		top:8%;
+		bottom:8%;
+	}
+}
 
 @media(orientation: landscape){
     .ProjectPresentation #description{
@@ -132,10 +139,25 @@ p{
 	font-size: 2.2vw;
 }
 
+@media (orientation:portrait){
+	.ProjectPresentation-title{
+		margin-top: -2%;
+		font-size: 3.8vh;
+	}
+}
+
 .ProjectPresentation-author{
     padding-left: 0% !important;
 	font-size: 2.2vw;
 	font-weight: normal;
+}
+
+@media (orientation: portrait){
+	.ProjectPresentation-author{
+		padding-left: 0% !important;
+		font-size: 3.8vh;
+		font-weight: normal;
+	}
 }
 
 .ProjectPresentation-type{
@@ -143,10 +165,23 @@ p{
 	font-weight: normal;
 }
 
+@media (orientation: portrait){
+	.ProjectPresentation-type{
+		font-size: 2.8vh;
+	}
+}
+
 .ProjectPresentation-year{
 	font-size: 1.5vw;
 	font-weight: normal;
 	margin-bottom: 1%;
+}
+
+@media (orientation: portrait){
+	.ProjectPresentation-year{
+		font-size: 2.8vh;
+		margin-bottom: 5%;
+	}
 }
 
 .ProjectPresentation-whole-text{
@@ -161,11 +196,23 @@ p{
     column-gap: 50px;
 	height: 70%;
 	padding: 0px;
-	margin-top: 3%;
+	margin-top: 1.2%;
+}
+
+@media (orientation: portrait){
+	.ProjectPresentation-whole-text{
+		height: 50vw;
+	}
 }
 
 .ProjectPresentation-text{
 	color: white;
+}
+
+@media (orientation: portrait){
+	.ProjectPresentation-text{
+		font-size: 4.5vw;
+	}
 }
 
 .ProjectPresentation-scroll {
