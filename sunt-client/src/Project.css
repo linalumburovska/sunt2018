@@ -105,29 +105,29 @@
 
 @media(orientation: portrait){
     .Title-and-author{
-		top: 15%;
-		text-align: center;
-	}
+	top: 1vw;
+	text-align: center;
+    }
     .Author{
         width:100%;
         z-index: 15;
         color: white;
-        font-size: 3vw;
+        font-size: 5vh;
         -webkit-text-stroke: 0.5px black;
         text-align: center;
-		margin-top: 5%;
+	margin-top: 5%;
     }
     .Title{
         z-index:15;
         word-wrap:break-spaces;
         color: white;
-        font-size: 5vw;
+        font-size: 6.5vh;
         font-weight: 700;
         text-align: center;
         width: 100%;
         -webkit-text-stroke: 0.5px black;
         text-transform: uppercase;
-		display: inline-block;
+	display: inline-block;
     }
 }
 
