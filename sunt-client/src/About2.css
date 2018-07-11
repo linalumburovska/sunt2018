@@ -104,3 +104,12 @@ img.about-arrow-right{
 ::-webkit-scrollbar-thumb:hover {
     background: #a1a1a1;
 }
+
+@media (orientation: portrait){
+	.About{
+		width: 100vh;
+	}
+	.About-background{
+		width: 100vh;
+	}
+}
