@@ -29,6 +29,12 @@
     height: 98%;
 }
 
+@media (orientation: portrait){
+	.ProjectPagination-buttons{
+		margin-left: 47.5vh;
+	}
+}
+
 .ProjectPagination-buttons #prev, #next{
     width: auto;
     height: 100%;
