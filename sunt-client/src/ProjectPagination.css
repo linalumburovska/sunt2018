@@ -32,6 +32,8 @@
 @media (orientation: portrait){
 	.ProjectPagination-buttons{
 		margin-left: 47.5vh;
+		width: 6vh;
+		z-index: 100;
 	}
 }
 
