@@ -91,4 +91,8 @@ img.about-arrow-right{
 	.about-testback{
 		width: 100vh;
 	}
+	
+	img.about-arrow{
+		width: 6.4%;
+	}
 }
