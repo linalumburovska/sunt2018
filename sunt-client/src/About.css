@@ -48,20 +48,22 @@ h2{
     float: right;
 }
 
-img.about-arrow{
-    position: absolute;
-    top: 50%;
-    width: 3%;
-}
-img.about-arrow-left{
-    float: left;
-    left: 1%;
-    transform: rotate(180deg);
-}
+@media (orientation: landscape){
+	img.about-arrow{
+	    position: absolute;
+	    top: 50%;
+	    width: 3%;
+	}
+	img.about-arrow-left{
+	    float: left;
+	    left: 1%;
+	    transform: rotate(180deg);
+	}
 
-img.about-arrow-right{
-    float: right;
-    right: 1%;
+	img.about-arrow-right{
+	    float: right;
+	    right: 1%;
+	}
 }
 
 /* width */
@@ -93,7 +95,19 @@ img.about-arrow-right{
 	}
 	
 	img.about-arrow{
-		width: 6.4%;
+		position: absolute;
+		top: 50%;
+		width: 6.5vh;
+	}
+	img.about-arrow-left{
+		float: left;
+		left: 1%;
+		transform: rotate(180deg);
+	}
+
+	img.about-arrow-right{
+		float: right;
+		right: 1%;
 	}
 
 	.about-description-left{
