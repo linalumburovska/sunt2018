@@ -167,7 +167,7 @@ p{
 
 @media (orientation: portrait){
 	.ProjectPresentation-type{
-		font-size: 2.8vh;
+		font-size: 2.9vh;
 	}
 }
 
@@ -179,7 +179,7 @@ p{
 
 @media (orientation: portrait){
 	.ProjectPresentation-year{
-		font-size: 2.8vh;
+		font-size: 2.9vh;
 		margin-bottom: 5%;
 	}
 }
@@ -211,7 +211,7 @@ p{
 
 @media (orientation: portrait){
 	.ProjectPresentation-text{
-		font-size: 4.5vw;
+		font-size: 2.8vh;
 	}
 }
 
