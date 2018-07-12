@@ -95,4 +95,23 @@ img.about-arrow-right{
 	img.about-arrow{
 		width: 6.4%;
 	}
+
+	.about-description-left{
+		font-size: 2.8vh;
+	}
+	
+	.about-description-left{
+		margin-left: 7vh;
+		height: 100%;
+		width: 60vh;		
+	}
+	
+	.about-logo{
+		width: 90%;
+		position: absolute;
+		left: 89vh;
+		top: 95vw;
+		transform-origin: top left;
+		transform: rotate(-90deg);
+	}
 }
