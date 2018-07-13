@@ -70,7 +70,7 @@ export class Project extends React.Component {
                 <div className="ProjectTitle">
                     <div className="Project-video"><video autoPlay loop muted id="videoPlayer" src={images[1].videoPath}/></div>
                     <div id="Buttons">
-                        <div id="unity" style={{color:'white'}} align="left"><Link to="/360">360°</Link></div>
+                        <div id="unity" align="left"><Link to={`/unity/${match.params.id}`}>360°</Link></div>
                         <div id="info" style={{color:'white'}} align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></div>
                     </div>
                     <div className="Title-and-author">
@@ -86,7 +86,7 @@ export class Project extends React.Component {
             <div className="ProjectTitle">
                 <div className="Project-video"><img id="videoPlayer" src={images[1].path} alt={images[1].alt}/></div>
                 <div id="Buttons">
-                    <div id="unity" style={{color:'white'}} align="left"><Link to="/360">360°</Link></div>
+                    <div id="unity" align="left"><Link to={`/unity/${match.params.id}`}>360°</Link></div>
                     <div id="info" style={{color:'white'}} align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></div>
                 </div>
                 <div className="Title-and-author">
