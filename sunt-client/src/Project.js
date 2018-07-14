@@ -68,7 +68,7 @@ export class Project extends React.Component {
         if (images !== undefined && images[1] !== undefined && images[1].videoPath) {
             return (
                 <div className="ProjectTitle">
-                    <div className="Project-video"><video autoPlay loop muted id="videoPlayer" src={images[1].videoPath}/></div>
+                    <div className="Project-video"><video id="videoPlayer" src={images[1].videoPath} autoPlay muted loop/></div>
                     <div id="Buttons">
                         <div id="unity" align="left"><Link to={`/unity/${match.params.id}`}>360°</Link></div>
                         <div id="info" style={{color:'white'}} align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></div>
