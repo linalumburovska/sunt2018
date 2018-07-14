@@ -87,7 +87,7 @@ export class ProjectPresentation extends React.Component {
 
     generateSlider(){
         const {images} = this.state;
-        return (images).map(item =>
+        return (images).slice(1).map(item =>
             <div>
                 <img className="ProjectPresentation-Slika" width={"auto"} height={"auto"} src={item.path}/>
             </div>
