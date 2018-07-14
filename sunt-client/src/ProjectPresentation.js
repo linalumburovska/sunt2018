@@ -87,10 +87,17 @@ export class ProjectPresentation extends React.Component {
 
     generateSlider(){
         const {images} = this.state;
-        return (images).slice(1).map(item =>
-            <div>
-                <img className="ProjectPresentation-Slika" width={"auto"} height={"auto"} src={item.path}/>
-            </div>
+        return (images).slice(1).map(item => {
+            if(item.alt !== undefined) {
+                return(<div>
+                    <img className="ProjectPresentation-Slika" width={"auto"} height={"auto"} src={item.path} alt={item.alt}/>
+                </div>)
+            }else{
+                return(<div>
+                    <img className="ProjectPresentation-Slika" width={"auto"} height={"auto"} src={item.path}/>
+                </div>)
+            }
+            }
         )
     }
 
