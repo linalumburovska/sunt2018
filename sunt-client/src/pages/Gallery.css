@@ -1,0 +1,176 @@
+.Gallery-Header{
+    z-index: 11;
+    height: 11%;
+    width: 100%;
+    position: absolute;
+    background: #212121;
+    top: 0;
+    left: 0;
+    right: 0;
+    display:grid;
+    grid-template-columns: 14.5vh 1fr 1fr 1fr;
+    grid-template-rows: 100%;
+}
+
+@media(orientation: portrait){
+    .Gallery-Header{
+        grid-template-columns: 14.5vw 1fr 1fr 1fr;
+    }
+}
+
+.Gallery-Header div{
+    font-size:2vw;
+}
+
+.Gallery-Header #language{
+
+    display: flex;
+    height: 100%;
+    margin:0;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+.Gallery-Header #home{
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 90%;
+}
+
+.Gallery-Header #home img{
+    height: 90%;
+}
+
+.Gallery-Header #about{
+    display: flex;
+    height: 100%;
+    width: auto;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.Gallery-Header a{
+    text-decoration: none;
+    color:white;
+    padding: 5px;
+}
+
+@media (min-width: 600px) {
+    .Gallery-Gallery {
+        display: grid;
+        padding-top:11vh;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+body {
+    margin: 0 auto;
+    font-family: 'Raleway', sans-serif;
+}
+
+.figure-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wp-caption {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    grid-column: span 2;
+    height: 100%;
+}
+.wp-caption img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wp-caption-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    left: 0;
+    bottom: 0;
+    padding: 0.75em 1em;
+    font-weight: 700;
+    z-index: 2;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.46);
+    -webkit-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
+}
+
+.authors {
+    text-transform: uppercase;
+    margin-bottom:0;
+}
+
+h1.title-size {
+    font-size: 5vh;
+}
+
+h2.author-size {
+    font-size: 3vh;
+}
+
+
+.wp-caption:hover .wp-caption-text {
+    opacity: 1;
+}
+
+
+
+/* ----------------------- PORTRAIT ORIENTATION ----------------------- */
+
+@media (orientation: portrait){
+	.Gallery{
+		height: 100%;
+		width: 100vh;
+	}
+	
+	.Gallery-Header{
+		position: absolute;
+		z-index: 0;
+		height: 14vw;
+		width: 100vh;
+        grid-template-columns: 14.5vw 1fr 1fr 1fr;
+		
+    }
+	
+	.Gallery-Header div{
+		font-size:5vw;
+	}
+	
+	.Gallery-Gallery {
+        display: grid;
+        padding-top:14vw;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		overflow: scroll;
+    }
+	
+	/* BESEDILO CEZ SLIKE */
+	h1.title-size {
+		font-size: 2.3vh;
+	}
+
+	h2.author-size {
+		font-size: 1.8vh;
+	}
+	
+	.wp-caption-text {
+		opacity: 1;
+		background-color: transparent;
+	}
+}

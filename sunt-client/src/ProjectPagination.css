@@ -1,0 +1,147 @@
+.Content{
+    display:block;
+    position:absolute;
+    top:0;
+    height: inherit;
+    width: inherit;
+    background-color:transparent;
+}
+.ProjectPagination{
+    display:block;
+    position: absolute;
+    top:0;
+    height: inherit;
+    width: inherit;
+    background-color:transparent;
+
+}
+.ProjectPagination-buttons{
+    z-index: 25;
+    display: grid;
+    grid-template-rows: 1fr;
+    position:absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 5%;
+    height: 98%;
+}
+
+@media (orientation: portrait){
+	.ProjectPagination-buttons{
+		margin-left: 47.5vh;
+		width: 6vh;
+		z-index: 100;
+	}
+}
+
+.ProjectPagination-buttons #prev, #next{
+    width: auto;
+    height: 100%;
+}
+
+
+.ProjectPagination-buttons a input{
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+
+.ProjectPagination #title{
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
+
+.ProjectPagination-Header{
+    z-index: 11;
+    height: 11%;
+    width: 100%;
+    position: absolute;
+    background: transparent;
+    top: 0;
+    left: 0;
+    right: 0;
+    display:grid;
+    grid-template-columns: 14.5vh 1fr 1fr 1fr;
+    grid-template-rows: 100%;
+}
+
+.ProjectPagination-Header div{
+    font-size:2vw;
+}
+
+.ProjectPagination-Header #language{
+
+    display: flex;
+    height: 100%;
+    margin:0;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+.ProjectPagination-Header #home{
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 90%;
+}
+
+.ProjectPagination-Header #home img{
+    height: 90%;
+}
+
+.ProjectPagination-Header #about{
+    display: flex;
+    height: 100%;
+    width: auto;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.ProjectPagination-Header a{
+    text-decoration: none;
+    color:white;
+    padding: 5px;
+}
+
+
+@media(orientation: portrait){	
+    .ProjectPagination-Header{
+        grid-template-columns: 14.5vw 1fr 1fr 1fr;
+    }
+	
+    .ProjectPagination-Header{
+        position: absolute;
+	z-index: 100;
+	height: 14vw;
+	width: 100vh;
+        grid-template-columns: 14.5vw 1fr 1fr 1fr;
+    }
+	
+    .ProjectPagination-Header div{
+	font-size:5vw;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

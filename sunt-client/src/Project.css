@@ -1,0 +1,139 @@
+.ProjectTitle{
+    display:block;
+    position: absolute;
+    background:black;
+    top:0;
+    height: inherit;
+    width: inherit;
+}
+
+.Project-video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding:0;
+    margin:0;
+    left: 0;
+    z-index: 9;
+    overflow:hidden;
+}
+
+@media(orientation: landscape) {
+    .Project-video #videoPlayer {
+        object-fit: contain;
+        width: 100%;
+        overflow: hidden;
+        -webkit-filter: blur(1px) brightness(80%); /* Safari 6.0 - 9.0 */
+        filter: blur(1px) brightness(80%);
+        margin:auto;
+    }
+}
+
+
+@media (orientation: portrait){
+    .ProjectTitle {
+	width: 100vh;
+    }
+	
+    .Project-video #videoPlayer {
+        max-height: 100%;
+        position:absolute;
+        bottom:0;
+        left:0;
+        object-fit: cover;
+    }
+}
+
+.ProjectTitle #Buttons{
+    z-index: 20;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    position:absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 98%;
+    height: 5%;
+    color:white;
+    font-family:'Roboto Slab';
+    font-size: 4vh;
+}
+
+.ProjectTitle #info a{color:white !important;}
+.ProjectTitle #unity a{color:white !important;}
+
+
+.Title-and-author{
+    background: transparent;
+    height: 50%;
+    width: 70%;
+    z-index: 15;
+    position:absolute;
+    margin-top: 15%;
+    margin-left:15%;
+}
+
+
+@media(orientation: landscape) {
+    .Title {
+        z-index:15;
+        word-wrap:break-spaces;
+        color: white;
+        font-size: 8vh;
+        font-weight: 700;
+        text-align: center;
+        width: 100%;
+        -webkit-text-stroke: 0.5px black;
+        text-transform: uppercase;
+		display: inline-block;
+    }
+
+    .Author {
+        width:100%;
+        z-index: 15;
+        color: white;
+        font-size: 6vh;
+        -webkit-text-stroke: 0.5px black;
+        text-align: center;
+		position: relative;
+		margin-top: 5%;
+    }
+}
+
+@media(orientation: portrait){
+    .Title-and-author{
+	top: 1vw;
+	text-align: center;
+    }
+    .Author{
+        width:100%;
+        z-index: 15;
+        color: white;
+        font-size: 5vh;
+        -webkit-text-stroke: 0.5px black;
+        text-align: center;
+	margin-top: 5%;
+    }
+    .Title{
+        z-index:15;
+        word-wrap:break-spaces;
+        color: white;
+        font-size: 6.5vh;
+        font-weight: 700;
+        text-align: center;
+        width: 100%;
+        -webkit-text-stroke: 0.5px black;
+        text-transform: uppercase;
+	display: inline-block;
+    }
+}
+
+
+
+
+
+
+

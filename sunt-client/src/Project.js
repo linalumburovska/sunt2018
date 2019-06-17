@@ -1,9 +1,7 @@
 import React from 'react'
-import {getImageSrc} from "./utility";
-import {ProjectAPI} from "./api/client";
-import {ProjectPresentation} from "./ProjectPresentation";
-import {Link, Route} from 'react-router-dom';
-
+import {AuthorAPI, ProjectAPI} from "./api/client";
+import {Link, Redirect} from 'react-router-dom';
+import './Project.css'
 
 export class Project extends React.Component {
 
@@ -14,22 +12,34 @@ export class Project extends React.Component {
 
         this.state = {
             path: '',
-            description: '',
-            opened: false,
+            author:'',
+            images:[],
+            title:'',
+            error: false
         };
     }
 
     loadFromServer(match) {
-        if (match !== undefined) {
-            ProjectAPI.get(match.params.index)
-                .then(project => this.setState({path: project.image[0].path, description: project.description}));
-            console.log("Project mounted", this.props);
+        if (match !== undefined && 0 < match.params.id && match.params.id < 27) {
+            console.log("MATCH PROJECT", match);
+            if(match.path.includes("/en")) {
+                ProjectAPI.get(match.params.id)
+                    .then(project => this.setState({images: project.image, title: project.englishTitle}));
+            }else{
+                ProjectAPI.get(match.params.id)
+                    .then(project => this.setState({images: project.image, title: project.title}));
+            }
+            AuthorAPI.get(match.params.id)
+                .then(project => this.setState({author: project.name}));
+            console.log("Project mounted", this.state);
+        }else{
+            this.setState({error:true});
         }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         const {match} = this.props;
-        if (prevProps.match.params.index !== this.props.match.params.index) {
+        if (prevProps.match.params.id !== this.props.match.params.id || prevProps.match.path !== this.props.match.path){
             this.loadFromServer(match);
         } else {
             console.log("not updating", prevState, this.state);
@@ -47,26 +57,59 @@ export class Project extends React.Component {
     }
 
     render() {
-        const {path, description, opened} = this.state;
+        const {images, author, title} = this.state;
         const {match} = this.props;
+        console.log(this.props.match);
 
-
-        if (path.length === 0) {
+        if(this.state.error){
+            return(<Redirect to={"/"}/>)
+        }
+        console.log("STATE", this.state);
+        if (images !== undefined && images[1] !== undefined && images[1].videoPath) {
             return (
                 <div className="ProjectTitle">
-                    Loading...
+                    <div className="Project-video"><video id="videoPlayer" src={images[1].videoPath} autoPlay muted loop/></div>
+                    <div id="Buttons">
+                        <div id="unity" align="left"><Link to={`/unity/${match.params.id}`}>360°</Link></div>
+                        <div id="info" style={{color:'white'}} align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></div>
+                    </div>
+                    <div className="Title-and-author">
+                        <div style={{height:'50%'}}>
+                            <h1 style={{height:'50%'}} className="Title">{title}</h1>
+                            <div style={{height:'50%'}} className="Author">{author}</div>
+                        </div>
+                    </div>
                 </div>
             )
-        } else {
+        }else if(images !== undefined && images[1] !== undefined){
+            return(
+            <div className="ProjectTitle">
+                <div className="Project-video"><img id="videoPlayer" src={images[1].path} alt={images[1].alt}/></div>
+                <div id="Buttons">
+                    <div id="unity" align="left"><Link to={`/unity/${match.params.id}`}>360°</Link></div>
+                    <div id="info" style={{color:'white'}} align="right"><Link to={`${match.url}/info`} onClick={this.props.hide}>Info</Link></div>
+                </div>
+                <div className="Title-and-author">
+                    <div style={{height:'50%'}}>
+                        <h1 style={{height:'50%'}} className="Title">{title}</h1>
+                        <div style={{height:'50%'}} className="Author">{author}</div>
+                    </div>
+                </div>
+            </div>)
+        }else {
             return (
                 <div className="ProjectTitle">
-                    <h1>{description}</h1>
-                    <Link to={`${match.url}${!opened ? '/description' : ''}`} onClick={this.handleClick}>
-                        <img src={getImageSrc(path)} alt={description} width="300px"/>
-                    </Link>
-
-                    <hr />
-                    <Route path={`${match.path}/description`} component={ProjectPresentation}/>
+                    <div className="Project-video"></div>
+                    <div id="Buttons">
+                        <div id="unity" style={{color:'white'}} align="left"><Link to="/360">360°</Link></div>
+                        <div id="info" style={{color:'white'}} align="right"><Link to="/info">Info</Link></div>
+                    </div>
+                    <div className="Title-and-author">
+                        <div style={{height:'50%'}}>
+                            <h1 style={{height:'50%'}} className="Title">{title}</h1>
+                            <div style={{height:'50%'}} className="Author">{author}</div>
+                        </div>
+                    </div>
                 </div>
             )
         }
